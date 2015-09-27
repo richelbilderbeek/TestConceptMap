@@ -1,15 +1,15 @@
+include(DesktopApplicationNoWeffcpp.pri)
 
 QMAKE_CXXFLAGS_DEBUG += -pg
 QMAKE_LFLAGS_DEBUG += -pg
 
-include(../DesktopApplicationNoWeffcpp.pri)
 
 #Libs
-include(../Libraries/Apfloat.pri)
-include(../Libraries/Boost.pri)
-include(../Libraries/Fparser.pri)
-include(../Libraries/GeneralConsole.pri)
-include(../Libraries/GeneralDesktop.pri)
+include(../RibiLibraries/Apfloat.pri)
+include(../RibiLibraries/Boost.pri)
+include(../RibiLibraries/Fparser.pri)
+include(../RibiLibraries/GeneralConsole.pri)
+include(../RibiLibraries/GeneralDesktop.pri)
 
 #Specific, console
 include(../RibiClasses/CppContainer/CppContainer.pri)
