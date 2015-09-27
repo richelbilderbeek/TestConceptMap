@@ -25,7 +25,7 @@ public:
   explicit QtTestExampleDialog(QWidget *parent = 0);
   QtTestExampleDialog(const QtTestExampleDialog&) = delete;
   QtTestExampleDialog& operator=(const QtTestExampleDialog&) = delete;
-  ~QtTestExampleDialog();
+  ~QtTestExampleDialog() noexcept;
 
 protected:
   void keyPressEvent(QKeyEvent *event);
