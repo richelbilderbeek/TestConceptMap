@@ -12,12 +12,16 @@ include(../RibiLibraries/GeneralConsole.pri)
 include(../RibiLibraries/GeneralDesktop.pri)
 
 #Specific, console
+<<<<<<< HEAD
 include(../RibiClasses/RibiClasses.pri)
 
 include(../RibiClasses/CppContainer/CppContainer.pri)
+=======
+>>>>>>> 166b1d0ae7491784087f709ae072cc509f971c7a
 include(../RibiClasses/CppCoordinat/CppCoordinat.pri)
 include(../RibiClasses/CppCounter/CppCounter.pri)
 include(../RibiClasses/CppConceptMap/CppConceptMap.pri)
+include(../RibiClasses/CppContainer/CppContainer.pri)
 include(../RibiClasses/CppGeometry/CppGeometry.pri)
 include(../RibiClasses/CppGslLite/CppGslLite.pri)
 include(../RibiClasses/CppFuzzy_equal_to/CppFuzzy_equal_to.pri)
