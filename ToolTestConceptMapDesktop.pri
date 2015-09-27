@@ -1,38 +1,38 @@
-include(../../Tools/ToolTestConceptMap/ToolTestConceptMapConsole.pri)
+include(ToolTestConceptMapConsole.pri)
 
 HEADERS += \
-    ../../Tools/ToolTestConceptMap/qtconceptmapviewtestsdialog.h \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapconceptdialog.h \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapedgedialog.h \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapexampledialog.h \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapexamplesdialog.h \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapmenudialog.h \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapnodedialog.h \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapqtedgedialog.h \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapqtnodedialog.h \
-    ../../Tools/ToolTestConceptMap/qttesteditconceptmapdialog.h
+    qtconceptmapviewtestsdialog.h \
+    qttestconceptmapconceptdialog.h \
+    qttestconceptmapedgedialog.h \
+    qttestconceptmapexampledialog.h \
+    qttestconceptmapexamplesdialog.h \
+    qttestconceptmapmenudialog.h \
+    qttestconceptmapnodedialog.h \
+    qttestconceptmapqtedgedialog.h \
+    qttestconceptmapqtnodedialog.h \
+    qttesteditconceptmapdialog.h
 
 SOURCES += \
-    ../../Tools/ToolTestConceptMap/qtconceptmapviewtestsdialog.cpp \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapconceptdialog.cpp \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapedgedialog.cpp \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapexampledialog.cpp \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapexamplesdialog.cpp \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapmenudialog.cpp \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapnodedialog.cpp \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapqtedgedialog.cpp \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapqtnodedialog.cpp \
-    ../../Tools/ToolTestConceptMap/qttesteditconceptmapdialog.cpp
+    qtconceptmapviewtestsdialog.cpp \
+    qttestconceptmapconceptdialog.cpp \
+    qttestconceptmapedgedialog.cpp \
+    qttestconceptmapexampledialog.cpp \
+    qttestconceptmapexamplesdialog.cpp \
+    qttestconceptmapmenudialog.cpp \
+    qttestconceptmapnodedialog.cpp \
+    qttestconceptmapqtedgedialog.cpp \
+    qttestconceptmapqtnodedialog.cpp \
+    qttesteditconceptmapdialog.cpp
 
 FORMS += \
-    ../../Tools/ToolTestConceptMap/qtconceptmapviewtestsdialog.ui \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapconceptdialog.ui \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapedgedialog.ui \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapexampledialog.ui \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapexamplesdialog.ui \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapmenudialog.ui \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapnodedialog.ui \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapqtedgedialog.ui \
-    ../../Tools/ToolTestConceptMap/qttestconceptmapqtnodedialog.ui \
-    ../../Tools/ToolTestConceptMap/qttesteditconceptmapdialog.ui
+    qtconceptmapviewtestsdialog.ui \
+    qttestconceptmapconceptdialog.ui \
+    qttestconceptmapedgedialog.ui \
+    qttestconceptmapexampledialog.ui \
+    qttestconceptmapexamplesdialog.ui \
+    qttestconceptmapmenudialog.ui \
+    qttestconceptmapnodedialog.ui \
+    qttestconceptmapqtedgedialog.ui \
+    qttestconceptmapqtnodedialog.ui \
+    qttesteditconceptmapdialog.ui
 
