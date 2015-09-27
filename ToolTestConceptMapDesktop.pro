@@ -12,6 +12,8 @@ include(../RibiLibraries/GeneralConsole.pri)
 include(../RibiLibraries/GeneralDesktop.pri)
 
 #Specific, console
+include(../RibiClasses/RibiClasses.pri)
+
 include(../RibiClasses/CppContainer/CppContainer.pri)
 include(../RibiClasses/CppCoordinat/CppCoordinat.pri)
 include(../RibiClasses/CppCounter/CppCounter.pri)
