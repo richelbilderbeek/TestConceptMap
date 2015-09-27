@@ -1,8 +1,8 @@
 INCLUDEPATH += \
-    ../../Tools/ToolTestConceptMap
+    ../TestConceptMap
 
 SOURCES += \
-    ../../Tools/ToolTestConceptMap/testconceptmapmenudialog.cpp
+    ../TestConceptMap/testconceptmapmenudialog.cpp
 
 HEADERS += \
-    ../../Tools/ToolTestConceptMap/testconceptmapmenudialog.h
+    ../TestConceptMap/testconceptmapmenudialog.h
