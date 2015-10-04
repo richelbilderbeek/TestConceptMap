@@ -22,6 +22,7 @@ include(../RibiClasses/CppGeometry/CppGeometry.pri)
 include(../RibiClasses/CppGslLite/CppGslLite.pri)
 include(../RibiClasses/CppPlane/CppPlane.pri)
 include(../RibiClasses/CppRibiRegex/CppRibiRegex.pri)
+include(../RibiClasses/CppRibiSystem/CppRibiSystem.pri)
 include(../RibiClasses/CppXml/CppXml.pri)
 
 #Specific, desktop

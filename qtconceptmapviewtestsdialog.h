@@ -1,5 +1,5 @@
-#ifndef QTPVDBVIEWTESTSDIALOG_H
-#define QTPVDBVIEWTESTSDIALOG_H
+#ifndef QTCONCEPTMAPVIEWTESTSDIALOG_H
+#define QTCONCEPTMAPVIEWTESTSDIALOG_H
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Weffc++"
@@ -57,4 +57,4 @@ private:
 } //~namespace cmap
 } //~namespace ribi
 
-#endif // QTPVDBVIEWTESTSDIALOG_H
+#endif // QTCONCEPTMAPVIEWTESTSDIALOG_H
