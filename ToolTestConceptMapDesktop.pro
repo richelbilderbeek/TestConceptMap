@@ -3,10 +3,9 @@ include(DesktopApplicationNoWeffcpp.pri)
 QMAKE_CXXFLAGS_DEBUG += -pg
 QMAKE_LFLAGS_DEBUG += -pg
 
-
 #Libs
 include(../RibiLibraries/Apfloat.pri)
-include(../RibiLibraries/Boost.pri)
+include(../RibiLibraries/BoostAll.pri)
 include(../RibiLibraries/Fparser.pri)
 include(../RibiLibraries/GeneralConsole.pri)
 include(../RibiLibraries/GeneralDesktop.pri)
@@ -23,6 +22,7 @@ include(../RibiClasses/CppGslLite/CppGslLite.pri)
 include(../RibiClasses/CppPlane/CppPlane.pri)
 include(../RibiClasses/CppRibiRegex/CppRibiRegex.pri)
 include(../RibiClasses/CppRibiSystem/CppRibiSystem.pri)
+include(../RibiClasses/CppRibiTime/CppRibiTime.pri)
 include(../RibiClasses/CppXml/CppXml.pri)
 
 #Specific, desktop
@@ -39,4 +39,3 @@ include(../RibiClasses/CppQtScopedDisable/CppQtScopedDisable.pri)
 include(ToolTestConceptMapDesktop.pri)
 
 SOURCES += qtmain.cpp
-
