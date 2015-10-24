@@ -26,30 +26,37 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLabel" name="label_1">
+       <widget class="QLabel" name="label_new_node">
         <property name="text">
          <string>CTRL-N: New node</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="label_new_edge">
         <property name="text">
          <string>CTRL-E: New edge</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="label_move_node">
         <property name="text">
          <string>CTRL-arrows: move node</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="label_select_more_nodes">
         <property name="text">
          <string>SHIFT-arrows: select more nodes</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_toggle_virtual_bastard">
+        <property name="text">
+         <string>F1: Toggle virtual bastard</string>
         </property>
        </widget>
       </item>

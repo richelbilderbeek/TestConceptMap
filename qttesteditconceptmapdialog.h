@@ -11,6 +11,7 @@
 #include "qtconceptmapfwd.h"
 #pragma GCC diagnostic pop
 
+struct QTimer;
 namespace Ui { class QtTestEditConceptMapDialog; }
 
 namespace ribi {
@@ -36,6 +37,7 @@ protected:
 private slots:
 
   void OnCheck();
+  void OnVirtualBastard();
 
 private:
 
@@ -44,11 +46,14 @@ private:
   ///The to-be-tested concept map
   boost::shared_ptr<QtConceptMap> m_conceptmap;
 
+  QTimer * const m_timer_virtual_bastard;
+
   #ifndef NDEBUG
   static void Test() noexcept;
   #endif
 
   void DoSomethingRandom();
+  void ToggleVirtualBastard() noexcept;
 };
 
 } //~namespace cmap

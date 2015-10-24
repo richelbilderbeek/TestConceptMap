@@ -34,18 +34,64 @@
 #include "ui_qttesteditconceptmapdialog.h"
 #pragma GCC diagnostic pop
 
+namespace ribi {
+  namespace testeditconceptmapdialog {
+    QKeyEvent CreateCtrlE() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_E,Qt::ControlModifier); }
+    QKeyEvent CreateCtrlLeft() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Left,Qt::ControlModifier); }
+    QKeyEvent CreateCtrlN() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_N,Qt::ControlModifier); }
+    QKeyEvent CreateCtrlRight() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Right,Qt::ControlModifier); }
+    QKeyEvent CreateDelete() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Delete,Qt::NoModifier); }
+    QKeyEvent CreateDown() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Down,Qt::NoModifier); }
+    QKeyEvent CreateE() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_E,Qt::NoModifier); }
+    QKeyEvent CreateLeft() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Left,Qt::NoModifier); }
+    QKeyEvent CreateN() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_N,Qt::NoModifier); }
+    QKeyEvent CreateRight() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Right,Qt::NoModifier); }
+    QKeyEvent CreateShiftE() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_E,Qt::ShiftModifier); }
+    QKeyEvent CreateShiftLeft() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Left,Qt::ShiftModifier); }
+    QKeyEvent CreateShiftN() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_N,Qt::ShiftModifier); }
+    QKeyEvent CreateShift() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Shift,Qt::NoModifier); }
+    QKeyEvent CreateShiftRight() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Right,Qt::ShiftModifier); }
+    QKeyEvent CreateSpace() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Space,Qt::NoModifier); }
+    QKeyEvent CreateUp() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Up,Qt::NoModifier); }
+    QKeyEvent CreateX() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_X,Qt::NoModifier); }
+    QKeyEvent CreateRandomKey() noexcept {
+      switch (std::rand() % 18)
+      {
+        case  0: return CreateCtrlE();
+        case  1: return CreateCtrlLeft();
+        case  2: return CreateCtrlN();
+        case  3: return CreateCtrlRight();
+        case  4: return CreateDelete();
+        case  5: return CreateDown();
+        case  6: return CreateE();
+        case  7: return CreateLeft();
+        case  8: return CreateN();
+        case  9: return CreateRight();
+        case 10: return CreateShiftE();
+        case 11: return CreateShiftLeft();
+        case 12: return CreateShiftN();
+        case 13: return CreateShift();
+        case 14: return CreateShiftRight();
+        case 15: return CreateSpace();
+        case 16: return CreateUp();
+        case 17: return CreateX();
+      }
+      return CreateSpace();
+    }
+  }
+}
+
 
 ribi::cmap::QtTestEditConceptMapDialog::QtTestEditConceptMapDialog(QWidget *parent) :
   QtHideAndShowDialog(parent),
   ui(new Ui::QtTestEditConceptMapDialog),
-  m_conceptmap(new QtConceptMap)
-
+  m_conceptmap(new QtConceptMap),
+  m_timer_virtual_bastard{new QTimer(this)}
 {
   #ifndef NDEBUG
   Test();
   #endif
   ui->setupUi(this);
-
 
 
   //Create an empty concept map
@@ -67,39 +113,16 @@ ribi::cmap::QtTestEditConceptMapDialog::QtTestEditConceptMapDialog(QWidget *pare
     timer->setInterval(100);
     timer->start();
   }
+  {
+    QObject::connect(m_timer_virtual_bastard,SIGNAL(timeout()),this,SLOT(OnVirtualBastard()));
+    m_timer_virtual_bastard->setInterval(100);
+  }
 }
 
 ribi::cmap::QtTestEditConceptMapDialog::~QtTestEditConceptMapDialog() noexcept
 {
   delete ui;
 }
-
-void ribi::cmap::QtTestEditConceptMapDialog::keyPressEvent(QKeyEvent *event)
-{
-  if (event->key() == Qt::Key_Escape) { close(); return; }
-  if (event->key() == Qt::Key_1
-     && event->modifiers() & Qt::AltModifier)
-  {
-    DoSomethingRandom();
-  }
-}
-
-#ifndef NDEBUG
-void ribi::cmap::QtTestEditConceptMapDialog::Test() noexcept
-{
-  {
-    static bool is_tested = false;
-    if (is_tested) return;
-    is_tested = true;
-  }
-  {
-    QtTestEditConceptMapDialog();
-  }
-  const ribi::TestTimer test_timer(__func__,__FILE__,1.0);
-  QtTestEditConceptMapDialog d;
-  d.DoSomethingRandom();
-}
-#endif
 
 void ribi::cmap::QtTestEditConceptMapDialog::DoSomethingRandom()
 {
@@ -134,6 +157,35 @@ void ribi::cmap::QtTestEditConceptMapDialog::DoSomethingRandom()
   m_conceptmap->GetScene()->update();
 }
 
+void ribi::cmap::QtTestEditConceptMapDialog::keyPressEvent(QKeyEvent *event)
+{
+  if (event->key() == Qt::Key_Escape) { close(); return; }
+  if (event->key() == Qt::Key_F1)
+  {
+    ToggleVirtualBastard();
+  }
+  if (event->key() == Qt::Key_1 && event->modifiers() & Qt::AltModifier)
+  {
+    DoSomethingRandom();
+  }
+}
+
+#ifndef NDEBUG
+void ribi::cmap::QtTestEditConceptMapDialog::Test() noexcept
+{
+  {
+    static bool is_tested = false;
+    if (is_tested) return;
+    is_tested = true;
+  }
+  {
+    QtTestEditConceptMapDialog();
+  }
+  const ribi::TestTimer test_timer(__func__,__FILE__,1.0);
+  QtTestEditConceptMapDialog d;
+  d.DoSomethingRandom();
+}
+#endif
 
 void ribi::cmap::QtTestEditConceptMapDialog::OnCheck()
 {
@@ -181,3 +233,29 @@ void ribi::cmap::QtTestEditConceptMapDialog::OnCheck()
 
   ui->label_nodes_selected->setText(s.str().c_str());
 }
+
+void ribi::cmap::QtTestEditConceptMapDialog::OnVirtualBastard()
+{
+  static int n_keys = 0;
+  TRACE(n_keys);
+  ++n_keys;
+
+  QKeyEvent event{
+    testeditconceptmapdialog::CreateRandomKey()
+  };
+  m_conceptmap->keyPressEvent(&event);
+
+}
+
+void ribi::cmap::QtTestEditConceptMapDialog::ToggleVirtualBastard() noexcept
+{
+  if (m_timer_virtual_bastard->isActive()) {
+    TRACE("Stop virtual bastard");
+    m_timer_virtual_bastard->stop();
+  }
+  else {
+    TRACE("Start virtual bastard");
+    m_timer_virtual_bastard->start();
+  }
+}
+
