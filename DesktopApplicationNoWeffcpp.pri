@@ -19,7 +19,20 @@ unix:!macx{
   message("Desktop application, no effc++, built for Linux")
   equals(QT_MAJOR_VERSION, 4): LIBS +=  -lQtSvg
   greaterThan(QT_MAJOR_VERSION, 4): QT +=  concurrent opengl printsupport svg
-  QMAKE_CXXFLAGS += -std=c++17 -Wall -Wextra -Werror #-Weffc++
+
+  message(Host name: $$QMAKE_HOST.name)
+  contains(QMAKE_HOST.name,fwn-biol-132-102) {
+    message("Host is university computer")
+    QMAKE_CXXFLAGS += -std=c++1y -Wall -Wextra #-Werror
+  }
+  contains(QMAKE_HOST.name,pg-login) {
+    message("Host is Peregrine cluster")
+    QMAKE_CXXFLAGS += -std=c++1y -Wall -Wextra #-Werror
+  }
+  contains(QMAKE_HOST.name,maakplek) {
+    message("Host is home computer")
+    QMAKE_CXXFLAGS += -std=c++17 -Wall -Wextra #-Werror
+  }
 }
 
 cross_compile {
