@@ -53,7 +53,7 @@ ribi::About ribi::TestConceptMapMenuDialog::GetAbout() const noexcept
   a.AddLibrary("apfloat version: 2.4.1");
   a.AddLibrary("ConceptMap version: " + ribi::cmap::ConceptMap::GetVersion());
   a.AddLibrary("Container version: " + ribi::Container().GetVersion());
-  a.AddLibrary("FileIo version: " + fileio::FileIo().GetVersion());
+  a.AddLibrary("FileIo version: " + FileIo().GetVersion());
   a.AddLibrary("Geometry version: " + Geometry().GetVersion());
   a.AddLibrary("ribi::Regex version: " + Regex().GetVersion());
   a.AddLibrary("Plane version: " + Plane::GetVersion());
@@ -75,15 +75,6 @@ ribi::Help ribi::TestConceptMapMenuDialog::GetHelp() const noexcept
 
     }
   );
-}
-
-boost::shared_ptr<const ribi::Program> ribi::TestConceptMapMenuDialog::GetProgram() const noexcept
-{
-  boost::shared_ptr<const ribi::Program> p {
-    new ribi::ProgramTestConceptMap
-  };
-  assert(p);
-  return p;
 }
 
 std::string ribi::TestConceptMapMenuDialog::GetVersion() const noexcept

@@ -135,9 +135,8 @@ void ribi::cmap::QtTestEditConceptMapDialog::DoSomethingRandom()
       {
         assert(qtitem->GetNode());
         assert(!qtitem->GetNode()->GetConcept()->GetName().empty());
-        assert(qtitem->GetNode()->GetConcept()->GetExamples());
         qtitem->GetNode()->GetConcept()->SetName(qtitem->GetNode()->GetConcept()->GetName() + "N");
-        const std::vector<boost::shared_ptr<Examples> > v = ExamplesFactory().GetTests();
+        const std::vector<Examples> v = ExamplesFactory().GetTests();
         qtitem->GetNode()->GetConcept()->SetExamples(v [ std::rand() % v.size() ] );
         qtitem->update();
       }
@@ -146,9 +145,8 @@ void ribi::cmap::QtTestEditConceptMapDialog::DoSomethingRandom()
         assert(qtitem->GetQtNode());
         assert( (!qtitem->GetQtNode()->GetNode()->GetConcept()->GetName().empty() || qtitem->GetQtNode()->GetNode()->GetConcept()->GetName().empty())
           && "An item can contain no text: when connected to the center node");
-        assert(qtitem->GetQtNode()->GetNode()->GetConcept()->GetExamples());
         qtitem->GetQtNode()->GetNode()->GetConcept()->SetName(qtitem->GetQtNode()->GetNode()->GetConcept()->GetName() + "E");
-        const std::vector<boost::shared_ptr<Examples> > v = ExamplesFactory().GetTests();
+        const std::vector<Examples> v = ExamplesFactory().GetTests();
         qtitem->GetQtNode()->GetNode()->GetConcept()->SetExamples(v [ std::rand() % v.size() ] );
         qtitem->update();
       }

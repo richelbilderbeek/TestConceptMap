@@ -1,4 +1,4 @@
-include(DesktopApplicationNoWeffcpp.pri)
+include(../RibiLibraries/DesktopApplicationNoWeffcpp.pri)
 
 QMAKE_CXXFLAGS_DEBUG += -pg
 QMAKE_LFLAGS_DEBUG += -pg
