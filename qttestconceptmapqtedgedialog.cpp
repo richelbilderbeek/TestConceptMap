@@ -214,18 +214,10 @@ void ribi::cmap::QtTestQtEdgeDialog::Test() noexcept
     }
   }
   dialog.SetQtEdge(qtedge); //Put QtEdge in back again
-  if (verbose) { TRACE("If the text of an QtEdge its center QtNode is changed, the Item must be updated"); }
-  {
-    dialog.GetQtEdge()->GetEdge()->GetNode()->GetConcept()->SetName("A");
-    assert( dialog.GetQtEdge()->GetQtNode()->GetText()[0] == "A");
-    dialog.GetQtEdge()->GetEdge()->GetNode()->GetConcept()->SetName("B");
-    assert( dialog.GetQtEdge()->GetQtNode()->GetText()[0] == "B");
-  }
   if (verbose) { TRACE("There are items in the QGraphicsView"); }
   {
     assert(dialog.m_view_left->items().size() >= 3);
   }
-
   if (verbose) { TRACE("X of QtTestQtEdgeDialog and QtEdge must match at creation"); }
   {
     const double ui_x{dialog.m_dialog_left->GetUiX()};
@@ -253,15 +245,6 @@ void ribi::cmap::QtTestQtEdgeDialog::Test() noexcept
     const QImage image_before{dialog.GetUiView()};
     const QImage image_after{dialog.GetUiView()};
     assert(image_before == image_after);
-  }
-  if (verbose) { TRACE("If the text of an QtEdge its center QtNode is changed, the Item must be updated"); }
-  {
-    //If the line below is needed, update() is not called automatically
-    dialog.GetQtEdge()->GetEdge()->GetNode()->GetConcept()->SetName("A");
-    const QImage image_before{dialog.GetUiView()};
-    dialog.GetQtEdge()->GetEdge()->GetNode()->GetConcept()->SetName("B");
-    const QImage image_after{dialog.GetUiView()};
-    assert(image_before != image_after);
   }
   if (verbose) { TRACE("If the head arrow head of an QtEdge its Edge is changed, the Item must be updated"); }
   {
@@ -412,6 +395,6 @@ void ribi::cmap::QtTestQtEdgeDialog::on_button_load_clicked() noexcept
   assert(qtedge->GetQtNode()->flags() & QGraphicsItem::ItemIsSelectable);
 
 
-  this->m_dialog_left->GetQtEdge()->GetFrom()->GetNode()->GetConcept()->SetName("From");
-  this->m_dialog_left->GetQtEdge()->GetTo()->GetNode()->GetConcept()->SetName("To");
+  this->m_dialog_left->GetQtEdge()->GetFrom()->GetNode()->GetConcept().SetName("From");
+  this->m_dialog_left->GetQtEdge()->GetTo()->GetNode()->GetConcept().SetName("To");
 }

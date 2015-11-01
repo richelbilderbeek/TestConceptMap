@@ -47,13 +47,13 @@ private:
   boost::shared_ptr<QtConceptDialog> m_qtconceptdialog_1;
   boost::shared_ptr<QtConceptDialog> m_qtconceptdialog_2;
 
-  //const boost::shared_ptr<Concept> m_concept;
+  //const Concept m_concept;
   //cmap::QtDisplayStrategy* m_display_concept;
   //cmap::QtEditStrategy* m_edit_concept;
   //cmap::QtRateStrategy* m_rate_concept;
 
   ///Get the Concept via the route chosen by box_edit
-  //const boost::shared_ptr<Concept> GetChosenConcept();
+  //const Concept GetChosenConcept();
 
   #ifndef NDEBUG
   static void Test() noexcept;

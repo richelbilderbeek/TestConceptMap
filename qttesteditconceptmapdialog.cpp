@@ -134,20 +134,20 @@ void ribi::cmap::QtTestEditConceptMapDialog::DoSomethingRandom()
       if (QtNode* const qtitem = dynamic_cast<QtNode*>(item))
       {
         assert(qtitem->GetNode());
-        assert(!qtitem->GetNode()->GetConcept()->GetName().empty());
-        qtitem->GetNode()->GetConcept()->SetName(qtitem->GetNode()->GetConcept()->GetName() + "N");
+        assert(!qtitem->GetNode()->GetConcept().GetName().empty());
+        qtitem->GetNode()->GetConcept().SetName(qtitem->GetNode()->GetConcept().GetName() + "N");
         const std::vector<Examples> v = ExamplesFactory().GetTests();
-        qtitem->GetNode()->GetConcept()->SetExamples(v [ std::rand() % v.size() ] );
+        qtitem->GetNode()->GetConcept().SetExamples(v [ std::rand() % v.size() ] );
         qtitem->update();
       }
       if (QtEdge* const qtitem = dynamic_cast<QtEdge*>(item))
       {
         assert(qtitem->GetQtNode());
-        assert( (!qtitem->GetQtNode()->GetNode()->GetConcept()->GetName().empty() || qtitem->GetQtNode()->GetNode()->GetConcept()->GetName().empty())
+        assert( (!qtitem->GetQtNode()->GetNode()->GetConcept().GetName().empty() || qtitem->GetQtNode()->GetNode()->GetConcept().GetName().empty())
           && "An item can contain no text: when connected to the center node");
-        qtitem->GetQtNode()->GetNode()->GetConcept()->SetName(qtitem->GetQtNode()->GetNode()->GetConcept()->GetName() + "E");
+        qtitem->GetQtNode()->GetNode()->GetConcept().SetName(qtitem->GetQtNode()->GetNode()->GetConcept().GetName() + "E");
         const std::vector<Examples> v = ExamplesFactory().GetTests();
-        qtitem->GetQtNode()->GetNode()->GetConcept()->SetExamples(v [ std::rand() % v.size() ] );
+        qtitem->GetQtNode()->GetNode()->GetConcept().SetExamples(v [ std::rand() % v.size() ] );
         qtitem->update();
       }
     }
@@ -211,7 +211,7 @@ void ribi::cmap::QtTestEditConceptMapDialog::OnCheck()
   for (int i=0; i!=n_qtnodes; ++i)
   {
     const auto qtnode = qtnodes[i];
-    s << "[" << i << "] " << qtnode->GetNode()->GetConcept()->GetName() << ": "  << qtnode->isSelected() << '\n';
+    s << "[" << i << "] " << qtnode->GetNode()->GetConcept().GetName() << ": "  << qtnode->isSelected() << '\n';
   }
   const auto qtedges = m_conceptmap->GetQtEdges();
   const int n_qtedges{static_cast<int>(qtedges.size())};
@@ -223,8 +223,8 @@ void ribi::cmap::QtTestEditConceptMapDialog::OnCheck()
   s << "Focus item: ";
   if (m_conceptmap->GetScene()->focusItem())
   {
-    if (QtNode* const qtnode = dynamic_cast<QtNode*>(m_conceptmap->GetScene()->focusItem())) { s << qtnode->GetNode()->GetConcept()->GetName(); }
-    if (QtEdge* const qtedge = dynamic_cast<QtEdge*>(m_conceptmap->GetScene()->focusItem())) { s << qtedge->GetQtNode()->GetNode()->GetConcept()->GetName(); }
+    if (QtNode* const qtnode = dynamic_cast<QtNode*>(m_conceptmap->GetScene()->focusItem())) { s << qtnode->GetNode()->GetConcept().GetName(); }
+    if (QtEdge* const qtedge = dynamic_cast<QtEdge*>(m_conceptmap->GetScene()->focusItem())) { s << qtedge->GetQtNode()->GetNode()->GetConcept().GetName(); }
   }
   else { s << "(none)";}
   s << '\n';
