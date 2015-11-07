@@ -8,6 +8,7 @@
 #include <boost/shared_ptr.hpp>
 #include "qthideandshowdialog.h"
 #include "qtconceptmapfwd.h"
+#include "conceptmapnode.h"
 #pragma GCC diagnostic pop
 
 namespace Ui { class QtTestEdgeDialog; }
@@ -44,18 +45,18 @@ private slots:
 private:
   Ui::QtTestEdgeDialog *ui;
 
-  boost::shared_ptr<Node> m_from_node;
+  Node m_from_node;
   boost::shared_ptr<QtEdgeDialog> m_qtedgedialog_1;
   boost::shared_ptr<QtEdgeDialog> m_qtedgedialog_2;
-  boost::shared_ptr<Node> m_to_node;
+  Node m_to_node;
 
-  //const boost::shared_ptr<Node> m_concept;
+  //const Node m_concept;
   //cmap::QtDisplayStrategy* m_display_concept;
   //cmap::QtEditStrategy* m_edit_concept;
   //cmap::QtRateStrategy* m_rate_concept;
 
   ///Get the Node via the route chosen by box_edit
-  //const boost::shared_ptr<Node> GetChosenNode();
+  //const Node GetChosenNode();
 
   #ifndef NDEBUG
   static void Test() noexcept;

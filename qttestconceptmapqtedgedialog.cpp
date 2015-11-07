@@ -395,6 +395,6 @@ void ribi::cmap::QtTestQtEdgeDialog::on_button_load_clicked() noexcept
   assert(qtedge->GetQtNode()->flags() & QGraphicsItem::ItemIsSelectable);
 
 
-  this->m_dialog_left->GetQtEdge()->GetFrom()->GetNode()->GetConcept().SetName("From");
-  this->m_dialog_left->GetQtEdge()->GetTo()->GetNode()->GetConcept().SetName("To");
+  this->m_dialog_left->GetQtEdge()->GetFrom()->GetNode().GetConcept().SetName("From");
+  this->m_dialog_left->GetQtEdge()->GetTo()->GetNode().GetConcept().SetName("To");
 }

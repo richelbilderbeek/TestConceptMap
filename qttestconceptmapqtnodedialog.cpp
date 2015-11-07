@@ -196,7 +196,7 @@ void ribi::cmap::QtTestQtNodeDialog::Test() noexcept
   }
   if (verbose) {TRACE("Text of Node must be equal to that of the QtNode in the QGraphicsView");}
   {
-    const std::string s = dialog.m_dialog_left->GetQtNode()->GetNode()->GetConcept().GetName();
+    const std::string s = dialog.m_dialog_left->GetQtNode()->GetNode().GetConcept().GetName();
     const QGraphicsItem * const item = dialog.m_view_left->scene()->items()[0];
     const QtRoundedEditRectItem * qtrectitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
     const auto v = qtrectitem->GetText();
