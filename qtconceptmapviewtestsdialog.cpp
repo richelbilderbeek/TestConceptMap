@@ -27,8 +27,10 @@
 ribi::cmap::QtConceptMapViewTestsDialog::QtConceptMapViewTestsDialog(QWidget* parent)
   : QtHideAndShowDialog(parent),
     ui(new Ui::QtConceptMapViewTestsDialog),
+    #ifdef FIX_ISSUE_10
     m_c(cmap::ConceptMapFactory().GetComplexHomomorphousTestConceptMaps()),
     m_h(cmap::ConceptMapFactory().GetHeteromorphousTestConceptMaps()),
+    #endif // FIX_ISSUE_10
     m_s(cmap::ConceptMapFactory().GetSimpleHomomorphousTestConceptMaps()),
     m_widgets{}
 {
@@ -64,6 +66,7 @@ ribi::cmap::QtConceptMapViewTestsDialog::QtConceptMapViewTestsDialog(QWidget* pa
     }
     const int extra_height = 4;
     {
+      #ifdef FIX_ISSUE_10
       const int sz = static_cast<int>(m_h.size());
       for (int i=0; i!=sz; ++i)
       {
@@ -82,6 +85,7 @@ ribi::cmap::QtConceptMapViewTestsDialog::QtConceptMapViewTestsDialog(QWidget* pa
         mylayout->addWidget(widget.get());
         m_widgets.push_back(widget);
       }
+      #endif // FIX_ISSUE_10
     }
     {
       QLabel * const label = new QLabel("Simple homomorphous test concept maps",this);
@@ -113,6 +117,7 @@ ribi::cmap::QtConceptMapViewTestsDialog::QtConceptMapViewTestsDialog(QWidget* pa
       assert(label);
       mylayout->addWidget(label);
     }
+    #ifdef FIX_ISSUE_10
     {
       const int sz = boost::numeric_cast<int>(m_c.size());
       for (int i=0; i!=sz; ++i)
@@ -133,6 +138,7 @@ ribi::cmap::QtConceptMapViewTestsDialog::QtConceptMapViewTestsDialog(QWidget* pa
         m_widgets.push_back(widget);
       }
     }
+    #endif //FIX_ISSUE_10
   }
 }
 

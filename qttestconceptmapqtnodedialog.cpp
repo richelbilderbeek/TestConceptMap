@@ -194,15 +194,6 @@ void ribi::cmap::QtTestQtNodeDialog::Test() noexcept
     }
     assert(v.size() == 1);
   }
-  if (verbose) {TRACE("Text of Node must be equal to that of the QtNode in the QGraphicsView");}
-  {
-    const std::string s = dialog.m_dialog_left->GetQtNode()->GetNode().GetConcept().GetName();
-    const QGraphicsItem * const item = dialog.m_view_left->scene()->items()[0];
-    const QtRoundedEditRectItem * qtrectitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
-    const auto v = qtrectitem->GetText();
-    const auto t = v[0];
-    assert(s == t);
-  }
   if (verbose) { TRACE("Grabbing QtNode of QGraphicsView twice, results in an identical picture"); }
   {
     //If the line below is needed, update() is not called automatically
@@ -213,24 +204,6 @@ void ribi::cmap::QtTestQtNodeDialog::Test() noexcept
   if (verbose) { TRACE("QGraphicsScene must have one item"); }
   {
     assert(dialog.m_view_left->scene()->items().size() == 1);
-  }
-  if (verbose) { TRACE("Setting X via UI should result in an update of the QtRoundedEditRectItem in the QGraphicsScene"); }
-  {
-    const double old_x{dialog.m_dialog_left->GetUiX()};
-    const double new_x{old_x + 10.0};
-    dialog.m_dialog_left->SetUiX(new_x);
-    const QGraphicsItem * const item = dialog.m_view_left->scene()->items()[0];
-    const QtRoundedEditRectItem * qtrectitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
-    assert(std::abs(qtrectitem->GetCenterX() - new_x) < 2.0);
-  }
-  if (verbose) { TRACE("Setting Y via UI should result in an update of the QtRoundedEditRectItem in the QGraphicsScene"); }
-  {
-    const double old_y{dialog.m_dialog_left->GetUiY()};
-    const double new_y{old_y + 10.0};
-    dialog.m_dialog_left->SetUiY(new_y);
-    const QGraphicsItem * const item = dialog.m_view_left->scene()->items()[0];
-    const QtRoundedEditRectItem * qtrectitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
-    assert(std::abs(qtrectitem->GetCenterY() - new_y) < 2.0);
   }
 }
 #endif

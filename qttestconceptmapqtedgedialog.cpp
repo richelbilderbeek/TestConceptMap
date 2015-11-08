@@ -218,26 +218,6 @@ void ribi::cmap::QtTestQtEdgeDialog::Test() noexcept
   {
     assert(dialog.m_view_left->items().size() >= 3);
   }
-  if (verbose) { TRACE("X of QtTestQtEdgeDialog and QtEdge must match at creation"); }
-  {
-    const double ui_x{dialog.m_dialog_left->GetUiX()};
-    const double qtedge_x{qtedge->GetQtNode()->GetCenterX()};
-    assert(std::abs(ui_x - qtedge_x) < 2.0);
-  }
-  if (verbose) { TRACE("If X is set via QtTestQtEdgeDialog, QtEdge must sync"); }
-  {
-    const double old_x{dialog.m_dialog_left->GetUiX()};
-    const double new_x{old_x + 10.0};
-    dialog.m_dialog_left->SetUiX(new_x);
-    assert(std::abs(new_x - qtedge->GetQtNode()->GetCenterX()) < 2.0);
-  }
-  if (verbose) { TRACE("If X is set via QtEdge, QtTestQtEdgeDialog must sync"); }
-  {
-    const double old_x{dialog.m_dialog_left->GetUiX()};
-    const double new_x{old_x + 10.0};
-    qtedge->GetQtNode()->SetCenterX(new_x);
-    assert(std::abs(new_x - dialog.m_dialog_left->GetUiX()) < 2.0);
-  }
   if (verbose) { TRACE("Grabbing QtEdge of QGraphicsView twice, results in an identical picture"); }
   {
     //If the line below is needed, update() is not called automatically
