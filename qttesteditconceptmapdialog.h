@@ -8,6 +8,7 @@
 #include <boost/shared_ptr.hpp>
 #include "qthideandshowdialog.h"
 
+#include "qtconceptmap.h"
 #include "qtconceptmapfwd.h"
 #pragma GCC diagnostic pop
 
@@ -44,7 +45,7 @@ private:
   Ui::QtTestEditConceptMapDialog *ui;
 
   ///The to-be-tested concept map
-  boost::shared_ptr<QtConceptMap> m_conceptmap;
+  QtConceptMap * m_qtconceptmap;
 
   QTimer * const m_timer_virtual_bastard;
 

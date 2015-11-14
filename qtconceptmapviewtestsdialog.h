@@ -36,14 +36,14 @@ private:
 
   #ifdef FIX_ISSUE_10
   /// ComplexHomomorphousTestConceptMaps
-  const std::vector<boost::shared_ptr<ConceptMap> > m_c;
+  const std::vector<ConceptMap> m_c;
 
   /// HeteromorphousTestConceptMaps
-  const std::vector<boost::shared_ptr<ConceptMap> > m_h;
+  const std::vector<ConceptMap> m_h;
   #endif //FIX_ISSUE_10
 
   /// SimpleHomomorphousTestConceptMaps
-  const std::vector<boost::shared_ptr<ConceptMap> > m_s;
+  const std::vector<ConceptMap> m_s;
 
   /// Tha widgets
   std::vector<boost::shared_ptr<cmap::QtConceptMap> > m_widgets;
@@ -53,7 +53,7 @@ private:
   #endif
 
   static boost::shared_ptr<cmap::QtConceptMap> CreateWidget(
-    const boost::shared_ptr<ConceptMap> conceptmap);
+    const ConceptMap conceptmap);
 };
 
 } //~namespace cmap
