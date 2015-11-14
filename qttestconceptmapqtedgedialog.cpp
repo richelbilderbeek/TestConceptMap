@@ -47,12 +47,14 @@ ribi::cmap::QtTestQtEdgeDialog::QtTestQtEdgeDialog(
   QWidget *parent)
   : QtHideAndShowDialog(parent),
     ui(new Ui::QtTestQtEdgeDialog),
-    m_dialog_left{new QtQtEdgeDialog},
-    m_dialog_right{new QtQtEdgeDialog},
-    m_from{QtNodeFactory().GetTest(1)},
-    m_to{QtNodeFactory().GetTest(1)},
-    m_view_left{new QtKeyboardFriendlyGraphicsView},
-    m_view_right{new QtKeyboardFriendlyGraphicsView}
+    m_qtedge_dialog(
+      new QtQtEdgeDialog(
+        boost::shared_ptr<QtEdge>() //Stub
+      )
+    ),
+    m_from(QtNodeFactory().GetTest(1)),
+    m_to(QtNodeFactory().GetTest(1)),
+    m_qtedge_view(new QtKeyboardFriendlyGraphicsView)
 {
   #ifndef NDEBUG
   Test();
@@ -70,8 +72,7 @@ ribi::cmap::QtTestQtEdgeDialog::QtTestQtEdgeDialog(
 
   {
     QGraphicsScene * const my_scene = new QGraphicsScene(this);
-    m_view_left->setScene(my_scene);
-    m_view_right->setScene(my_scene);
+    m_qtedge_view->setScene(my_scene);
 
     my_scene->addItem(m_from.get()); //Remove in destructor
     my_scene->addItem(m_to.get()); //Remove in destructor
@@ -80,10 +81,8 @@ ribi::cmap::QtTestQtEdgeDialog::QtTestQtEdgeDialog(
     item->setZValue(10000.0);
     my_scene->addItem(item); //Displays the positions
   }
-  ui->area1->setWidget(m_view_left.get());
-  ui->area2->setWidget(m_view_right.get());
-  ui->area3->setWidget(m_dialog_left.get());
-  ui->area4->setWidget(m_dialog_right.get());
+  ui->area1->setWidget(m_qtedge_view.get());
+  ui->area3->setWidget(m_qtedge_dialog.get());
 
   ui->box_test_index->setMinimum(0);
   ui->box_test_index->setMaximum(QtEdgeFactory().GetNumberOfTests() - 1); //-1 because first index has [0]
@@ -102,16 +101,15 @@ ribi::cmap::QtTestQtEdgeDialog::QtTestQtEdgeDialog(
 ribi::cmap::QtTestQtEdgeDialog::~QtTestQtEdgeDialog() noexcept
 {
   SetQtEdge(nullptr);
-  m_view_left->scene()->removeItem(m_from.get()); //Remove in destructor
-  m_view_left->scene()->removeItem(m_to.get());   //Remove in destructor
+  m_qtedge_view->scene()->removeItem(m_from.get()); //Remove in destructor
+  m_qtedge_view->scene()->removeItem(m_to.get());   //Remove in destructor
   delete ui;
 }
 
 
 boost::shared_ptr<ribi::cmap::QtEdge> ribi::cmap::QtTestQtEdgeDialog::GetQtEdge() const noexcept
 {
-  assert(m_dialog_left->GetQtEdge() == m_dialog_right->GetQtEdge());
-  return m_dialog_left->GetQtEdge();
+  return m_qtedge_dialog->GetQtEdge();
 }
 
 int ribi::cmap::QtTestQtEdgeDialog::GetUiTestIndex() const noexcept
@@ -121,7 +119,7 @@ int ribi::cmap::QtTestQtEdgeDialog::GetUiTestIndex() const noexcept
 
 QImage ribi::cmap::QtTestQtEdgeDialog::GetUiView() const noexcept
 { 
-  const auto scene = this->m_view_left->scene();
+  const auto scene = this->m_qtedge_view->scene();
   // Create the image with the exact size of the shrunk scene
   const QSize old_size{scene->sceneRect().size().toSize()};
   //Rescaled by a factor two to fix BUG_260
@@ -136,36 +134,29 @@ QImage ribi::cmap::QtTestQtEdgeDialog::GetUiView() const noexcept
 
 double ribi::cmap::QtTestQtEdgeDialog::GetUiX() const noexcept
 {
-  return m_dialog_left->GetUiX();
+  return m_qtedge_dialog->GetUiX();
 }
 
 double ribi::cmap::QtTestQtEdgeDialog::GetUiY() const noexcept
 {
-  return m_dialog_left->GetUiX();
+  return m_qtedge_dialog->GetUiX();
 }
 
 void ribi::cmap::QtTestQtEdgeDialog::SetQtEdge(const boost::shared_ptr<QtEdge>& qtedge) noexcept
 {
-  assert(m_view_left);
-  assert(m_view_left->scene());
-  assert(m_view_right);
-  assert(m_view_right->scene());
-  assert(m_view_left->scene() == m_view_right->scene());
-  assert(m_dialog_left->GetQtEdge() == m_dialog_right->GetQtEdge());
-  const auto old_qtedge = m_dialog_left->GetQtEdge();
+  assert(m_qtedge_view);
+  const auto old_qtedge = m_qtedge_dialog->GetQtEdge();
 
   if (old_qtedge)
   {
-    m_view_left->scene()->removeItem(old_qtedge.get());
+    m_qtedge_view->scene()->removeItem(old_qtedge.get());
   }
   if (qtedge)
   {
-    m_dialog_left->SetQtEdge(qtedge);
-    m_dialog_right->SetQtEdge(qtedge);
-    this->m_view_left->scene()->addItem(qtedge.get());
+    m_qtedge_dialog->SetQtEdge(qtedge);
+    this->m_qtedge_view->scene()->addItem(qtedge.get());
 
-    m_dialog_left->setMinimumHeight(QtQtEdgeDialog::GetMinimumHeight(*qtedge));
-    m_dialog_right->setMinimumHeight(QtQtEdgeDialog::GetMinimumHeight(*qtedge));
+    m_qtedge_dialog->setMinimumHeight(QtQtEdgeDialog::GetMinimumHeight(*qtedge));
   }
 }
 
@@ -216,7 +207,7 @@ void ribi::cmap::QtTestQtEdgeDialog::Test() noexcept
   dialog.SetQtEdge(qtedge); //Put QtEdge in back again
   if (verbose) { TRACE("There are items in the QGraphicsView"); }
   {
-    assert(dialog.m_view_left->items().size() >= 3);
+    assert(dialog.m_qtedge_view->items().size() >= 3);
   }
   if (verbose) { TRACE("Grabbing QtEdge of QGraphicsView twice, results in an identical picture"); }
   {
@@ -228,9 +219,9 @@ void ribi::cmap::QtTestQtEdgeDialog::Test() noexcept
   }
   if (verbose) { TRACE("If the head arrow head of an QtEdge its Edge is changed, the Item must be updated"); }
   {
-    dialog.GetQtEdge()->GetEdge()->SetHeadArrow(true);
+    dialog.GetQtEdge()->GetEdge().SetHeadArrow(true);
     const QImage image_before{dialog.GetUiView()};
-    dialog.GetQtEdge()->GetEdge()->SetHeadArrow(false);
+    dialog.GetQtEdge()->SetHasHeadArrow(false);
     const QImage image_after{dialog.GetUiView()};
     if(image_before == image_after)
     {
@@ -242,9 +233,9 @@ void ribi::cmap::QtTestQtEdgeDialog::Test() noexcept
   }
   if (verbose) { TRACE("If the tail arrow head of an QtEdge its Edge is changed, the Item must be updated"); }
   {
-    dialog.GetQtEdge()->GetEdge()->SetTailArrow(true);
+    dialog.GetQtEdge()->GetEdge().SetTailArrow(true);
     const QImage image_before{dialog.GetUiView()};
-    dialog.GetQtEdge()->GetEdge()->SetTailArrow(false);
+    dialog.GetQtEdge()->GetEdge().SetTailArrow(false);
     const QImage image_after{dialog.GetUiView()};
     assert(image_before != image_after);
   }
@@ -266,9 +257,9 @@ void ribi::cmap::QtTestQtEdgeDialog::Test() noexcept
   }
   if (verbose) { TRACE("If the QtNode an QtEdge is made invisible, this will show in a screenshot"); }
   {
-    assert(dialog.m_dialog_left->GetQtEdge()->GetQtNode()->isVisible());
+    assert(dialog.m_qtedge_dialog->GetQtEdge()->GetQtNode()->isVisible());
     const QImage image_before{dialog.GetUiView()};
-    dialog.m_dialog_left->GetQtEdge()->GetQtNode()->setVisible(false);
+    dialog.m_qtedge_dialog->GetQtEdge()->GetQtNode()->setVisible(false);
     const QImage image_after{dialog.GetUiView()};
     assert(image_before != image_after);
   }
@@ -321,17 +312,17 @@ void ribi::cmap::QtTestQtEdgeDialog::Test() noexcept
   }
   if (verbose) { TRACE("If QtNode of QtEdge is made visible, this will look different"); }
   {
-    assert(!dialog.m_dialog_left->GetQtEdge()->GetQtNode()->isVisible());
+    assert(!dialog.m_qtedge_dialog->GetQtEdge()->GetQtNode()->isVisible());
     const QImage image_before{dialog.GetUiView()};
-    dialog.m_dialog_left->GetQtEdge()->GetQtNode()->setVisible(true);
+    dialog.m_qtedge_dialog->GetQtEdge()->GetQtNode()->setVisible(true);
     const QImage image_after{dialog.GetUiView()};
     assert(image_before != image_after);
   }
   if (verbose) { TRACE("If arrow of QtEdge is made visible, this will look different"); }
   {
-    assert(dialog.m_dialog_left->GetQtEdge()->GetArrow()->isVisible());
+    assert(dialog.m_qtedge_dialog->GetQtEdge()->GetArrow()->isVisible());
     const QImage image_before{dialog.GetUiView()};
-    dialog.m_dialog_left->GetQtEdge()->GetArrow()->setVisible(false);
+    dialog.m_qtedge_dialog->GetQtEdge()->GetArrow()->setVisible(false);
     const QImage image_after{dialog.GetUiView()};
     assert(image_before != image_after);
   }
@@ -354,9 +345,7 @@ void ribi::cmap::QtTestQtEdgeDialog::on_button_load_clicked() noexcept
 
   SetQtEdge(qtedge);
 
-
-  assert(m_dialog_left->GetQtEdge() == m_dialog_right->GetQtEdge());
-  assert(qtedge == m_dialog_left->GetQtEdge());
+  assert(qtedge == m_qtedge_dialog->GetQtEdge());
 
   assert(m_from->flags() & QGraphicsItem::ItemIsMovable);
   assert(m_from->flags() & QGraphicsItem::ItemIsSelectable);
@@ -375,6 +364,6 @@ void ribi::cmap::QtTestQtEdgeDialog::on_button_load_clicked() noexcept
   assert(qtedge->GetQtNode()->flags() & QGraphicsItem::ItemIsSelectable);
 
 
-  this->m_dialog_left->GetQtEdge()->GetFrom()->GetNode().GetConcept().SetName("From");
-  this->m_dialog_left->GetQtEdge()->GetTo()->GetNode().GetConcept().SetName("To");
+  this->m_qtedge_dialog->GetQtEdge()->GetFrom()->GetNode().GetConcept().SetName("From");
+  this->m_qtedge_dialog->GetQtEdge()->GetTo()->GetNode().GetConcept().SetName("To");
 }

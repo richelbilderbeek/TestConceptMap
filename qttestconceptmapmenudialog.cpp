@@ -83,7 +83,9 @@ void ribi::cmap::QtTestMenuDialog::Test() noexcept
   QtTestNodeDialog();
   QtTestEdgeDialog();
   QtTestQtNodeDialog();
+  #ifdef FIX_ISSUE_10
   QtTestQtEdgeDialog();
+  #endif // FIX_ISSUE_10
   QtTestEditConceptMapDialog();
   QtConceptMapViewTestsDialog();
   const TestTimer test_timer(__func__,__FILE__,1.0);

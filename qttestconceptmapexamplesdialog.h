@@ -5,7 +5,7 @@
 #pragma GCC diagnostic ignored "-Weffc++"
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
 #pragma GCC diagnostic ignored "-Wunused-but-set-parameter"
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "qthideandshowdialog.h"
 
 #include "qtconceptmapfwd.h"
@@ -31,8 +31,7 @@ private slots:
   void on_button_load_examples_clicked();
 private:
   Ui::QtTestExamplesDialog *ui;
-  boost::shared_ptr<QtExamplesDialog> m_examples_1;
-  boost::shared_ptr<QtExamplesDialog> m_examples_2;
+  std::unique_ptr<QtExamplesDialog> m_examples;
 
 
 };

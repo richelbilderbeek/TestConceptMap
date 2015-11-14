@@ -34,19 +34,20 @@ ribi::cmap::QtTestEdgeDialog::QtTestEdgeDialog(QWidget *parent)
   : QtHideAndShowDialog(parent),
     ui(new Ui::QtTestEdgeDialog),
     m_from_node(NodeFactory().GetTest(0)),
-    m_qtedgedialog_1(new QtEdgeDialog),
-    m_qtedgedialog_2(new QtEdgeDialog),
+    m_qtedgedialog{nullptr},
     m_to_node(NodeFactory().GetTest(0))
-    //m_concept(cmap::ConceptFactory().GetTests().at(1)),
-    //m_display_concept(nullptr),
-    //m_edit_concept(nullptr),
-    //m_rate_concept(nullptr)
 {
   #ifndef NDEBUG
   Test();
   #endif
   ui->setupUi(this);
   assert(layout());
+
+  m_qtedgedialog.reset(
+    new QtEdgeDialog(
+      EdgeFactory().GetTest(0,m_from_node,m_to_node)
+    )
+  );
 
   ui->box_test->setMinimum(0);
   ui->box_test->setMaximum(EdgeFactory().GetNumberOfTests() - 1);
@@ -66,8 +67,8 @@ ribi::cmap::QtTestEdgeDialog::QtTestEdgeDialog(QWidget *parent)
   {
     QSizePolicy policy;
     policy.setVerticalStretch(2);
-    m_qtedgedialog_1->setSizePolicy(policy);
-    my_layout->addWidget(m_qtedgedialog_1.get(),1,0);
+    m_qtedgedialog->setSizePolicy(policy);
+    my_layout->addWidget(m_qtedgedialog.get(),1,0);
   }
   {
     QSizePolicy policy;
@@ -76,17 +77,9 @@ ribi::cmap::QtTestEdgeDialog::QtTestEdgeDialog(QWidget *parent)
     label->setSizePolicy(policy);
     my_layout->addWidget(label,0,1);
   }
-  {
-    QSizePolicy policy;
-    policy.setVerticalStretch(2);
-    m_qtedgedialog_2->setSizePolicy(policy);
-    my_layout->addWidget(m_qtedgedialog_2.get(),1,1);
-  }
 
-  m_qtedgedialog_1->setMinimumHeight(500);
-  m_qtedgedialog_2->setMinimumHeight(500);
-  m_qtedgedialog_1->setMinimumWidth(100);
-  m_qtedgedialog_2->setMinimumWidth(100);
+  m_qtedgedialog->setMinimumHeight(500);
+  m_qtedgedialog->setMinimumWidth(100);
   ui->box_test->setValue(1);
   on_button_load_clicked();
 
@@ -121,10 +114,7 @@ void ribi::cmap::QtTestEdgeDialog::on_button_load_clicked()
   assert(i >= 0);
   assert(i < EdgeFactory().GetNumberOfTests());
   const auto edge = EdgeFactory().GetTest(i,m_from_node,m_to_node);
-  m_qtedgedialog_1->SetEdge(edge);
-  m_qtedgedialog_2->SetEdge(edge);
-  assert(m_qtedgedialog_1->GetEdge() == edge);
-  assert(m_qtedgedialog_2->GetEdge() == edge);
-  m_qtedgedialog_1->repaint();
-  m_qtedgedialog_2->repaint();
+  m_qtedgedialog->SetEdge(edge);
+  assert(m_qtedgedialog->GetEdge() == edge);
+  m_qtedgedialog->repaint();
 }

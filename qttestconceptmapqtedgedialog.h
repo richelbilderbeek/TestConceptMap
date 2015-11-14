@@ -5,11 +5,12 @@
 #pragma GCC diagnostic ignored "-Weffc++"
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
 #pragma GCC diagnostic ignored "-Wunused-but-set-parameter"
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "qthideandshowdialog.h"
 
 #include "qtconceptmapfwd.h"
 #include "qtconceptmapqtedge.h"
+#include "qtconceptmapqtnode.h"
 #pragma GCC diagnostic pop
 
 namespace Ui { class QtTestQtEdgeDialog; }
@@ -62,12 +63,10 @@ private:
   Ui::QtTestQtEdgeDialog *ui;
 
 
-  boost::shared_ptr<QtQtEdgeDialog> m_dialog_left;
-  boost::shared_ptr<QtQtEdgeDialog> m_dialog_right;
+  std::unique_ptr<QtQtEdgeDialog> m_qtedge_dialog;
   const boost::shared_ptr<QtNode> m_from;
   const boost::shared_ptr<QtNode> m_to;
-  boost::shared_ptr< ::ribi::QtKeyboardFriendlyGraphicsView> m_view_left;
-  boost::shared_ptr< ::ribi::QtKeyboardFriendlyGraphicsView> m_view_right;
+  std::unique_ptr< ::ribi::QtKeyboardFriendlyGraphicsView> m_qtedge_view;
 
   #ifndef NDEBUG
   static void Test() noexcept;

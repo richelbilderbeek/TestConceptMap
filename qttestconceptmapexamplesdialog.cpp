@@ -21,16 +21,14 @@
 ribi::cmap::QtTestExamplesDialog::QtTestExamplesDialog(QWidget *parent)
   : QtHideAndShowDialog(parent),
     ui(new Ui::QtTestExamplesDialog),
-    m_examples_1{new QtExamplesDialog},
-    m_examples_2{new QtExamplesDialog}
+    m_examples{new QtExamplesDialog}
 {
   ui->setupUi(this);
 
 
   {
     assert(this->layout());
-    layout()->addWidget(m_examples_1.get());
-    layout()->addWidget(m_examples_2.get());
+    layout()->addWidget(m_examples.get());
   }
   {
     const int n_tests = ExamplesFactory().GetNumberOfTests();
@@ -60,9 +58,6 @@ void ribi::cmap::QtTestExamplesDialog::on_button_load_examples_clicked()
   assert(i >= 0);
   assert(i < ExamplesFactory().GetNumberOfTests());
   const auto examples = ExamplesFactory().GetTest(i);
-  m_examples_1->SetExamples(examples);
-  m_examples_2->SetExamples(examples);
-
-  assert(m_examples_1->GetExamples() == examples);
-  assert(m_examples_2->GetExamples() == examples);
+  m_examples->SetExamples(examples);
+  assert(m_examples->GetExamples() == examples);
 }
