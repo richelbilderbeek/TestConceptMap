@@ -36,6 +36,6 @@ include(../RibiClasses/CppQtImage/CppQtImage.pri)
 include(../RibiClasses/CppQtRoundedEditRectItem/CppQtRoundedEditRectItem.pri)
 include(../RibiClasses/CppQtRoundedRectItem/CppQtRoundedRectItem.pri)
 include(../RibiClasses/CppQtScopedDisable/CppQtScopedDisable.pri)
-include(ToolTestConceptMapDesktop.pri)
+include(TestConceptMapDesktop.pri)
 
 SOURCES += qtmain.cpp

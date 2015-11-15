@@ -1,4 +1,4 @@
-include(ToolTestConceptMapConsole.pri)
+include(TestConceptMapConsole.pri)
 
 HEADERS += \
     ../TestConceptMap/qtconceptmapviewtestsdialog.h \

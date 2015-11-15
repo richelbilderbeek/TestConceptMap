@@ -1,2 +1,4 @@
 # TestConceptMap
-Tool to test the concept map classes
+
+TestConceptMap is a tool to test ConceptMap classes
+
