@@ -12,7 +12,6 @@
 #include "geometry.h"
 #include "plane.h"
 #include "ribi_regex.h"
-#include "richelbilderbeekprogram.h"
 #include "testtimer.h"
 #include "trace.h"
 
