@@ -103,7 +103,7 @@ ribi::cmap::QtTestEditConceptMapDialog::QtTestEditConceptMapDialog(QWidget *pare
 
   {
     QUndoView * const view{new QUndoView};
-    view->setStack(&m_qtconceptmap->GetConceptMap().GetUndo());
+    view->setStack(&m_qtconceptmap->GetUndo());
     assert(ui->widget_menu->layout());
     ui->widget_menu->layout()->addWidget(view);
   }
