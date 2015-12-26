@@ -21,3 +21,5 @@ SOURCES += main.cpp
 # gcov
 # QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
 # QMAKE_LFLAGS += -lgcov -coverage
+
+LIBS += -lboost_graph
