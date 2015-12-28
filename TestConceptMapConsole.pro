@@ -25,3 +25,4 @@ SOURCES += main.cpp
 # QMAKE_LFLAGS += -lgcov -coverage
 
 LIBS += -lboost_graph
+
