@@ -96,7 +96,7 @@ ribi::cmap::QtTestEditConceptMapDialog::QtTestEditConceptMapDialog(QWidget *pare
 
   //Create an empty concept map
   m_qtconceptmap->SetConceptMap(
-    ConceptMapFactory().GetHeteromorphousTestConceptMaps().at(0)
+    ConceptMapFactory().Get0()
   );
   assert(ui->widget->layout());
   ui->widget->layout()->addWidget(m_qtconceptmap);
@@ -193,16 +193,16 @@ void ribi::cmap::QtTestEditConceptMapDialog::OnCheck()
     << m_qtconceptmap->GetScene()->items().size() << '\n'
     << "  (which includes m_conceptmap->m_examples: " << (m_qtconceptmap->GetQtExamplesItem()->scene() ? "yes" : "no") << ")\n"
     << "  (which includes m_conceptmap->m_tools: " << (m_qtconceptmap->GetQtToolItem()->scene() ? "yes" : "no") << ")\n"
-    << "  ->GetConceptMap().GetNodes().size(): "
-    << m_qtconceptmap->GetConceptMap().GetNodes().size() << '\n'
-    << "  ->GetConceptMap().GetEdges().size(): "
-    << m_qtconceptmap->GetConceptMap().GetEdges().size() << '\n'
+    << "boost::num_vertices(m_qtconceptmap->GetConceptMap()): "
+    << boost::num_vertices(m_qtconceptmap->GetConceptMap()) << '\n'
+    << "boost::num_edges(m_qtconceptmap->GetConceptMap()): "
+    << boost::num_edges(m_qtconceptmap->GetConceptMap()) << '\n'
     << "  ->GetScene()->selectedItems().size(): "
     << m_qtconceptmap->GetScene()->selectedItems().size() << '\n'
-    << "  ->GetConceptMap().GetSelectedNodes().size(): "
-    << m_qtconceptmap->GetConceptMap().GetSelectedNodes().size() << '\n'
-    << "  ->GetConceptMap().GetSelectedEdges().size(): "
-    << m_qtconceptmap->GetConceptMap().GetSelectedEdges().size() << '\n'
+//    << "  ->GetConceptMap().GetSelectedNodes().size(): "
+//    << m_qtconceptmap->GetConceptMap().GetSelectedNodes().size() << '\n'
+//    << "  ->GetConceptMap().GetSelectedEdges().size(): "
+//    << m_qtconceptmap->GetConceptMap().GetSelectedEdges().size() << '\n'
   ;
   const auto qtnodes = m_qtconceptmap->GetQtNodes();
   const int n_qtnodes{static_cast<int>(qtnodes.size())};

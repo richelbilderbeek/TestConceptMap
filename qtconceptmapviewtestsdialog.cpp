@@ -31,7 +31,7 @@ ribi::cmap::QtConceptMapViewTestsDialog::QtConceptMapViewTestsDialog(QWidget* pa
     m_c(cmap::ConceptMapFactory().GetComplexHomomorphousTestConceptMaps()),
     m_h(cmap::ConceptMapFactory().GetHeteromorphousTestConceptMaps()),
     #endif // FIX_ISSUE_10
-    m_s(cmap::ConceptMapFactory().GetSimpleHomomorphousTestConceptMaps()),
+    m_s(cmap::ConceptMapFactory().GetAllTests()),
     m_widgets{}
 {
 

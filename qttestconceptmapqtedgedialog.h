@@ -1,6 +1,8 @@
 #ifndef QTCONCEPTMAPTESTQTEDGEDIALOG_H
 #define QTCONCEPTMAPTESTQTEDGEDIALOG_H
 
+#ifdef NOT_NOW_20151230
+
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Weffc++"
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
@@ -77,5 +79,8 @@ private:
 
 } //~namespace ribi
 
+#endif //NOT_NOW_20151230
+
 #endif // QTCONCEPTMAPTESTQTEDGEDIALOG_H
+
 

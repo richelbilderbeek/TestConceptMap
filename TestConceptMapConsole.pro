@@ -14,7 +14,7 @@ include(../RibiClasses/CppPlane/CppPlane.pri)
 include(../RibiClasses/CppRibiRegex/CppRibiRegex.pri)
 include(../RibiClasses/CppXml/CppXml.pri)
 
-#include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial.pri)
+include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial.pri)
 
 #Specific
 include(../TestConceptMap/TestConceptMapConsole.pri)

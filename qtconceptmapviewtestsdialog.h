@@ -8,7 +8,7 @@
 #include <boost/shared_ptr.hpp>
 #include "qthideandshowdialog.h"
 
-#include "qtconceptmapfwd.h"
+#include "qtconceptmap.h"
 #pragma GCC diagnostic pop
 
 namespace Ui {

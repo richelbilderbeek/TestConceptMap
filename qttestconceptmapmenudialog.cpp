@@ -153,7 +153,7 @@ void ribi::cmap::QtTestMenuDialog::on_button_qtnode_clicked()
 
 void ribi::cmap::QtTestMenuDialog::on_button_qtedge_clicked()
 {
-  QtTestQtEdgeDialog d;
-  d.setStyleSheet(this->styleSheet());
-  this->ShowChild(&d);
+  //QtTestQtEdgeDialog d;
+  //d.setStyleSheet(this->styleSheet());
+  //this->ShowChild(&d);
 }
