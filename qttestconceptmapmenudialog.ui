@@ -28,54 +28,6 @@ QPushButton { font: 20px &quot;Courier New&quot;, courier, monospace }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Elements, non-graphical</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="button_example">
-     <property name="text">
-      <string>&amp;1. Example</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="button_examples">
-     <property name="text">
-      <string>&amp;2. Examples</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="button_concept">
-     <property name="text">
-      <string>&amp;3. Concept</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="button_node">
-     <property name="text">
-      <string>&amp;4. Node</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="button_edge">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string>&amp;5. Edge</string>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="QLabel" name="label_2">
      <property name="text">
       <string>Elements, graphical</string>
@@ -151,11 +103,6 @@ QPushButton { font: 20px &quot;Courier New&quot;, courier, monospace }</string>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>button_example</tabstop>
-  <tabstop>button_examples</tabstop>
-  <tabstop>button_concept</tabstop>
-  <tabstop>button_node</tabstop>
-  <tabstop>button_edge</tabstop>
   <tabstop>button_qtnode</tabstop>
   <tabstop>button_qtedge</tabstop>
   <tabstop>button_edit_conceptmap</tabstop>
