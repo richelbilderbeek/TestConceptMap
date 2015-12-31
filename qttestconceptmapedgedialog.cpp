@@ -43,10 +43,8 @@ ribi::cmap::QtTestEdgeDialog::QtTestEdgeDialog(QWidget *parent)
   ui->setupUi(this);
   assert(layout());
 
-  m_qtedgedialog.reset(
-    new QtEdgeDialog(
-      EdgeFactory().GetTest(0,m_from_node,m_to_node)
-    )
+  m_qtedgedialog = new QtEdgeDialog(
+    EdgeFactory().GetTest(0,m_from_node,m_to_node),this
   );
 
   ui->box_test->setMinimum(0);
@@ -68,8 +66,9 @@ ribi::cmap::QtTestEdgeDialog::QtTestEdgeDialog(QWidget *parent)
     QSizePolicy policy;
     policy.setVerticalStretch(2);
     m_qtedgedialog->setSizePolicy(policy);
-    my_layout->addWidget(m_qtedgedialog.get(),1,0);
+    my_layout->addWidget(m_qtedgedialog,1,0);
   }
+
   {
     QSizePolicy policy;
     policy.setVerticalStretch(0);

@@ -37,8 +37,7 @@ private slots:
 private:
   Ui::QtTestNodeDialog *ui;
 
-  boost::shared_ptr<QtNodeDialog> m_qtnodedialog_1;
-  boost::shared_ptr<QtNodeDialog> m_qtnodedialog_2;
+  boost::shared_ptr<QtNodeDialog> m_qtnodedialog;
 
   #ifndef NDEBUG
   static void Test() noexcept;

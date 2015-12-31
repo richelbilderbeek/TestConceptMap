@@ -38,23 +38,13 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>651</width>
+        <width>658</width>
         <height>518</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QWidget" name="widget_left" native="true">
-         <property name="minimumSize">
-          <size>
-           <width>300</width>
-           <height>500</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QWidget" name="widget_right" native="true">
+        <widget class="QWidget" name="widget" native="true">
          <property name="minimumSize">
           <size>
            <width>300</width>

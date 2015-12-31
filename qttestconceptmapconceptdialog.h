@@ -32,28 +32,13 @@ protected:
   
 private slots:
 
-  //void on_box_competency_currentIndexChanged(int index);
-  //void on_edit_name_textChanged(const QString &arg1);
-  //void on_box_complexity_currentIndexChanged(const QString &arg1);
-  //void on_box_concreteness_currentIndexChanged(const QString &arg1);
-  //void on_box_specificity_currentIndexChanged(const QString &arg1);
-  //void on_edit_example_text_textChanged(const QString &arg1);
-
   void on_button_load_clicked();
 
 private:
   Ui::QtTestConceptDialog *ui;
 
-  boost::shared_ptr<QtConceptDialog> m_qtconceptdialog_1;
-  boost::shared_ptr<QtConceptDialog> m_qtconceptdialog_2;
+  boost::shared_ptr<QtConceptDialog> m_qtconceptdialog;
 
-  //const Concept m_concept;
-  //cmap::QtDisplayStrategy* m_display_concept;
-  //cmap::QtEditStrategy* m_edit_concept;
-  //cmap::QtRateStrategy* m_rate_concept;
-
-  ///Get the Concept via the route chosen by box_edit
-  //const Concept GetChosenConcept();
 
   #ifndef NDEBUG
   static void Test() noexcept;

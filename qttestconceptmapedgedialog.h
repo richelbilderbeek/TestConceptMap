@@ -38,7 +38,7 @@ private:
   Ui::QtTestEdgeDialog *ui;
 
   Node m_from_node;
-  std::unique_ptr<QtEdgeDialog> m_qtedgedialog;
+  QtEdgeDialog * m_qtedgedialog;
   Node m_to_node;
 
   #ifndef NDEBUG

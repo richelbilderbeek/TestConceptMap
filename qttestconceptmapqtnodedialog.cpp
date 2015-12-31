@@ -38,10 +38,8 @@ ribi::cmap::QtTestQtNodeDialog::QtTestQtNodeDialog(
   QWidget *parent)
   : QtHideAndShowDialog(parent),
     ui(new Ui::QtTestQtNodeDialog),
-    m_dialog_left{new QtQtNodeDialog},
-    m_dialog_right{new QtQtNodeDialog},
-    m_view_left{new QtKeyboardFriendlyGraphicsView},
-    m_view_right{new QtKeyboardFriendlyGraphicsView}
+    m_dialog{new QtQtNodeDialog},
+    m_view{new QtKeyboardFriendlyGraphicsView}
 {
   ui->setupUi(this);
   #ifndef NDEBUG
@@ -49,8 +47,7 @@ ribi::cmap::QtTestQtNodeDialog::QtTestQtNodeDialog(
   #endif
   {
     QGraphicsScene * const my_scene = new QGraphicsScene(this);
-    m_view_left->setScene(my_scene);
-    m_view_right->setScene(my_scene);
+    m_view->setScene(my_scene);
   }
 
   assert(!this->ui->here->layout());
@@ -59,10 +56,8 @@ ribi::cmap::QtTestQtNodeDialog::QtTestQtNodeDialog(
 
   my_layout->addWidget(ui->widget_top,0,0,1,4);
 
-  my_layout->addWidget(m_view_left.get(),1,0);
-  my_layout->addWidget(m_view_right.get(),1,1);
-  my_layout->addWidget(m_dialog_left.get(),1,2);
-  my_layout->addWidget(m_dialog_right.get(),1,3);
+  my_layout->addWidget(m_view.get(),1,0);
+  my_layout->addWidget(m_dialog.get(),1,2);
 
 
   ui->box_test_index->setMinimum(0);
@@ -89,13 +84,12 @@ ribi::cmap::QtTestQtNodeDialog::~QtTestQtNodeDialog() noexcept
 
 boost::shared_ptr<ribi::cmap::QtNode> ribi::cmap::QtTestQtNodeDialog::GetQtNode() const noexcept
 {
-  assert(m_dialog_left->GetQtNode() == m_dialog_right->GetQtNode());
-  return m_dialog_left->GetQtNode();
+  return m_dialog->GetQtNode();
 }
 
 QImage ribi::cmap::QtTestQtNodeDialog::GetUiView() const noexcept
 {
-  const auto scene = this->m_view_left->scene();
+  const auto scene = this->m_view->scene();
   // Create the image with the exact size of the shrunk scene
   QImage image(scene->sceneRect().size().toSize(), QImage::Format_ARGB32);
   // Start all pixels transparent
@@ -108,25 +102,19 @@ QImage ribi::cmap::QtTestQtNodeDialog::GetUiView() const noexcept
 void ribi::cmap::QtTestQtNodeDialog::SetQtNode(const boost::shared_ptr<QtNode>& qtnode) noexcept
 {
   assert(qtnode);
-  assert(m_view_left);
-  assert(m_view_left->scene());
-  assert(m_view_right);
-  assert(m_view_right->scene());
-  assert(m_view_left->scene() == m_view_right->scene());
-  if (!m_view_left->scene()->items().isEmpty())
+  assert(m_view);
+  assert(m_view->scene());
+  if (!m_view->scene()->items().isEmpty())
   {
-    const auto v = m_view_left->scene()->items();
+    const auto v = m_view->scene()->items();
     assert(v.count() == 1);
-    m_view_left->scene()->removeItem(v[0]);
+    m_view->scene()->removeItem(v[0]);
   }
-  assert(m_view_left->scene()->items().isEmpty());
-  m_dialog_left->SetQtNode(qtnode);
-  m_dialog_right->SetQtNode(qtnode);
-  this->m_view_left->scene()->addItem(qtnode.get());
+  assert(m_view->scene()->items().isEmpty());
+  m_dialog->SetQtNode(qtnode);
+  this->m_view->scene()->addItem(qtnode.get());
 
-  m_dialog_left->setMinimumHeight(QtQtNodeDialog::GetMinimumHeight(*qtnode));
-  m_dialog_right->setMinimumHeight(QtQtNodeDialog::GetMinimumHeight(*qtnode));
-
+  m_dialog->setMinimumHeight(QtQtNodeDialog::GetMinimumHeight(*qtnode));
 }
 
 void ribi::cmap::QtTestQtNodeDialog::keyPressEvent(QKeyEvent *event) noexcept
@@ -163,28 +151,27 @@ void ribi::cmap::QtTestQtNodeDialog::Test() noexcept
   }
   if (verbose) {TRACE("QtNode must be the same in both dialogs");}
   {
-    assert(dialog.m_dialog_left->GetQtNode());
-    assert(dialog.m_dialog_left->GetQtNode() == dialog.m_dialog_right->GetQtNode());
+    assert(dialog.m_dialog->GetQtNode());
   }
   if (verbose) {TRACE("QGraphicsView must contain exactly one item");}
   {
-    assert(dialog.m_view_left->scene()->items().size() == 1);
+    assert(dialog.m_view->scene()->items().size() == 1);
   }
   if (verbose) {TRACE("QGraphicsItem in QGraphicsView must be convertible to a QtRoundedEditRectItem");}
   {
-    const QGraphicsItem * const item = dialog.m_view_left->scene()->items()[0];
+    const QGraphicsItem * const item = dialog.m_view->scene()->items()[0];
     const QtRoundedEditRectItem * qtitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
     assert(qtitem);
   }
   if (verbose) {TRACE("QGraphicsItem in QGraphicsView must be convertible to a QtNode");}
   {
-    const QGraphicsItem * const item = dialog.m_view_left->scene()->items()[0];
+    const QGraphicsItem * const item = dialog.m_view->scene()->items()[0];
     const QtNode * qtnode = dynamic_cast<const QtNode*>(item);
     assert(qtnode);
   }
   if (verbose) {TRACE("QtNode its base class in the QGraphicsView must contain one line of text");}
   {
-    const QGraphicsItem * const item = dialog.m_view_left->scene()->items()[0];
+    const QGraphicsItem * const item = dialog.m_view->scene()->items()[0];
     const QtRoundedEditRectItem * qtrectitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
     const auto v = qtrectitem->GetText();
     if (v.size() != 1)
@@ -203,7 +190,7 @@ void ribi::cmap::QtTestQtNodeDialog::Test() noexcept
   }
   if (verbose) { TRACE("QGraphicsScene must have one item"); }
   {
-    assert(dialog.m_view_left->scene()->items().size() == 1);
+    assert(dialog.m_view->scene()->items().size() == 1);
   }
 }
 #endif
