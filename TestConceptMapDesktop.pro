@@ -38,6 +38,6 @@ include(../RibiClasses/CppQtScopedDisable/CppQtScopedDisable.pri)
 include(TestConceptMapDesktop.pri)
 include(../RibiClasses/CppConceptMap/CppConceptMap.pri)
 
-#include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial.pri)
+include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial.pri)
 
 SOURCES += qtmain.cpp
