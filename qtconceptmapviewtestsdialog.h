@@ -34,25 +34,16 @@ protected:
 private:
   Ui::QtConceptMapViewTestsDialog *ui;
 
-  #ifdef FIX_ISSUE_10
-  /// ComplexHomomorphousTestConceptMaps
-  const std::vector<ConceptMap> m_c;
-
-  /// HeteromorphousTestConceptMaps
-  const std::vector<ConceptMap> m_h;
-  #endif //FIX_ISSUE_10
-
-  /// SimpleHomomorphousTestConceptMaps
-  const std::vector<ConceptMap> m_s;
+  const std::vector<ConceptMap> m_concept_maps;
 
   /// Tha widgets
-  std::vector<boost::shared_ptr<cmap::QtConceptMap> > m_widgets;
+  std::vector<boost::shared_ptr<QtConceptMap>> m_qtconceptmaps;
 
   #ifndef NDEBUG
   static void Test() noexcept;
   #endif
 
-  static boost::shared_ptr<cmap::QtConceptMap> CreateWidget(
+  static boost::shared_ptr<QtConceptMap> CreateWidget(
     const ConceptMap conceptmap);
 };
 

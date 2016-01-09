@@ -204,7 +204,8 @@ void ribi::cmap::QtTestEditConceptMapDialog::OnCheck()
 //    << "  ->GetConceptMap().GetSelectedEdges().size(): "
 //    << m_qtconceptmap->GetConceptMap().GetSelectedEdges().size() << '\n'
   ;
-  const auto qtnodes = m_qtconceptmap->GetQtNodes();
+
+  const auto qtnodes = GetQtNodes(m_qtconceptmap->GetScene());
   const int n_qtnodes{static_cast<int>(qtnodes.size())};
   s << "# QtNodes: " << n_qtnodes << '\n';
   for (int i=0; i!=n_qtnodes; ++i)
@@ -212,8 +213,9 @@ void ribi::cmap::QtTestEditConceptMapDialog::OnCheck()
     const auto qtnode = qtnodes[i];
     s << "[" << i << "] " << qtnode->GetNode().GetConcept().GetName() << ": "  << qtnode->isSelected() << '\n';
   }
-  const auto qtedges = m_qtconceptmap->GetQtEdges();
+  const auto qtedges = GetQtEdges(m_qtconceptmap->GetScene());
   const int n_qtedges{static_cast<int>(qtedges.size())};
+  assert(n_qtedges == CountQtEdges(m_qtconceptmap->GetScene()));
   s << "# QtEdges: " << n_qtedges << '\n';
   for (int i=0; i!=n_qtedges; ++i)
   {

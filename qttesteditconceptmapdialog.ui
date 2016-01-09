@@ -26,6 +26,13 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Space: select random node</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="label_new_node">
         <property name="text">
          <string>CTRL-N: New node</string>
