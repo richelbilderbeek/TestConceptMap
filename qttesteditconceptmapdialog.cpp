@@ -19,6 +19,8 @@
 #include "conceptmapexample.h"
 #include "conceptmapnodefactory.h"
 #include "conceptmapnode.h"
+#include "convert_dot_to_svg.h"
+#include "convert_svg_to_png.h"
 #include "qtconceptmapbrushfactory.h"
 #include "qtconceptmapexamplesitem.h"
 #include "qtconceptmaptoolsitem.h"
@@ -160,6 +162,19 @@ void ribi::cmap::QtTestEditConceptMapDialog::keyPressEvent(QKeyEvent *event)
   if (event->key() == Qt::Key_F1)
   {
     ToggleVirtualBastard();
+  }
+  if (event->key() == Qt::Key_F2)
+  {
+    SaveSummaryToFile(m_qtconceptmap->GetConceptMap(),"summary.dot");
+    convert_dot_to_svg("summary.dot","summary.svg");
+    convert_svg_to_png("summary.svg","summary.png");
+    ui->image_concept_map_summary->setPixmap(QPixmap("summary.png"));
+    this->repaint();
+    SaveToFile(m_qtconceptmap->GetConceptMap(),"full.dot");
+    convert_dot_to_svg("full.dot","full.svg");
+    convert_svg_to_png("full.svg","full.png");
+    ui->image_concept_map_full->setPixmap(QPixmap("full.png"));
+    this->repaint();
   }
   if (event->key() == Qt::Key_1 && event->modifiers() & Qt::AltModifier)
   {
