@@ -9,6 +9,7 @@ include(../RibiLibraries/BoostAll.pri)
 include(../RibiLibraries/Fparser.pri)
 include(../RibiLibraries/GeneralConsole.pri)
 include(../RibiLibraries/GeneralDesktop.pri)
+include(../RibiLibraries/Sfml.pri)
 
 #Specific, console
 #include(../RibiClasses/RibiClasses.pri)
