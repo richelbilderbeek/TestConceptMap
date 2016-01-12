@@ -50,7 +50,7 @@ ribi::About ribi::TestConceptMapMenuDialog::GetAbout() const noexcept
     GetVersionHistory());
 
   a.AddLibrary("apfloat version: 2.4.1");
-  a.AddLibrary("ConceptMap version: " + ribi::cmap::ConceptMap::GetVersion());
+  //a.AddLibrary("ConceptMap version: " + ribi::cmap::ConceptMap::GetVersion());
   a.AddLibrary("Container version: " + ribi::Container().GetVersion());
   a.AddLibrary("FileIo version: " + FileIo().GetVersion());
   a.AddLibrary("Geometry version: " + Geometry().GetVersion());

@@ -8,17 +8,11 @@
 
 #include "qtaboutdialog.h"
 #include "qtconceptmapviewtestsdialog.h"
-#include "qttestconceptmapconceptdialog.h"
-#include "qttestconceptmapedgedialog.h"
-#include "conceptmapconceptfactory.h"
-#include "qttestconceptmapexampledialog.h"
-#include "qttestconceptmapexamplesdialog.h"
-#include "qttestconceptmapnodedialog.h"
 #include "qttestconceptmapqtedgedialog.h"
 #include "qttestconceptmapqtnodedialog.h"
 #include "qtconceptmapconcepteditdialog.h"
 #include "qttesteditconceptmapdialog.h"
-
+#include "conceptmapconceptfactory.h"
 #include "testconceptmapmenudialog.h"
 
 #include "testtimer.h"
@@ -77,11 +71,7 @@ void ribi::cmap::QtTestMenuDialog::Test() noexcept
   }
 
   //Tests in order from small elements to bigger
-  QtTestExampleDialog();
-  QtTestExamplesDialog();
-  QtTestConceptDialog();
-  QtTestNodeDialog();
-  QtTestEdgeDialog();
+
   QtTestQtNodeDialog();
   #ifdef FIX_ISSUE_10
   QtTestQtEdgeDialog();
@@ -101,28 +91,6 @@ void ribi::cmap::QtTestMenuDialog::on_button_edit_conceptmap_clicked()
   this->ShowChild(&d);
 }
 
-void ribi::cmap::QtTestMenuDialog::on_button_concept_clicked()
-{
-  QtTestConceptDialog d;
-  d.setStyleSheet(this->styleSheet());
-  this->ShowChild(&d);
-}
-
-
-void ribi::cmap::QtTestMenuDialog::on_button_node_clicked()
-{
-  QtTestNodeDialog d;
-  d.setStyleSheet(this->styleSheet());
-  this->ShowChild(&d);
-}
-
-void ribi::cmap::QtTestMenuDialog::on_button_edge_clicked()
-{
-  QtTestEdgeDialog d;
-  d.setStyleSheet(this->styleSheet());
-  this->ShowChild(&d);
-}
-
 void ribi::cmap::QtTestMenuDialog::on_button_view_conceptmaps_clicked()
 {
   QtConceptMapViewTestsDialog d;
@@ -130,19 +98,7 @@ void ribi::cmap::QtTestMenuDialog::on_button_view_conceptmaps_clicked()
   this->ShowChild(&d);
 }
 
-void ribi::cmap::QtTestMenuDialog::on_button_example_clicked()
-{
-  QtTestExampleDialog d;
-  d.setStyleSheet(this->styleSheet());
-  this->ShowChild(&d);
-}
 
-void ribi::cmap::QtTestMenuDialog::on_button_examples_clicked()
-{
-  QtTestExamplesDialog d;
-  d.setStyleSheet(this->styleSheet());
-  this->ShowChild(&d);
-}
 
 void ribi::cmap::QtTestMenuDialog::on_button_qtnode_clicked()
 {
@@ -153,7 +109,7 @@ void ribi::cmap::QtTestMenuDialog::on_button_qtnode_clicked()
 
 void ribi::cmap::QtTestMenuDialog::on_button_qtedge_clicked()
 {
-  QtTestQtEdgeDialog d;
-  d.setStyleSheet(this->styleSheet());
-  this->ShowChild(&d);
+  //QtTestQtEdgeDialog d;
+  //d.setStyleSheet(this->styleSheet());
+  //this->ShowChild(&d);
 }

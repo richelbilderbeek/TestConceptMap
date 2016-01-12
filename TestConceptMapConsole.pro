@@ -14,6 +14,8 @@ include(../RibiClasses/CppPlane/CppPlane.pri)
 include(../RibiClasses/CppRibiRegex/CppRibiRegex.pri)
 include(../RibiClasses/CppXml/CppXml.pri)
 
+include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial.pri)
+
 #Specific
 include(../TestConceptMap/TestConceptMapConsole.pri)
 SOURCES += main.cpp
@@ -21,3 +23,6 @@ SOURCES += main.cpp
 # gcov
 # QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
 # QMAKE_LFLAGS += -lgcov -coverage
+
+LIBS += -lboost_graph
+

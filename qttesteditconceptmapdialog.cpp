@@ -19,6 +19,8 @@
 #include "conceptmapexample.h"
 #include "conceptmapnodefactory.h"
 #include "conceptmapnode.h"
+#include "convert_dot_to_svg.h"
+#include "convert_svg_to_png.h"
 #include "qtconceptmapbrushfactory.h"
 #include "qtconceptmapexamplesitem.h"
 #include "qtconceptmaptoolsitem.h"
@@ -96,7 +98,7 @@ ribi::cmap::QtTestEditConceptMapDialog::QtTestEditConceptMapDialog(QWidget *pare
 
   //Create an empty concept map
   m_qtconceptmap->SetConceptMap(
-    ConceptMapFactory().GetHeteromorphousTestConceptMaps().at(0)
+    ConceptMapFactory().Get0()
   );
   assert(ui->widget->layout());
   ui->widget->layout()->addWidget(m_qtconceptmap);
@@ -161,6 +163,22 @@ void ribi::cmap::QtTestEditConceptMapDialog::keyPressEvent(QKeyEvent *event)
   {
     ToggleVirtualBastard();
   }
+  if (event->key() == Qt::Key_F2)
+  {
+    SaveSummaryToFile(m_qtconceptmap->GetConceptMap(),"summary.dot");
+    convert_dot_to_svg("summary.dot","summary.svg");
+    convert_svg_to_png("summary.svg","summary.png");
+    ui->image_concept_map_summary->setPixmap(QPixmap("summary.png"));
+    this->repaint();
+  }
+  if (event->key() == Qt::Key_F3)
+  {
+    SaveToFile(m_qtconceptmap->GetConceptMap(),"full.dot");
+    convert_dot_to_svg("full.dot","full.svg");
+    convert_svg_to_png("full.svg","full.png");
+    ui->image_concept_map_full->setPixmap(QPixmap("full.png"));
+    this->repaint();
+  }
   if (event->key() == Qt::Key_1 && event->modifiers() & Qt::AltModifier)
   {
     DoSomethingRandom();
@@ -193,18 +211,19 @@ void ribi::cmap::QtTestEditConceptMapDialog::OnCheck()
     << m_qtconceptmap->GetScene()->items().size() << '\n'
     << "  (which includes m_conceptmap->m_examples: " << (m_qtconceptmap->GetQtExamplesItem()->scene() ? "yes" : "no") << ")\n"
     << "  (which includes m_conceptmap->m_tools: " << (m_qtconceptmap->GetQtToolItem()->scene() ? "yes" : "no") << ")\n"
-    << "  ->GetConceptMap().GetNodes().size(): "
-    << m_qtconceptmap->GetConceptMap().GetNodes().size() << '\n'
-    << "  ->GetConceptMap().GetEdges().size(): "
-    << m_qtconceptmap->GetConceptMap().GetEdges().size() << '\n'
+    << "boost::num_vertices(m_qtconceptmap->GetConceptMap()): "
+    << boost::num_vertices(m_qtconceptmap->GetConceptMap()) << '\n'
+    << "boost::num_edges(m_qtconceptmap->GetConceptMap()): "
+    << boost::num_edges(m_qtconceptmap->GetConceptMap()) << '\n'
     << "  ->GetScene()->selectedItems().size(): "
     << m_qtconceptmap->GetScene()->selectedItems().size() << '\n'
-    << "  ->GetConceptMap().GetSelectedNodes().size(): "
-    << m_qtconceptmap->GetConceptMap().GetSelectedNodes().size() << '\n'
-    << "  ->GetConceptMap().GetSelectedEdges().size(): "
-    << m_qtconceptmap->GetConceptMap().GetSelectedEdges().size() << '\n'
+//    << "  ->GetConceptMap().GetSelectedNodes().size(): "
+//    << m_qtconceptmap->GetConceptMap().GetSelectedNodes().size() << '\n'
+//    << "  ->GetConceptMap().GetSelectedEdges().size(): "
+//    << m_qtconceptmap->GetConceptMap().GetSelectedEdges().size() << '\n'
   ;
-  const auto qtnodes = m_qtconceptmap->GetQtNodes();
+
+  const auto qtnodes = GetQtNodes(m_qtconceptmap->GetScene());
   const int n_qtnodes{static_cast<int>(qtnodes.size())};
   s << "# QtNodes: " << n_qtnodes << '\n';
   for (int i=0; i!=n_qtnodes; ++i)
@@ -212,8 +231,9 @@ void ribi::cmap::QtTestEditConceptMapDialog::OnCheck()
     const auto qtnode = qtnodes[i];
     s << "[" << i << "] " << qtnode->GetNode().GetConcept().GetName() << ": "  << qtnode->isSelected() << '\n';
   }
-  const auto qtedges = m_qtconceptmap->GetQtEdges();
+  const auto qtedges = GetQtEdges(m_qtconceptmap->GetScene());
   const int n_qtedges{static_cast<int>(qtedges.size())};
+  assert(n_qtedges == CountQtEdges(m_qtconceptmap->GetScene()));
   s << "# QtEdges: " << n_qtedges << '\n';
   for (int i=0; i!=n_qtedges; ++i)
   {

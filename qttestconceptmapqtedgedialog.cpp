@@ -1,3 +1,5 @@
+#ifdef NOT_NOW_20151230
+
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Weffc++"
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
@@ -367,3 +369,5 @@ void ribi::cmap::QtTestQtEdgeDialog::on_button_load_clicked() noexcept
   this->m_qtedge_dialog->GetQtEdge()->GetFrom()->GetNode().GetConcept().SetName("From");
   this->m_qtedge_dialog->GetQtEdge()->GetTo()->GetNode().GetConcept().SetName("To");
 }
+
+#endif // NOT_NOW_20151230

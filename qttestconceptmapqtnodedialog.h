@@ -47,10 +47,8 @@ private:
 
   Ui::QtTestQtNodeDialog *ui;
 
-  boost::shared_ptr<QtQtNodeDialog> m_dialog_left;
-  boost::shared_ptr<QtQtNodeDialog> m_dialog_right;
-  boost::shared_ptr< ::ribi::QtKeyboardFriendlyGraphicsView> m_view_left;
-  boost::shared_ptr< ::ribi::QtKeyboardFriendlyGraphicsView> m_view_right;
+  boost::shared_ptr<QtQtNodeDialog> m_dialog;
+  boost::shared_ptr< ::ribi::QtKeyboardFriendlyGraphicsView> m_view;
 
   #ifndef NDEBUG
   static void Test() noexcept;

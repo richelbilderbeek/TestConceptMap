@@ -27,12 +27,8 @@
 ribi::cmap::QtConceptMapViewTestsDialog::QtConceptMapViewTestsDialog(QWidget* parent)
   : QtHideAndShowDialog(parent),
     ui(new Ui::QtConceptMapViewTestsDialog),
-    #ifdef FIX_ISSUE_10
-    m_c(cmap::ConceptMapFactory().GetComplexHomomorphousTestConceptMaps()),
-    m_h(cmap::ConceptMapFactory().GetHeteromorphousTestConceptMaps()),
-    #endif // FIX_ISSUE_10
-    m_s(cmap::ConceptMapFactory().GetSimpleHomomorphousTestConceptMaps()),
-    m_widgets{}
+    m_concept_maps(cmap::ConceptMapFactory().GetAllTests()),
+    m_qtconceptmaps{}
 {
 
   ui->setupUi(this);
@@ -57,43 +53,16 @@ ribi::cmap::QtConceptMapViewTestsDialog::QtConceptMapViewTestsDialog(QWidget* pa
     contents->setLayout(mylayout);
     assert(contents->layout());
 
-
     //Add all concept maps
-    {
-      QLabel * const label = new QLabel("Heteromorphous test concept maps",this);
-      assert(label);
-      mylayout->addWidget(label);
-    }
-    const int extra_height = 4;
-    {
-      #ifdef FIX_ISSUE_10
-      const int sz = static_cast<int>(m_h.size());
-      for (int i=0; i!=sz; ++i)
-      {
-        const std::string s = "[" + boost::lexical_cast<std::string>(i)+ "]";
-        QLabel * const label = new QLabel(s.c_str(),this);
-        assert(label);
-        mylayout->addWidget(label);
-        assert(i < static_cast<int>(m_h.size()));
-        assert(m_h[i]);
-        const ConceptMap conceptmap(m_h[i]);
-        
-        const boost::shared_ptr<cmap::QtConceptMap> widget(CreateWidget(conceptmap));
-        assert(widget);
-        assert(extra_height > 0);
-        widget->setMinimumHeight(widget->scene()->itemsBoundingRect().height() + extra_height);
-        mylayout->addWidget(widget.get());
-        m_widgets.push_back(widget);
-      }
-      #endif // FIX_ISSUE_10
-    }
+
     {
       QLabel * const label = new QLabel("Simple homomorphous test concept maps",this);
       assert(label);
       mylayout->addWidget(label);
     }
     {
-      const int sz = boost::numeric_cast<int>(m_s.size());
+      const int extra_height{4};
+      const int sz = boost::numeric_cast<int>(m_concept_maps.size());
       for (int i=0; i!=sz; ++i)
       {
         const std::string s = "[" + boost::lexical_cast<std::string>(i)+ "]";
@@ -101,43 +70,16 @@ ribi::cmap::QtConceptMapViewTestsDialog::QtConceptMapViewTestsDialog(QWidget* pa
         assert(label);
         mylayout->addWidget(label);
         //widget->setMinimumHeight(minheight);
-        assert(i < static_cast<int>(m_s.size()));
-        const ConceptMap conceptmap = m_s[i];
+        assert(i < static_cast<int>(m_concept_maps.size()));
+        const ConceptMap conceptmap = m_concept_maps[i];
         
-        const boost::shared_ptr<cmap::QtConceptMap> widget(CreateWidget(conceptmap));
+        const boost::shared_ptr<QtConceptMap> widget(CreateWidget(conceptmap));
         assert(widget);
         widget->setMinimumHeight(widget->scene()->itemsBoundingRect().height() + extra_height);
         mylayout->addWidget(widget.get());
-        m_widgets.push_back(widget);
+        m_qtconceptmaps.push_back(widget);
       }
     }
-    {
-      QLabel * const label = new QLabel("Complex homomorphous test concept maps",this);
-      assert(label);
-      mylayout->addWidget(label);
-    }
-    #ifdef FIX_ISSUE_10
-    {
-      const int sz = boost::numeric_cast<int>(m_c.size());
-      for (int i=0; i!=sz; ++i)
-      {
-        const std::string s = "[" + boost::lexical_cast<std::string>(i)+ "]";
-        QLabel * const label = new QLabel(s.c_str(),this);
-        assert(label);
-        mylayout->addWidget(label);
-        assert(i < static_cast<int>(m_c.size()));
-        assert(m_c[i]);
-        const ConceptMap conceptmap = m_c[i];
-        
-        const boost::shared_ptr<cmap::QtConceptMap> widget(CreateWidget(conceptmap));
-        assert(widget);
-        //widget->setMinimumHeight(minheight);
-        widget->setMinimumHeight(widget->scene()->itemsBoundingRect().height() + extra_height);
-        mylayout->addWidget(widget.get());
-        m_widgets.push_back(widget);
-      }
-    }
-    #endif //FIX_ISSUE_10
   }
 }
 
@@ -145,6 +87,7 @@ ribi::cmap::QtConceptMapViewTestsDialog::~QtConceptMapViewTestsDialog() noexcept
 {
   delete ui;
 }
+
 
 boost::shared_ptr<ribi::cmap::QtConceptMap> ribi::cmap::QtConceptMapViewTestsDialog::CreateWidget(
   const ConceptMap conceptmap

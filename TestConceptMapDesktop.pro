@@ -12,8 +12,7 @@ include(../RibiLibraries/GeneralDesktop.pri)
 include(../RibiLibraries/Sfml.pri)
 
 #Specific, console
-#include(../RibiClasses/RibiClasses.pri)
-include(../RibiClasses/CppConceptMap/CppConceptMap.pri)
+#include(../RibiClasses/CppConceptMap/CppConceptMap.pri)
 include(../RibiClasses/CppContainer/CppContainer.pri)
 include(../RibiClasses/CppCoordinat/CppCoordinat.pri)
 include(../RibiClasses/CppCounter/CppCounter.pri)
@@ -38,5 +37,8 @@ include(../RibiClasses/CppQtRoundedEditRectItem/CppQtRoundedEditRectItem.pri)
 include(../RibiClasses/CppQtRoundedRectItem/CppQtRoundedRectItem.pri)
 include(../RibiClasses/CppQtScopedDisable/CppQtScopedDisable.pri)
 include(TestConceptMapDesktop.pri)
+include(../RibiClasses/CppConceptMap/CppConceptMap.pri)
+
+include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial.pri)
 
 SOURCES += qtmain.cpp
