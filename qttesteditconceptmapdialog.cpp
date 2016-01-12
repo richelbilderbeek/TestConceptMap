@@ -170,6 +170,9 @@ void ribi::cmap::QtTestEditConceptMapDialog::keyPressEvent(QKeyEvent *event)
     convert_svg_to_png("summary.svg","summary.png");
     ui->image_concept_map_summary->setPixmap(QPixmap("summary.png"));
     this->repaint();
+  }
+  if (event->key() == Qt::Key_F3)
+  {
     SaveToFile(m_qtconceptmap->GetConceptMap(),"full.dot");
     convert_dot_to_svg("full.dot","full.svg");
     convert_svg_to_png("full.svg","full.png");
