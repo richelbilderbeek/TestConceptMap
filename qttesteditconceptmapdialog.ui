@@ -26,9 +26,9 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="label_ctrl_space">
         <property name="text">
-         <string>Space: select random node</string>
+         <string>CTRL-space: select random node</string>
         </property>
        </widget>
       </item>
@@ -68,16 +68,65 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="label_F2">
         <property name="text">
          <string>F2: View GraphViz concep maps</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_nodes_selected">
+       <widget class="QLabel" name="label_n_nodes">
         <property name="text">
-         <string>Nodes selected:</string>
+         <string># nodes:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_n_qtnodes">
+        <property name="text">
+         <string># QtNodes:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_n_qtnodes_selected">
+        <property name="text">
+         <string># QtNodes selected:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_n_edges">
+        <property name="text">
+         <string># edges:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_n_qtedges">
+        <property name="text">
+         <string># QtEdges:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_n_qtedges_selected">
+        <property name="text">
+         <string># QtEdges selected</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_n_items">
+        <property name="text">
+         <string># QGraphicsItems</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_n_items_selected">
+        <property name="text">
+         <string># Selected items:</string>
         </property>
        </widget>
       </item>
