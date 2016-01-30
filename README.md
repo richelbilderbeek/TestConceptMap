@@ -2,6 +2,8 @@
 
 TestConceptMap is a tool to test ConceptMap classes
 
+![Explanation](TestConceptMapWelcome.png)
+
 ## Building
 
 In the same folder, clone multiple GitHubs:
@@ -27,3 +29,7 @@ make
 ## Help
 
 Building doesn't work and the error messages are unclear? I'd be happy if you'd let me know :-)
+
+## Screenshots
+
+![TestConceptMap v1.3](Screenshots/TestConceptMap_1_3.png)
