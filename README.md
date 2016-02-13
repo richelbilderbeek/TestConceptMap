@@ -13,6 +13,7 @@ To build `TestConceptMap` you will need to:
 
  * Install some packages
  * Download some other GitHubs
+ * Build some other GitHubs
  * Build `TestConceptMap`
 
 ### Install packages
@@ -30,6 +31,14 @@ In the `TestConceptMap` folder, run the `download_other_githubs.sh` script (with
 
 ```
 ./download_other_githubs.sh
+```
+
+### Build other GitHubs
+
+In the `TestConceptMap` folder, run the `build_other_githubs.sh` script (without root access):
+
+```
+./build_other_githubs.sh
 ```
 
 ### Build TestConceptMap
