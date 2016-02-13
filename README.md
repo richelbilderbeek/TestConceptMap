@@ -1,18 +1,38 @@
 # TestConceptMap
 
-TestConceptMap is a tool to test ConceptMap classes
+TestConceptMap is a tool to test ConceptMap classes.
 
 ![Explanation](TestConceptMapWelcome.png)
 
 ## Building
 
-In the same folder, clone multiple GitHubs:
+Building `TestConceptMap` should be easy on Debian or *ubuntu or other GNU/Linux distro's that use Debian as a package manager. If you have another
+operating system or package manager, feel invited to add building instructions for those platforms.
+
+To build `TestConceptMap` you will need to:
+
+ * Install some packages
+ * Download some other GitHubs
+ * Build `TestConceptMap`
+
+### Install packages
+
+In the `TestConceptMap` folder, run the `install_packages.sh` script with root rights:
 
 ```
-git clone https://github.com/richelbilderbeek/RibiClasses
-git clone https://github.com/richelbilderbeek/TestConceptMap
-git clone https://github.com/richelbilderbeek/RibiLibraries
+sudo ./install_packages.sh
 ```
+
+
+### Download other GitHubs
+
+In the `TestConceptMap` folder, run the `download_other_githubs.sh` script (without root access):
+
+```
+./download_other_githubs.sh
+```
+
+### Build TestConceptMap
 
 Within the `TestConceptMap` folder, 
 
@@ -28,7 +48,13 @@ make
 
 ## Help
 
-Building doesn't work and the error messages are unclear? I'd be happy if you'd let me know :-)
+### Building fails!
+
+I personally hate building problems, so I will be most happy to help you out. Please let me know, by, for example, adding an Issue.
+
+### Other problems
+
+Please let me know, by, for example, adding an Issue.
 
 ## Screenshots
 
