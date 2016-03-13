@@ -1,5 +1,14 @@
 # TestConceptMap
 
+[![Travis CI logo](TravisCI.png)](https://travis-ci.org)
+![Whitespace](Whitespace.png)
+[![Codecov logo](Codecov.png)](https://www.codecov.io)
+[![gplv3](http://www.gnu.org/graphics/gplv3-88x31.png)](http://www.gnu.org/licenses/gpl.html)
+
+[![Build Status](https://travis-ci.org/richelbilderbeek/TestConceptMap.svg?branch=master)](https://travis-ci.org/richelbilderbeek/TestConceptMap)
+[![codecov.io](https://codecov.io/github/richelbilderbeek/TestConceptMap/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/TestConceptMap?branch=master)
+
+
 TestConceptMap is a tool to test ConceptMap classes.
 
 ![Explanation](TestConceptMapWelcome.png)
