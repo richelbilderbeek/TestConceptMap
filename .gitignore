@@ -29,3 +29,4 @@
 .pro.user
 *.pro.user.*
 *.pro.user
+Makefile
