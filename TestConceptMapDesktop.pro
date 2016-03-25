@@ -42,3 +42,7 @@ include(../RibiClasses/CppConceptMap/CppConceptMap.pri)
 include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial.pri)
 
 SOURCES += qtmain.cpp
+
+# gcov
+QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
+LIBS += -lgcov

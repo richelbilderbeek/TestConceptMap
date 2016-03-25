@@ -8,10 +8,14 @@
 [![Build Status](https://travis-ci.org/richelbilderbeek/TestConceptMap.svg?branch=master)](https://travis-ci.org/richelbilderbeek/TestConceptMap)
 [![codecov.io](https://codecov.io/github/richelbilderbeek/TestConceptMap/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/TestConceptMap?branch=master)
 
-
-TestConceptMap is a tool to test ConceptMap classes.
+TestConceptMap is a tool to visually test the ConceptMap classes:
 
 ![Explanation](TestConceptMapWelcome.png)
+
+TestConceptMap is intended:
+ * to measure the code coverage
+ * to allow for profiling
+ * *not* to test the logic behind all RibiClasses (this is done by TestRibiClasses)
 
 ## Building
 
@@ -68,7 +72,8 @@ make
 
 ### Building fails!
 
-I personally hate building problems, so I will be most happy to help you out. Please let me know, by, for example, adding an Issue.
+I personally hate building problems, so I will be most happy to help you out. 
+Please let me know, by, for example, adding an Issue.
 
 ### Other problems
 

@@ -17,9 +17,7 @@
 
 ribi::TestConceptMapMenuDialog::TestConceptMapMenuDialog()
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
+
 }
 
 int ribi::TestConceptMapMenuDialog::ExecuteSpecific(const std::vector<std::string>& argv) noexcept
@@ -90,17 +88,3 @@ std::vector<std::string> ribi::TestConceptMapMenuDialog::GetVersionHistory() con
     "2015-10-02: version 1.3: moved to own GitHub"
   };
 }
-
-#ifndef NDEBUG
-void ribi::TestConceptMapMenuDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  ribi::cmap::ConceptMapFactory();
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-  //No test
-}
-#endif
