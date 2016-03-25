@@ -30,3 +30,8 @@
 *.pro.user.*
 *.pro.user
 Makefile
+ui_*
+*.gcno
+moc_*
+qrc_*
+TestConceptMapDesktop
