@@ -12,9 +12,8 @@ include(../RibiLibraries/GeneralDesktop.pri)
 #include(../RibiLibraries/Sfml.pri)
 
 #Specific, console
-#include(../RibiClasses/CppConceptMap/CppConceptMap.pri)
+include(../RibiClasses/CppConceptMap/CppConceptMap.pri)
 include(../RibiClasses/CppContainer/CppContainer.pri)
-include(../RibiClasses/CppCoordinat/CppCoordinat.pri)
 include(../RibiClasses/CppCounter/CppCounter.pri)
 include(../RibiClasses/CppFuzzy_equal_to/CppFuzzy_equal_to.pri)
 include(../RibiClasses/CppGeometry/CppGeometry.pri)
@@ -27,7 +26,10 @@ include(../RibiClasses/CppXml/CppXml.pri)
 
 #Specific, desktop
 include(../RibiClasses/CppGrabber/CppGrabber.pri)
+include(../RibiClasses/CppGrabber/CppGrabberTest.pri)
 include(../RibiClasses/CppQtArrowItem/CppQtArrowItem.pri)
+include(../RibiClasses/CppQtArrowItem/CppQtArrowItemTest.pri)
+
 include(../RibiClasses/CppQtConceptMap/CppQtConceptMap.pri)
 include(../RibiClasses/CppQtDisplayPosItem/CppQtDisplayPosItem.pri)
 include(../RibiClasses/CppQtKeyboardFriendlyGraphicsView/CppQtKeyboardFriendlyGraphicsView.pri)
@@ -37,11 +39,13 @@ include(../RibiClasses/CppQtRoundedEditRectItem/CppQtRoundedEditRectItem.pri)
 include(../RibiClasses/CppQtRoundedRectItem/CppQtRoundedRectItem.pri)
 include(../RibiClasses/CppQtScopedDisable/CppQtScopedDisable.pri)
 include(TestConceptMapDesktop.pri)
-include(../RibiClasses/CppConceptMap/CppConceptMap.pri)
 
 include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial.pri)
 
 SOURCES += qtmain.cpp
+
+# Boost.Test
+LIBS += -lboost_unit_test_framework
 
 # gcov
 QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
