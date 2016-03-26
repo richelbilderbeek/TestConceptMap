@@ -69,10 +69,6 @@ private:
   const boost::shared_ptr<QtNode> m_from;
   const boost::shared_ptr<QtNode> m_to;
   std::unique_ptr< ::ribi::QtKeyboardFriendlyGraphicsView> m_qtedge_view;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace cmap

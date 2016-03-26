@@ -49,10 +49,6 @@ private:
 
   QTimer * const m_timer_virtual_bastard;
 
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
-
   void DoSomethingRandom();
   void ToggleVirtualBastard() noexcept;
 };

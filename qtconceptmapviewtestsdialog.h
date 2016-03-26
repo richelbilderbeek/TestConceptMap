@@ -39,10 +39,6 @@ private:
   /// Tha widgets
   std::vector<boost::shared_ptr<QtConceptMap>> m_qtconceptmaps;
 
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
-
   static boost::shared_ptr<QtConceptMap> CreateWidget(
     const ConceptMap conceptmap);
 };

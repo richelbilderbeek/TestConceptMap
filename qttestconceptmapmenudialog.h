@@ -39,10 +39,6 @@ private slots:
 
 private:
   Ui::QtTestMenuDialog *ui;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace cmap

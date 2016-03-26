@@ -49,10 +49,6 @@ private:
 
   boost::shared_ptr<QtQtNodeDialog> m_dialog;
   boost::shared_ptr< ::ribi::QtKeyboardFriendlyGraphicsView> m_view;
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace cmap
