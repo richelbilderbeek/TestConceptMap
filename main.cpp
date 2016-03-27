@@ -9,8 +9,6 @@
 
 int main(int argc, char * argv[])
 {
-  ribi::xml::Test();
-  ribi::cmap::TestConceptMap();
   try
   {
     const std::vector<std::string> args { ribi::MenuDialog::ConvertArguments(argc,argv) };
