@@ -34,5 +34,6 @@ script:
  - ./build_desktop_test.sh
  - ./get_code_cov.sh
  - codecov
+ - ./clean.sh
  - ./build_desktop.sh
  - ./build_console.sh
