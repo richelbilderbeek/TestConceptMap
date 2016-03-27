@@ -9,7 +9,6 @@ include(../RibiLibraries/BoostAll.pri)
 include(../RibiLibraries/Fparser.pri)
 include(../RibiLibraries/GeneralConsole.pri)
 include(../RibiLibraries/GeneralDesktop.pri)
-#include(../RibiLibraries/Sfml.pri)
 
 #Specific, console
 include(../RibiClasses/CppConceptMap/CppConceptMap.pri)
@@ -26,10 +25,7 @@ include(../RibiClasses/CppXml/CppXml.pri)
 
 #Specific, desktop
 include(../RibiClasses/CppGrabber/CppGrabber.pri)
-include(../RibiClasses/CppGrabber/CppGrabberTest.pri)
 include(../RibiClasses/CppQtArrowItem/CppQtArrowItem.pri)
-include(../RibiClasses/CppQtArrowItem/CppQtArrowItemTest.pri)
-
 include(../RibiClasses/CppQtConceptMap/CppQtConceptMap.pri)
 include(../RibiClasses/CppQtDisplayPosItem/CppQtDisplayPosItem.pri)
 include(../RibiClasses/CppQtKeyboardFriendlyGraphicsView/CppQtKeyboardFriendlyGraphicsView.pri)
@@ -43,13 +39,6 @@ include(TestConceptMapDesktop.pri)
 include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial.pri)
 
 SOURCES += qtmain.cpp
-
-# Boost.Test
-LIBS += -lboost_unit_test_framework
-
-# gcov
-QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
-LIBS += -lgcov
 
 # QResources give this error
 QMAKE_CXXFLAGS += -Wno-unused-variable
