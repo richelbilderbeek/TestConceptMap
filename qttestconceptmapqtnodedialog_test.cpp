@@ -74,11 +74,6 @@ BOOST_AUTO_TEST_CASE(ribi_cmap_QtTestQtNodeDialog_test)
     const QGraphicsItem * const item = dialog.GetView()->scene()->items()[0];
     const QtRoundedEditRectItem * qtrectitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
     const auto v = qtrectitem->GetText();
-    if (v.size() != 1)
-    {
-      TRACE(v.size());
-      for (const auto& s: v) { TRACE(s); }
-    }
     BOOST_CHECK(v.size() == 1);
   }
   if (verbose) { TRACE("Grabbing QtNode of QGraphicsView twice, results in an identical picture"); }
