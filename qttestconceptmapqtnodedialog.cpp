@@ -42,9 +42,6 @@ ribi::cmap::QtTestQtNodeDialog::QtTestQtNodeDialog(
     m_view{new QtKeyboardFriendlyGraphicsView}
 {
   ui->setupUi(this);
-  #ifndef NDEBUG
-  Test();
-  #endif
   {
     QGraphicsScene * const my_scene = new QGraphicsScene(this);
     m_view->setScene(my_scene);
@@ -121,79 +118,6 @@ void ribi::cmap::QtTestQtNodeDialog::keyPressEvent(QKeyEvent *event) noexcept
 {
   if (event->key() == Qt::Key_Escape) { close(); return; }
 }
-
-#ifndef NDEBUG
-void ribi::cmap::QtTestQtNodeDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  QtRoundedEditRectItem();
-  QtImage();
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-  const bool verbose{false};
-  QtTestQtNodeDialog dialog;
-
-  if (verbose) {TRACE("Loading all tests, three times");}
-  {
-    const int n{dialog.ui->box_test_index->maximum()};
-    for (int i=0; i!=n; ++i)
-    {
-      dialog.ui->box_test_index->setValue(i);
-      dialog.on_button_load_clicked();
-      dialog.ui->box_test_index->setValue(i);
-      dialog.on_button_load_clicked();
-      dialog.ui->box_test_index->setValue(i);
-      dialog.on_button_load_clicked();
-    }
-  }
-  if (verbose) {TRACE("QtNode must be the same in both dialogs");}
-  {
-    assert(dialog.m_dialog->GetQtNode());
-  }
-  if (verbose) {TRACE("QGraphicsView must contain exactly one item");}
-  {
-    assert(dialog.m_view->scene()->items().size() == 1);
-  }
-  if (verbose) {TRACE("QGraphicsItem in QGraphicsView must be convertible to a QtRoundedEditRectItem");}
-  {
-    const QGraphicsItem * const item = dialog.m_view->scene()->items()[0];
-    const QtRoundedEditRectItem * qtitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
-    assert(qtitem);
-  }
-  if (verbose) {TRACE("QGraphicsItem in QGraphicsView must be convertible to a QtNode");}
-  {
-    const QGraphicsItem * const item = dialog.m_view->scene()->items()[0];
-    const QtNode * qtnode = dynamic_cast<const QtNode*>(item);
-    assert(qtnode);
-  }
-  if (verbose) {TRACE("QtNode its base class in the QGraphicsView must contain one line of text");}
-  {
-    const QGraphicsItem * const item = dialog.m_view->scene()->items()[0];
-    const QtRoundedEditRectItem * qtrectitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
-    const auto v = qtrectitem->GetText();
-    if (v.size() != 1)
-    {
-      TRACE(v.size());
-      for (const auto& s: v) { TRACE(s); }
-    }
-    assert(v.size() == 1);
-  }
-  if (verbose) { TRACE("Grabbing QtNode of QGraphicsView twice, results in an identical picture"); }
-  {
-    //If the line below is needed, update() is not called automatically
-    const QImage image_before{dialog.GetUiView()};
-    const QImage image_after{dialog.GetUiView()};
-    assert(image_before == image_after);
-  }
-  if (verbose) { TRACE("QGraphicsScene must have one item"); }
-  {
-    assert(dialog.m_view->scene()->items().size() == 1);
-  }
-}
-#endif
 
 void ribi::cmap::QtTestQtNodeDialog::on_button_load_clicked() noexcept
 {

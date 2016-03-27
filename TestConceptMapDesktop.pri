@@ -1,23 +1,23 @@
 include(TestConceptMapConsole.pri)
 
 HEADERS += \
-    ../TestConceptMap/qtconceptmapviewtestsdialog.h \
-    ../TestConceptMap/qttestconceptmapmenudialog.h \
-    ../TestConceptMap/qttestconceptmapqtedgedialog.h \
-    ../TestConceptMap/qttestconceptmapqtnodedialog.h \
-    ../TestConceptMap/qttesteditconceptmapdialog.h
+    $$PWD/qtconceptmapviewtestsdialog.h \
+    $$PWD/qttestconceptmapmenudialog.h \
+    $$PWD/qttestconceptmapqtedgedialog.h \
+    $$PWD/qttestconceptmapqtnodedialog.h \
+    $$PWD/qttesteditconceptmapdialog.h
 
 SOURCES += \
-    ../TestConceptMap/qtconceptmapviewtestsdialog.cpp \
-    ../TestConceptMap/qttestconceptmapmenudialog.cpp \
-    ../TestConceptMap/qttestconceptmapqtedgedialog.cpp \
-    ../TestConceptMap/qttestconceptmapqtnodedialog.cpp \
-    ../TestConceptMap/qttesteditconceptmapdialog.cpp
+    $$PWD/qtconceptmapviewtestsdialog.cpp \
+    $$PWD/qttestconceptmapmenudialog.cpp \
+    $$PWD/qttestconceptmapqtedgedialog.cpp \
+    $$PWD/qttestconceptmapqtnodedialog.cpp \
+    $$PWD/qttesteditconceptmapdialog.cpp
 
 FORMS += \
-    ../TestConceptMap/qtconceptmapviewtestsdialog.ui \
-    ../TestConceptMap/qttestconceptmapmenudialog.ui \
-    ../TestConceptMap/qttestconceptmapqtedgedialog.ui \
-    ../TestConceptMap/qttestconceptmapqtnodedialog.ui \
-    ../TestConceptMap/qttesteditconceptmapdialog.ui
+    $$PWD/qtconceptmapviewtestsdialog.ui \
+    $$PWD/qttestconceptmapmenudialog.ui \
+    $$PWD/qttestconceptmapqtedgedialog.ui \
+    $$PWD/qttestconceptmapqtnodedialog.ui \
+    $$PWD/qttesteditconceptmapdialog.ui
 

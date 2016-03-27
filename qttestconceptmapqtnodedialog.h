@@ -31,7 +31,17 @@ public:
 
 
   boost::shared_ptr<QtNode> GetQtNode() const noexcept;
+
+  const QtQtNodeDialog * GetDialog() const noexcept { return m_dialog.get(); }
+        QtQtNodeDialog * GetDialog()       noexcept { return m_dialog.get(); }
+  const QtKeyboardFriendlyGraphicsView * GetView() const noexcept { return m_view.get(); }
+        QtKeyboardFriendlyGraphicsView * GetView()       noexcept { return m_view.get(); }
+
+
   QImage GetUiView() const noexcept;
+
+  const Ui::QtTestQtNodeDialog * GetUi() const noexcept { return ui; }
+        Ui::QtTestQtNodeDialog * GetUi()       noexcept { return ui; }
 
   void SetQtNode(const boost::shared_ptr<QtNode>& qtnode) noexcept;
 
@@ -39,7 +49,7 @@ protected:
 
   void keyPressEvent(QKeyEvent *) noexcept override final;
 
-private slots:
+public slots:
 
   void on_button_load_clicked() noexcept;
 

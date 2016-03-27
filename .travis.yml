@@ -22,9 +22,17 @@ addons:
     - g++-5
     - libboost1.55-all-dev
 
-script: 
- - ./build.sh
- - ./get_code_cov.sh
+# Start virtual X server, from https://docs.travis-ci.com/user/gui-and-headless-browsers/
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
 
-after_success:
-  - codecov
+script: 
+ - ./download_other_githubs.sh
+ - ./build_other_githubs.sh
+ - ./build_desktop_test.sh
+ - ./get_code_cov.sh
+ - codecov
+ - ./build_desktop.sh
+ - ./build_console.sh

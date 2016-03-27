@@ -24,9 +24,6 @@ ribi::cmap::QtTestMenuDialog::QtTestMenuDialog(QWidget *parent) :
     QtHideAndShowDialog(parent),
     ui(new Ui::QtTestMenuDialog)
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   ui->setupUi(this);
 
   //Show current screen I am most interested in
@@ -52,36 +49,6 @@ void ribi::cmap::QtTestMenuDialog::on_button_quit_clicked()
 {
   close();
 }
-
-#ifndef NDEBUG
-void ribi::cmap::QtTestMenuDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  TestConceptMapMenuDialog().GetAbout();
-
-
-  //Tests I am most interested in
-  {
-    auto concept = ConceptFactory().GetTest(0);
-    QtConceptMapConceptEditDialog dialog(concept);
-  }
-
-  //Tests in order from small elements to bigger
-
-  QtTestQtNodeDialog();
-  #ifdef FIX_ISSUE_10
-  QtTestQtEdgeDialog();
-  #endif // FIX_ISSUE_10
-  QtTestEditConceptMapDialog();
-  QtConceptMapViewTestsDialog();
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-  //No tests...
-}
-#endif
 
 void ribi::cmap::QtTestMenuDialog::on_button_edit_conceptmap_clicked()
 {

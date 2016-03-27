@@ -90,12 +90,7 @@ ribi::cmap::QtTestEditConceptMapDialog::QtTestEditConceptMapDialog(QWidget *pare
   m_qtconceptmap(new QtConceptMap(this)),
   m_timer_virtual_bastard{new QTimer(this)}
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   ui->setupUi(this);
-
-
   //Create an empty concept map
   m_qtconceptmap->SetConceptMap(
     ConceptMapFactory().Get0()
@@ -184,23 +179,6 @@ void ribi::cmap::QtTestEditConceptMapDialog::keyPressEvent(QKeyEvent *event)
     DoSomethingRandom();
   }
 }
-
-#ifndef NDEBUG
-void ribi::cmap::QtTestEditConceptMapDialog::Test() noexcept
-{
-  {
-    static bool is_tested = false;
-    if (is_tested) return;
-    is_tested = true;
-  }
-  {
-    QtTestEditConceptMapDialog();
-  }
-  const ribi::TestTimer test_timer(__func__,__FILE__,1.0);
-  QtTestEditConceptMapDialog d;
-  d.DoSomethingRandom();
-}
-#endif
 
 void ribi::cmap::QtTestEditConceptMapDialog::OnCheck()
 {

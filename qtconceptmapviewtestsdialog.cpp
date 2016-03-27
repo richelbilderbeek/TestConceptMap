@@ -32,9 +32,6 @@ ribi::cmap::QtConceptMapViewTestsDialog::QtConceptMapViewTestsDialog(QWidget* pa
 {
 
   ui->setupUi(this);
-  #ifndef NDEBUG
-  Test();
-  #endif
 
   const int type = 1;
   {
@@ -104,20 +101,3 @@ void ribi::cmap::QtConceptMapViewTestsDialog::keyPressEvent(QKeyEvent* event)
 {
   if (event->key()  == Qt::Key_Escape) { close(); return; }
 }
-
-#ifndef NDEBUG
-void ribi::cmap::QtConceptMapViewTestsDialog::Test() noexcept
-{
-  {
-    static bool is_tested = false;
-    if (is_tested) return;
-    is_tested = true;
-  }
-  {
-    cmap::ConceptMapFactory();
-    QtConceptMapViewTestsDialog();
-  }
-  const ribi::TestTimer test_timer(__func__,__FILE__,1.0);
-  //QtConceptMapViewTestsDialog d; //Just takes too long, for no new funtionality
-}
-#endif

@@ -58,9 +58,6 @@ ribi::cmap::QtTestQtEdgeDialog::QtTestQtEdgeDialog(
     m_to(QtNodeFactory().GetTest(1)),
     m_qtedge_view(new QtKeyboardFriendlyGraphicsView)
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
 
   ui->setupUi(this);
   m_from->SetCenterPos(0.0,0.0);
@@ -170,11 +167,6 @@ void ribi::cmap::QtTestQtEdgeDialog::keyPressEvent(QKeyEvent *event) noexcept
 #ifndef NDEBUG
 void ribi::cmap::QtTestQtEdgeDialog::Test() noexcept
 {
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
   {
     QtImage();
   }
