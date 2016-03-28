@@ -46,6 +46,9 @@ QPushButton { font: 20px &quot;Courier New&quot;, courier, monospace }</string>
    </item>
    <item>
     <widget class="QPushButton" name="button_qtedge">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="text">
       <string>&amp;7. QtEdge</string>
      </property>

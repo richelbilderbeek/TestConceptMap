@@ -31,7 +31,8 @@ public:
   QtTestEditConceptMapDialog& operator=(const QtTestEditConceptMapDialog&) = delete;
   ~QtTestEditConceptMapDialog() noexcept;
 
-protected:
+        QtConceptMap * GetQtConceptMap()       noexcept { return m_qtconceptmap; }
+  const QtConceptMap * GetQtConceptMap() const noexcept { return m_qtconceptmap; }
 
   void keyPressEvent(QKeyEvent *);
 
