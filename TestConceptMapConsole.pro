@@ -26,3 +26,5 @@ SOURCES += main.cpp
 
 LIBS += -lboost_graph
 
+# QResources give this error
+QMAKE_CXXFLAGS += -Wno-unused-variable
