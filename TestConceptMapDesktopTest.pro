@@ -43,9 +43,6 @@ include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial.pri)
 
 SOURCES += qtmain_test.cpp
 
-# Boost.Test
-LIBS += -lboost_unit_test_framework
-
 # gcov
 QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
 LIBS += -lgcov
@@ -56,3 +53,12 @@ QMAKE_LFLAGS_DEBUG += -pg
 
 # QResources give this error
 QMAKE_CXXFLAGS += -Wno-unused-variable
+
+# Qt:
+# QtConcurrent::filterInternal(Sequence&, KeepFunctor, ReduceFunctor)’:
+# /usr/include/qt4/QtCore/qtconcurrentfilter.h:108:47: error: typedef ‘Iterator’ locally defined but not used [-Werror=unused-local-typedefs]
+# typedef typename Sequence::const_iterator Iterator;
+QMAKE_CXXFLAGS += -Wno-unused-local-typedefs
+
+# QTest
+QT += testlib

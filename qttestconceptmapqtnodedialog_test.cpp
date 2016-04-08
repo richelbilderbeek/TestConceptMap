@@ -1,5 +1,5 @@
+#include "qttestconceptmapqtnodedialog_test.h"
 #include "qttestconceptmapqtnodedialog.h"
-#include <boost/test/unit_test.hpp>
 
 #include <boost/lexical_cast.hpp>
 #include <boost/shared_ptr.hpp>
@@ -29,7 +29,7 @@
 #include "qtroundededitrectitem.h"
 #include "ui_qttestconceptmapqtnodedialog.h"
 
-BOOST_AUTO_TEST_CASE(ribi_cmap_QtTestQtNodeDialog_test)
+void ribi::qttestconceptmapqtnodedialog_test::all_tests()
 {
   using namespace ribi;
   using namespace ribi::cmap;
@@ -51,40 +51,40 @@ BOOST_AUTO_TEST_CASE(ribi_cmap_QtTestQtNodeDialog_test)
   }
   if (verbose) {TRACE("QtNode must be the same in both dialogs");}
   {
-    BOOST_CHECK(dialog.GetDialog()->GetQtNode());
+    QVERIFY(dialog.GetDialog()->GetQtNode().get());
   }
   if (verbose) {TRACE("QGraphicsView must contain exactly one item");}
   {
-    BOOST_CHECK(dialog.GetView()->scene()->items().size() == 1);
+    QVERIFY(dialog.GetView()->scene()->items().size() == 1);
   }
   if (verbose) {TRACE("QGraphicsItem in QGraphicsView must be convertible to a QtRoundedEditRectItem");}
   {
     const QGraphicsItem * const item = dialog.GetView()->scene()->items()[0];
     const QtRoundedEditRectItem * qtitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
-    BOOST_CHECK(qtitem);
+    QVERIFY(qtitem);
   }
   if (verbose) {TRACE("QGraphicsItem in QGraphicsView must be convertible to a QtNode");}
   {
     const QGraphicsItem * const item = dialog.GetView()->scene()->items()[0];
     const QtNode * qtnode = dynamic_cast<const QtNode*>(item);
-    BOOST_CHECK(qtnode);
+    QVERIFY(qtnode);
   }
   if (verbose) {TRACE("QtNode its base class in the QGraphicsView must contain one line of text");}
   {
     const QGraphicsItem * const item = dialog.GetView()->scene()->items()[0];
     const QtRoundedEditRectItem * qtrectitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
     const auto v = qtrectitem->GetText();
-    BOOST_CHECK(v.size() == 1);
+    QVERIFY(v.size() == 1);
   }
   if (verbose) { TRACE("Grabbing QtNode of QGraphicsView twice, results in an identical picture"); }
   {
     //If the line below is needed, update() is not called automatically
     const QImage image_before{dialog.GetUiView()};
     const QImage image_after{dialog.GetUiView()};
-    BOOST_CHECK(image_before == image_after);
+    QVERIFY(image_before == image_after);
   }
   if (verbose) { TRACE("QGraphicsScene must have one item"); }
   {
-    BOOST_CHECK(dialog.GetView()->scene()->items().size() == 1);
+    QVERIFY(dialog.GetView()->scene()->items().size() == 1);
   }
 }

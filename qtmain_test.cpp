@@ -1,14 +1,15 @@
-#include <QApplication>
+#include "qttesteditconceptmapdialog_test.h"
+#include "qttestconceptmapqtnodedialog_test.h"
+#include "qttestconceptmapqtedgedialog_test.h"
 
-#define BOOST_TEST_DYN_LINK
-#include <boost/test/unit_test.hpp>
+#include <QtTest/QtTest>
 
-#define BOOST_TEST_MODULE test_conceptmap_desktop_module
-
-bool initialise() { return true; }
-
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
   QApplication a(argc, argv);
-  ::boost::unit_test::unit_test_main(&initialise, argc, argv);
+  int error = 0;
+  { ribi::qttesteditconceptmapdialog_test t; error |= QTest::qExec(&t, argc, argv); }
+  { ribi::qttestconceptmapqtnodedialog_test t; error |= QTest::qExec(&t, argc, argv); }
+  { ribi::cmap::qttestconceptmapqtedgedialog_test t; error |= QTest::qExec(&t, argc, argv); }
+  return error;
 }

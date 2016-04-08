@@ -40,6 +40,9 @@ public:
   ///to make it active
   int GetUiTestIndex() const noexcept;
 
+  const Ui::QtTestQtEdgeDialog * GetUi() const noexcept { return ui; }
+        Ui::QtTestQtEdgeDialog * GetUi()       noexcept { return ui; }
+
   QImage GetUiView() const noexcept;
 
   //Obtain the X coordinat of the Node on the Edge from the GUI
@@ -67,6 +70,8 @@ private:
   const boost::shared_ptr<QtNode> m_from;
   const boost::shared_ptr<QtNode> m_to;
   std::unique_ptr< ::ribi::QtKeyboardFriendlyGraphicsView> m_qtedge_view;
+
+  friend class qttestconceptmapqtedgedialog_test;
 };
 
 } //~namespace cmap

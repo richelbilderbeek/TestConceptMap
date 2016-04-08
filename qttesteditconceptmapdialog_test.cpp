@@ -1,5 +1,6 @@
+#include "qttesteditconceptmapdialog_test.h"
 #include "qttesteditconceptmapdialog.h"
-#include <boost/test/unit_test.hpp>
+#include <QtTest>
 
 #include <boost/lexical_cast.hpp>
 #include <boost/shared_ptr.hpp>
@@ -48,39 +49,34 @@ QKeyEvent CreateSpace() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Spa
 QKeyEvent CreateUp() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Up,Qt::NoModifier); }
 QKeyEvent CreateX() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_X,Qt::NoModifier); }
 
-BOOST_AUTO_TEST_CASE(ribi_cmap_qttesteditconceptmapdialog_default_construction)
-{
-  ribi::cmap::QtTestEditConceptMapDialog d;
-  d.show();
-  //Without 'qApp->processEvents()' the dialog is not drawn well
-  for (int i=0; i!=1000000; ++i) { qApp->processEvents(); }
-  BOOST_CHECK_EQUAL(boost::num_vertices(d.GetQtConceptMap()->GetConceptMap()), 0);
-  d.close();
-}
-
-BOOST_AUTO_TEST_CASE(ribi_cmap_qttesteditconceptmapdialog_create_node)
+void ribi::qttesteditconceptmapdialog_test::create_node()
 {
   ribi::cmap::QtTestEditConceptMapDialog d;
   d.show();
   d.setFocus();
-  for (int i=0; i!=1000000; ++i) { qApp->processEvents(); }
   {
     auto key = CreateCtrlN();
     d.keyPressEvent(&key);
   }
   d.GetQtConceptMap()->setFocus();
-  for (int i=0; i!=1000000; ++i) { qApp->processEvents(); }
   {
     auto key = CreateCtrlN();
     d.keyPressEvent(&key);
   }
   d.update();
-  for (int i=0; i!=1000000; ++i) { qApp->processEvents(); }
   {
     auto key = CreateCtrlN();
     d.keyPressEvent(&key);
   }
-  for (int i=0; i!=1000000; ++i) { qApp->processEvents(); }
-  BOOST_CHECK_EQUAL(boost::num_vertices(d.GetQtConceptMap()->GetConceptMap()), 1);
+  const auto excepted_vertices = 1;
+  const auto measured_vertices = boost::num_vertices(d.GetQtConceptMap()->GetConceptMap());
+  if (measured_vertices != excepted_vertices)
+  {
+    std::cerr << __func__ << ": "
+      << "expected: " << excepted_vertices << ", "
+      << "measured: " << measured_vertices << '\n'
+    ;
+  }
+  QVERIFY(measured_vertices == excepted_vertices);
   d.close();
 }
