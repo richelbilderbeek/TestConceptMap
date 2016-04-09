@@ -38,8 +38,8 @@ ribi::About ribi::TestConceptMapMenuDialog::GetAbout() const noexcept
     "Richel Bilderbeek",
     "TestConceptMap",
     "tests the ConceptMap classes",
-    "on the 2nd of October 2015",
-    "2013-2015",
+    "on April 9th 2016",
+    "2013-2016",
     "http://www.richelbilderbeek.nl/ToolTestConceptMap.htm",
     GetVersion(),
     GetVersionHistory());
@@ -73,7 +73,7 @@ ribi::Help ribi::TestConceptMapMenuDialog::GetHelp() const noexcept
 
 std::string ribi::TestConceptMapMenuDialog::GetVersion() const noexcept
 {
-  return "1.3";
+  return "1.4";
 }
 
 std::vector<std::string> ribi::TestConceptMapMenuDialog::GetVersionHistory() const noexcept
@@ -81,7 +81,8 @@ std::vector<std::string> ribi::TestConceptMapMenuDialog::GetVersionHistory() con
   return {
     "2013-12-03: version 1.0: initial version",
     "2014-05-18: version 1.1: added testing Example",
-    "2014-08-07: version 1.2: increased use of TDD"
-    "2015-10-02: version 1.3: moved to own GitHub"
+    "2014-08-07: version 1.2: increased use of TDD",
+    "2015-10-02: version 1.3: moved to own GitHub",
+    "2016-04-09: version 1.4: Travis CI did first GUI test"
   };
 }

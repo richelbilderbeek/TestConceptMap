@@ -12,6 +12,7 @@ class qttesteditconceptmapdialog_test : public QObject
 
 private slots:
   void create_node();
+  void create_node_on_concept_map();
 };
 
 } //~namespace cmap
