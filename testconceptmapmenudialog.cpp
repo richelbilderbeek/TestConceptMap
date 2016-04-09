@@ -26,10 +26,10 @@ int ribi::TestConceptMapMenuDialog::ExecuteSpecific(const std::vector<std::strin
   if (argc == 1)
   {
     std::cout << GetHelp() << '\n';
-    return 1;
+    return 0;
   }
-  assert(!"TODO");
-  return 1;
+  std::cout << "This application does not have a console mode\n";
+  return 0;
 }
 
 ribi::About ribi::TestConceptMapMenuDialog::GetAbout() const noexcept

@@ -29,7 +29,7 @@
 #include "qtroundededitrectitem.h"
 #include "ui_qttestconceptmapqtnodedialog.h"
 
-void ribi::qttestconceptmapqtnodedialog_test::all_tests()
+void ribi::cmap::qttestconceptmapqtnodedialog_test::all_tests()
 {
   using namespace ribi;
   using namespace ribi::cmap;

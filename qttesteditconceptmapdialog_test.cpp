@@ -51,25 +51,26 @@ QKeyEvent CreateSpace() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Spa
 QKeyEvent CreateUp() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_Up,Qt::NoModifier); }
 QKeyEvent CreateX() noexcept { return QKeyEvent(QEvent::KeyPress,Qt::Key_X,Qt::NoModifier); }
 
-void ribi::qttesteditconceptmapdialog_test::create_node()
+void ribi::cmap::qttesteditconceptmapdialog_test::create_node()
 {
   ribi::cmap::QtTestEditConceptMapDialog d;
   d.show();
   d.setFocus();
-  {
-    auto key = CreateCtrlN();
-    d.keyPressEvent(&key);
-  }
-  d.GetQtConceptMap()->setFocus();
-  {
-    auto key = CreateCtrlN();
-    d.keyPressEvent(&key);
-  }
-  d.update();
-  {
-    auto key = CreateCtrlN();
-    d.keyPressEvent(&key);
-  }
+  QTest::keyClick(d.GetQtConceptMap(), Qt::Key_N, Qt::ControlModifier, 100);
+  //{
+  //  auto key = CreateCtrlN();
+  //  d.keyPressEvent(&key);
+  //}
+  //d.GetQtConceptMap()->setFocus();
+  //{
+  //  auto key = CreateCtrlN();
+  //  d.keyPressEvent(&key);
+  //}
+  //d.update();
+  //{
+  //  auto key = CreateCtrlN();
+  //  d.keyPressEvent(&key);
+  //}
   const auto excepted_vertices = 1;
   const auto measured_vertices = boost::num_vertices(d.GetQtConceptMap()->GetConceptMap());
   if (measured_vertices != excepted_vertices)

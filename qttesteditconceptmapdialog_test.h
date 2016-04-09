@@ -4,6 +4,7 @@
 #include <QtTest/QtTest>
 
 namespace ribi {
+namespace cmap {
 
 class qttesteditconceptmapdialog_test : public QObject
 {
@@ -13,6 +14,7 @@ private slots:
   void create_node();
 };
 
+} //~namespace cmap
 } //~namespace ribi
 
 #endif // QTTESTEDITCONCEPTMAPDIALOG_TEST_H
