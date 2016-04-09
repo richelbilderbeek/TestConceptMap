@@ -11,6 +11,7 @@ class qttestconceptmapqtedgedialog_test : public QObject
     Q_OBJECT
 
 private slots:
+  void default_construction();
   void test_numbers_of_gui_must_match_with_actual_number();
   void gui_must_select_for_valid_test_numbers();
   void set_all_tests();

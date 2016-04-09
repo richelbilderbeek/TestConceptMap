@@ -66,6 +66,7 @@ private:
   Ui::QtTestQtEdgeDialog *ui;
 
 
+  boost::shared_ptr<QtEdge> m_qtedge;
   std::unique_ptr<QtQtEdgeDialog> m_qtedge_dialog;
   const boost::shared_ptr<QtNode> m_from;
   const boost::shared_ptr<QtNode> m_to;

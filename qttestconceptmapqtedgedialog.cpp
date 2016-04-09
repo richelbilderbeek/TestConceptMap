@@ -47,11 +47,8 @@ ribi::cmap::QtTestQtEdgeDialog::QtTestQtEdgeDialog(
   QWidget *parent)
   : QtHideAndShowDialog(parent),
     ui(new Ui::QtTestQtEdgeDialog),
-    m_qtedge_dialog(
-      new QtQtEdgeDialog(
-        boost::shared_ptr<QtEdge>() //Stub
-      )
-    ),
+    m_qtedge{},
+    m_qtedge_dialog{nullptr},
     m_from(QtNodeFactory().GetTest(1)),
     m_to(QtNodeFactory().GetTest(1)),
     m_qtedge_view(new QtKeyboardFriendlyGraphicsView)
@@ -60,6 +57,10 @@ ribi::cmap::QtTestQtEdgeDialog::QtTestQtEdgeDialog(
   ui->setupUi(this);
   m_from->SetCenterPos(0.0,0.0);
   m_to->SetCenterPos(10.0,100.0);
+
+  m_qtedge = boost::shared_ptr<QtEdge>(new QtEdge(Edge(), m_from.get(), m_to.get()));
+  m_qtedge_dialog.reset(new QtQtEdgeDialog(m_qtedge));
+
 
   assert(m_from->flags() & QGraphicsItem::ItemIsMovable);
   assert(m_from->flags() & QGraphicsItem::ItemIsSelectable);

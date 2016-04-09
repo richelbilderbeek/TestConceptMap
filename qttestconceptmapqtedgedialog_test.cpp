@@ -5,6 +5,11 @@
 #include "qttestconceptmapqtedgedialog.h"
 #include "ui_qttestconceptmapqtedgedialog.h"
 
+void ribi::cmap::qttestconceptmapqtedgedialog_test::default_construction()
+{
+  const QtTestQtEdgeDialog dialog;
+}
+
 void ribi::cmap::qttestconceptmapqtedgedialog_test::test_numbers_of_gui_must_match_with_actual_number()
 {
   // Number of tests in GUI must be equal to the number of actual tests
