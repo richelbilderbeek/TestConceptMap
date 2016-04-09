@@ -1,16 +1,18 @@
 #include "qttesteditconceptmapdialog_test.h"
-#include "qttesteditconceptmapdialog.h"
-#include <QtTest>
+
+#include <iostream>
 
 #include <boost/lexical_cast.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 
+#include <QtTest>
 #include <QDesktopWidget>
 #include <QGraphicsView>
 #include <QKeyEvent>
 
 #include "conceptmapcompetencies.h"
+#include "qttesteditconceptmapdialog.h"
 #include "conceptmapconcept.h"
 #include "conceptmapexample.h"
 #include "conceptmapexamples.h"
