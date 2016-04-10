@@ -1,4 +1,4 @@
-include(../RibiLibraries/DesktopApplicationNoWeffcpp.pri)
+include(../RibiLibraries/DesktopApplicationNoWeffcppGcc.pri)
 
 #Libs
 include(../RibiLibraries/Apfloat.pri)
