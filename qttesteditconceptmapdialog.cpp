@@ -178,6 +178,7 @@ void ribi::cmap::QtTestEditConceptMapDialog::keyPressEvent(QKeyEvent *event)
   {
     DoSomethingRandom();
   }
+  m_qtconceptmap->keyPressEvent(event);
 }
 
 void ribi::cmap::QtTestEditConceptMapDialog::OnCheck()
