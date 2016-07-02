@@ -158,14 +158,6 @@ void ribi::cmap::QtTestEditConceptMapDialog::keyPressEvent(QKeyEvent *event)
   {
     ToggleVirtualBastard();
   }
-  if (event->key() == Qt::Key_F2)
-  {
-    SaveSummaryToFile(m_qtconceptmap->GetConceptMap(),"summary.dot");
-    convert_dot_to_svg("summary.dot","summary.svg");
-    convert_svg_to_png("summary.svg","summary.png");
-    ui->image_concept_map_summary->setPixmap(QPixmap("summary.png"));
-    this->repaint();
-  }
   if (event->key() == Qt::Key_F3)
   {
     SaveToFile(m_qtconceptmap->GetConceptMap(),"full.dot");
@@ -256,3 +248,12 @@ void ribi::cmap::QtTestEditConceptMapDialog::ToggleVirtualBastard() noexcept
   }
 }
 
+
+void ribi::cmap::QtTestEditConceptMapDialog::on_button_view_graphviz_clicked()
+{
+  SaveSummaryToFile(m_qtconceptmap->GetConceptMap(),"summary.dot");
+  convert_dot_to_svg("summary.dot","summary.svg");
+  convert_svg_to_png("summary.svg","summary.png");
+  ui->image_concept_map_summary->setPixmap(QPixmap("summary.png"));
+  this->repaint();
+}

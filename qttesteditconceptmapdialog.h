@@ -41,6 +41,8 @@ private slots:
   void OnCheck();
   void OnVirtualBastard();
 
+  void on_button_view_graphviz_clicked();
+
 private:
 
   Ui::QtTestEditConceptMapDialog *ui;
