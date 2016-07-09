@@ -29,62 +29,62 @@
 #include "qtroundededitrectitem.h"
 #include "ui_qttestconceptmapqtnodedialog.h"
 
-void ribi::cmap::qttestconceptmapqtnodedialog_test::all_tests()
+void ribi::cmap::qttestconceptmapqtnodedialog_test::load_all_tests_thrice()
 {
-  using namespace ribi;
-  using namespace ribi::cmap;
-  const bool verbose{false};
   QtTestQtNodeDialog dialog;
+  const int n{dialog.GetUi()->box_test_index->maximum()};
+  for (int i=0; i!=n; ++i)
+  {
+    dialog.GetUi()->box_test_index->setValue(i);
+    dialog.on_button_load_clicked();
+    dialog.GetUi()->box_test_index->setValue(i);
+    dialog.on_button_load_clicked();
+    dialog.GetUi()->box_test_index->setValue(i);
+    dialog.on_button_load_clicked();
+  }
+}
 
-  if (verbose) {TRACE("Loading all tests, three times");}
-  {
-    const int n{dialog.GetUi()->box_test_index->maximum()};
-    for (int i=0; i!=n; ++i)
-    {
-      dialog.GetUi()->box_test_index->setValue(i);
-      dialog.on_button_load_clicked();
-      dialog.GetUi()->box_test_index->setValue(i);
-      dialog.on_button_load_clicked();
-      dialog.GetUi()->box_test_index->setValue(i);
-      dialog.on_button_load_clicked();
-    }
-  }
-  if (verbose) {TRACE("QtNode must be the same in both dialogs");}
-  {
-    QVERIFY(dialog.GetDialog()->GetQtNode().get());
-  }
-  if (verbose) {TRACE("QGraphicsView must contain exactly one item");}
-  {
-    QVERIFY(dialog.GetView()->scene()->items().size() == 1);
-  }
-  if (verbose) {TRACE("QGraphicsItem in QGraphicsView must be convertible to a QtRoundedEditRectItem");}
-  {
-    const QGraphicsItem * const item = dialog.GetView()->scene()->items()[0];
-    const QtRoundedEditRectItem * qtitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
-    QVERIFY(qtitem);
-  }
-  if (verbose) {TRACE("QGraphicsItem in QGraphicsView must be convertible to a QtNode");}
-  {
-    const QGraphicsItem * const item = dialog.GetView()->scene()->items()[0];
-    const QtNode * qtnode = dynamic_cast<const QtNode*>(item);
-    QVERIFY(qtnode);
-  }
-  if (verbose) {TRACE("QtNode its base class in the QGraphicsView must contain one line of text");}
-  {
-    const QGraphicsItem * const item = dialog.GetView()->scene()->items()[0];
-    const QtRoundedEditRectItem * qtrectitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
-    const auto v = qtrectitem->GetText();
-    QVERIFY(v.size() == 1);
-  }
-  if (verbose) { TRACE("Grabbing QtNode of QGraphicsView twice, results in an identical picture"); }
-  {
-    //If the line below is needed, update() is not called automatically
-    const QImage image_before{dialog.GetUiView()};
-    const QImage image_after{dialog.GetUiView()};
-    QVERIFY(image_before == image_after);
-  }
-  if (verbose) { TRACE("QGraphicsScene must have one item"); }
-  {
-    QVERIFY(dialog.GetView()->scene()->items().size() == 1);
-  }
+void ribi::cmap::qttestconceptmapqtnodedialog_test::must_have_qtnode()
+{
+  QtTestQtNodeDialog dialog;
+  QVERIFY(dialog.GetDialog()->GetQtNode().get());
+}
+
+void ribi::cmap::qttestconceptmapqtnodedialog_test::qgraphicsitem_must_be_a_qtnode()
+{
+  QtTestQtNodeDialog dialog;
+  const QGraphicsItem * const item = dialog.GetView()->scene()->items()[0];
+  const QtNode * qtnode = dynamic_cast<const QtNode*>(item);
+  QVERIFY(qtnode);
+}
+
+void ribi::cmap::qttestconceptmapqtnodedialog_test::qgraphicsitem_must_be_a_qtroundededitrectitem()
+{
+  QtTestQtNodeDialog dialog;
+  const QGraphicsItem * const item = dialog.GetView()->scene()->items()[0];
+  const QtRoundedEditRectItem * qtitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
+  QVERIFY(qtitem);
+}
+
+void ribi::cmap::qttestconceptmapqtnodedialog_test::qgraphicsscene_must_contain_exactly_one_item()
+{
+  QtTestQtNodeDialog dialog;
+  QVERIFY(dialog.GetView()->scene()->items().size() == 1);
+}
+
+void ribi::cmap::qttestconceptmapqtnodedialog_test::qtnode_must_have_one_line_of_text()
+{
+  QtTestQtNodeDialog dialog;
+  const QGraphicsItem * const item = dialog.GetView()->scene()->items()[0];
+  const QtRoundedEditRectItem * qtrectitem = dynamic_cast<const QtRoundedEditRectItem*>(item);
+  const auto v = qtrectitem->GetText();
+  QVERIFY(v.size() == 1);
+}
+
+void ribi::cmap::qttestconceptmapqtnodedialog_test::two_screengrabs_result_in_identical_pictures()
+{
+  QtTestQtNodeDialog dialog;
+  const QImage image_before{dialog.GetUiView()};
+  const QImage image_after{dialog.GetUiView()};
+  QVERIFY(image_before == image_after);
 }

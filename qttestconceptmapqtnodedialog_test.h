@@ -11,7 +11,13 @@ class qttestconceptmapqtnodedialog_test : public QObject
     Q_OBJECT
 
 private slots:
-  void all_tests();
+  void load_all_tests_thrice();
+  void must_have_qtnode();
+  void qgraphicsitem_must_be_a_qtnode();
+  void qgraphicsitem_must_be_a_qtroundededitrectitem();
+  void qgraphicsscene_must_contain_exactly_one_item();
+  void qtnode_must_have_one_line_of_text();
+  void two_screengrabs_result_in_identical_pictures();
 };
 
 } //~namespace cmap
