@@ -68,9 +68,16 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="button_view_graphviz">
+       <widget class="QPushButton" name="button_view_graphviz_summary">
         <property name="text">
-         <string>&amp;View GraphViz concep maps</string>
+         <string>&amp;View summary GraphViz concept map</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button_view_graphviz_full">
+        <property name="text">
+         <string>View &amp;full GraphViz concept map</string>
         </property>
        </widget>
       </item>
@@ -159,7 +166,7 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>480</width>
+           <width>437</width>
            <height>280</height>
           </rect>
          </property>
@@ -188,7 +195,7 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>480</width>
+           <width>437</width>
            <height>280</height>
           </rect>
          </property>

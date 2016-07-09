@@ -249,11 +249,21 @@ void ribi::cmap::QtTestEditConceptMapDialog::ToggleVirtualBastard() noexcept
 }
 
 
-void ribi::cmap::QtTestEditConceptMapDialog::on_button_view_graphviz_clicked()
+void ribi::cmap::QtTestEditConceptMapDialog::on_button_view_graphviz_summary_clicked()
 {
   SaveSummaryToFile(m_qtconceptmap->GetConceptMap(),"summary.dot");
   convert_dot_to_svg("summary.dot","summary.svg");
   convert_svg_to_png("summary.svg","summary.png");
   ui->image_concept_map_summary->setPixmap(QPixmap("summary.png"));
   this->repaint();
+}
+
+void ribi::cmap::QtTestEditConceptMapDialog::on_button_view_graphviz_full_clicked()
+{
+  SaveToFile(m_qtconceptmap->GetConceptMap(),"full.dot");
+  convert_dot_to_svg("full.dot","full.svg");
+  convert_svg_to_png("full.svg","full.png");
+  ui->image_concept_map_full->setPixmap(QPixmap("full.png"));
+  this->repaint();
+
 }

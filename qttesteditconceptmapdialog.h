@@ -41,7 +41,9 @@ private slots:
   void OnCheck();
   void OnVirtualBastard();
 
-  void on_button_view_graphviz_clicked();
+  void on_button_view_graphviz_summary_clicked();
+
+  void on_button_view_graphviz_full_clicked();
 
 private:
 
