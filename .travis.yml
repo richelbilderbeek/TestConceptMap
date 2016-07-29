@@ -39,3 +39,4 @@ script:
  - ./clean.sh
  - ./build_desktop.sh
  - ./build_console.sh
+ - ./build_desktop_test.sh
