@@ -35,3 +35,5 @@ ui_*
 moc_*
 qrc_*
 TestConceptMapDesktop
+*.gcda
+*.gcno
