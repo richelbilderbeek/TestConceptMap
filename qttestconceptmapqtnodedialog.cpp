@@ -105,11 +105,16 @@ void ribi::cmap::QtTestQtNodeDialog::SetQtNode(const boost::shared_ptr<QtNode>& 
   {
     const auto v = m_view->scene()->items();
     assert(v.count() == 1);
+    assert(v[0]->scene());
     m_view->scene()->removeItem(v[0]);
+    assert(!v[0]->scene());
   }
   assert(m_view->scene()->items().isEmpty());
   m_dialog->SetQtNode(qtnode);
+
+  assert(!qtnode->scene());
   this->m_view->scene()->addItem(qtnode.get());
+  assert(qtnode->scene());
 
   m_dialog->setMinimumHeight(QtQtNodeDialog::GetMinimumHeight(*qtnode));
 }

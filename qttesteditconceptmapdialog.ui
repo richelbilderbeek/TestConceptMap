@@ -61,9 +61,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_toggle_virtual_bastard">
+       <widget class="QCheckBox" name="box_run_virtual_bastard">
         <property name="text">
-         <string>F1: Toggle virtual bastard</string>
+         <string>Run virtual bastard</string>
         </property>
        </widget>
       </item>

@@ -72,12 +72,20 @@ ribi::cmap::QtTestQtEdgeDialog::QtTestQtEdgeDialog(
     QGraphicsScene * const my_scene = new QGraphicsScene(this);
     m_qtedge_view->setScene(my_scene);
 
+    assert(!m_from->scene());
     my_scene->addItem(m_from.get()); //Remove in destructor
+    assert(m_from->scene());
+
+    assert(!m_to->scene());
     my_scene->addItem(m_to.get()); //Remove in destructor
+    assert(m_to->scene());
 
     QtDisplayPosItem * const item{new QtDisplayPosItem};
     item->setZValue(10000.0);
+
+    assert(!item->scene());
     my_scene->addItem(item); //Displays the positions
+    assert(item->scene());
   }
   ui->area1->setWidget(m_qtedge_view.get());
   ui->area3->setWidget(m_qtedge_dialog.get());
@@ -99,8 +107,12 @@ ribi::cmap::QtTestQtEdgeDialog::QtTestQtEdgeDialog(
 ribi::cmap::QtTestQtEdgeDialog::~QtTestQtEdgeDialog() noexcept
 {
   SetQtEdge(nullptr);
+  assert(m_from->scene());
+  assert(m_to->scene());
   m_qtedge_view->scene()->removeItem(m_from.get()); //Remove in destructor
   m_qtedge_view->scene()->removeItem(m_to.get());   //Remove in destructor
+  assert(!m_from->scene());
+  assert(!m_to->scene());
   delete ui;
 }
 
@@ -147,12 +159,16 @@ void ribi::cmap::QtTestQtEdgeDialog::SetQtEdge(const boost::shared_ptr<QtEdge>& 
 
   if (old_qtedge)
   {
+    assert(old_qtedge->scene());
     m_qtedge_view->scene()->removeItem(old_qtedge.get());
+    assert(!old_qtedge->scene());
   }
   if (qtedge)
   {
     m_qtedge_dialog->SetQtEdge(qtedge);
+    assert(!qtedge->scene());
     this->m_qtedge_view->scene()->addItem(qtedge.get());
+    assert(qtedge->scene());
 
     m_qtedge_dialog->setMinimumHeight(QtQtEdgeDialog::GetMinimumHeight(*qtedge));
   }

@@ -45,6 +45,8 @@ private slots:
 
   void on_button_view_graphviz_full_clicked();
 
+  void on_box_run_virtual_bastard_stateChanged(int arg1);
+
 private:
 
   Ui::QtTestEditConceptMapDialog *ui;
