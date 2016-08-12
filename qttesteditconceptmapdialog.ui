@@ -68,6 +68,28 @@
        </widget>
       </item>
       <item>
+       <widget class="QComboBox" name="box_mode">
+        <property name="currentIndex">
+         <number>2</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>Edit</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Rate</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Uninitialized</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="button_view_graphviz_summary">
         <property name="text">
          <string>&amp;View summary GraphViz concept map</string>

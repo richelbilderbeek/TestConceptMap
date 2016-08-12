@@ -47,6 +47,8 @@ private slots:
 
   void on_box_run_virtual_bastard_stateChanged(int arg1);
 
+  void on_box_mode_currentIndexChanged(int index);
+
 private:
 
   Ui::QtTestEditConceptMapDialog *ui;

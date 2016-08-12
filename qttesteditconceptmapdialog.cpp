@@ -119,6 +119,12 @@ ribi::cmap::QtTestEditConceptMapDialog::QtTestEditConceptMapDialog(QWidget *pare
   m_timer_virtual_bastard{new QTimer(this)}
 {
   ui->setupUi(this);
+
+  #ifndef NDEBUG
+  this->setWindowTitle(this->windowTitle() + QString(" (debug mode)"));
+  #else
+  this->setWindowTitle(this->windowTitle() + QString(" (release mode)"));
+  #endif
   //Create an empty concept map
   m_qtconceptmap->SetConceptMap(
     ConceptMapFactory().Get0()
@@ -295,4 +301,16 @@ void ribi::cmap::QtTestEditConceptMapDialog::on_button_view_graphviz_full_clicke
 void ribi::cmap::QtTestEditConceptMapDialog::on_box_run_virtual_bastard_stateChanged(int /* arg1 */)
 {
   ToggleVirtualBastard();
+}
+
+void ribi::cmap::QtTestEditConceptMapDialog::on_box_mode_currentIndexChanged(int index)
+{
+  switch(index)
+  {
+    case 0: this->m_qtconceptmap->SetMode(Mode::edit); return;
+    case 1: this->m_qtconceptmap->SetMode(Mode::rate); return;
+    case 2: this->m_qtconceptmap->SetMode(Mode::uninitialzed); return;
+    default: assert(!"Should not get here");
+  }
+  throw std::logic_error("on_box_mode_currentIndexChanged: unimplemented index");
 }
