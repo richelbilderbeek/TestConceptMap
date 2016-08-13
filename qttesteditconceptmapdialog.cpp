@@ -309,8 +309,10 @@ void ribi::cmap::QtTestEditConceptMapDialog::on_box_mode_currentIndexChanged(int
   {
     case 0: this->m_qtconceptmap->SetMode(Mode::edit); return;
     case 1: this->m_qtconceptmap->SetMode(Mode::rate); return;
-    case 2: this->m_qtconceptmap->SetMode(Mode::uninitialzed); return;
-    default: assert(!"Should not get here");
+    case 2: this->m_qtconceptmap->SetMode(Mode::uninitialized); return;
+    default:
+      assert(!"Should not get here");
+      throw std::logic_error("on_box_mode_currentIndexChanged: unimplemented index");
   }
-  throw std::logic_error("on_box_mode_currentIndexChanged: unimplemented index");
+  m_qtconceptmap->update();
 }
