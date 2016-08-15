@@ -6,15 +6,15 @@
 
 #include <QTimer>
 
+#include "conceptmapconceptfactory.h"
+#include "fileio.h"
 #include "qtaboutdialog.h"
+#include "qtconceptmapconcepteditdialog.h"
 #include "qtconceptmapviewtestsdialog.h"
 #include "qttestconceptmapqtedgedialog.h"
 #include "qttestconceptmapqtnodedialog.h"
-#include "qtconceptmapconcepteditdialog.h"
 #include "qttesteditconceptmapdialog.h"
-#include "conceptmapconceptfactory.h"
 #include "testconceptmapmenudialog.h"
-
 #include "testtimer.h"
 #include "trace.h"
 #include "ui_qttestconceptmapmenudialog.h"
