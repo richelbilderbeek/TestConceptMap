@@ -262,6 +262,7 @@ void ribi::cmap::QtTestEditConceptMapDialog::OnVirtualBastard()
   QKeyEvent event{
     testeditconceptmapdialog::CreateRandomKey()
   };
+  m_qtconceptmap->SetVerbosity(true);
   m_qtconceptmap->keyPressEvent(&event);
 
 }
