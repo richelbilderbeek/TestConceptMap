@@ -104,6 +104,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="button_set_concept_map">
+        <property name="text">
+         <string>&amp;Set concept map</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="label_n_nodes">
         <property name="text">
          <string># nodes:</string>

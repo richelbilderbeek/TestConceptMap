@@ -317,3 +317,11 @@ void ribi::cmap::QtTestEditConceptMapDialog::on_box_mode_currentIndexChanged(int
   }
   m_qtconceptmap->update();
 }
+
+void ribi::cmap::QtTestEditConceptMapDialog::on_button_set_concept_map_clicked()
+{
+  static int i = 0;
+  const auto conceptmaps = ConceptMapFactory().GetAllTests();
+  m_qtconceptmap->SetConceptMap(conceptmaps[i]);
+  i = ((i + 1) % conceptmaps.size());
+}

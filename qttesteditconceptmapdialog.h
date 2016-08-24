@@ -49,6 +49,8 @@ private slots:
 
   void on_box_mode_currentIndexChanged(int index);
 
+  void on_button_set_concept_map_clicked();
+
 private:
 
   Ui::QtTestEditConceptMapDialog *ui;
