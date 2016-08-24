@@ -113,7 +113,7 @@ namespace ribi {
 
 
 ribi::cmap::QtTestEditConceptMapDialog::QtTestEditConceptMapDialog(QWidget *parent) :
-  QtHideAndShowDialog(parent),
+  QtDialog(parent),
   ui(new Ui::QtTestEditConceptMapDialog),
   m_qtconceptmap(new QtConceptMap(this)),
   m_timer_virtual_bastard{new QTimer(this)}

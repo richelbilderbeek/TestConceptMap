@@ -45,7 +45,7 @@
 
 ribi::cmap::QtTestQtEdgeDialog::QtTestQtEdgeDialog(
   QWidget *parent)
-  : QtHideAndShowDialog(parent),
+  : QtDialog(parent),
     ui(new Ui::QtTestQtEdgeDialog),
     m_qtedge{},
     m_qtedge_dialog{nullptr},

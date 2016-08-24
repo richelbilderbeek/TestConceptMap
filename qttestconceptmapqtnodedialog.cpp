@@ -36,7 +36,7 @@
 
 ribi::cmap::QtTestQtNodeDialog::QtTestQtNodeDialog(
   QWidget *parent)
-  : QtHideAndShowDialog(parent),
+  : QtDialog(parent),
     ui(new Ui::QtTestQtNodeDialog),
     m_dialog{new QtQtNodeDialog},
     m_view{new QtKeyboardFriendlyGraphicsView}

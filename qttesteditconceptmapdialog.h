@@ -6,7 +6,7 @@
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
 #pragma GCC diagnostic ignored "-Wunused-but-set-parameter"
 #include <boost/shared_ptr.hpp>
-#include "qthideandshowdialog.h"
+#include "qttestconceptmapdialog.h"
 
 #include "qtconceptmap.h"
 #include "qtconceptmapfwd.h"
@@ -21,7 +21,7 @@ namespace cmap {
 ///Tests all QtConceptMaps
 ///especially the connection between the pointer and its displayal items:
 ///If something via the pointer is changed, this must be displayed directly
-class QtTestEditConceptMapDialog : public ribi::QtHideAndShowDialog
+class QtTestEditConceptMapDialog : public QtDialog
 {
   Q_OBJECT
   

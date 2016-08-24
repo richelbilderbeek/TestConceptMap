@@ -6,7 +6,7 @@
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
 #pragma GCC diagnostic ignored "-Wunused-but-set-parameter"
 #include <vector>
-#include "qthideandshowdialog.h"
+#include "qttestconceptmapdialog.h"
 #pragma GCC diagnostic pop
 
 namespace Ui {
@@ -16,7 +16,7 @@ namespace Ui {
 namespace ribi {
 namespace cmap {
 
-class QtTestMenuDialog : public QtHideAndShowDialog
+class QtTestMenuDialog : public QtDialog
 {
   Q_OBJECT
 
