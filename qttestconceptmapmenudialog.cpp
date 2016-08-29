@@ -51,7 +51,7 @@ void ribi::cmap::QtTestMenuDialog::on_button_about_clicked()
 
 void ribi::cmap::QtTestMenuDialog::on_button_quit_clicked()
 {
-  close();
+  emit remove_me(this);
 }
 
 void ribi::cmap::QtTestMenuDialog::on_button_edit_conceptmap_clicked()

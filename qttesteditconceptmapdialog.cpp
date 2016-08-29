@@ -23,14 +23,11 @@
 #include "convert_dot_to_svg.h"
 #include "convert_svg_to_png.h"
 #include "qtconceptmapbrushfactory.h"
-#include "qtconceptmapdisplaystrategy.h"
-#include "qtconceptmapeditstrategy.h"
 #include "qtconceptmapexamplesitem.h"
 #include "qtconceptmap.h"
 #include "qtconceptmaphelper.h"
 #include "qtconceptmapqtedge.h"
 #include "qtconceptmapqtnode.h"
-#include "qtconceptmapratestrategy.h"
 #include "qtconceptmaptoolsitem.h"
 #include "testtimer.h"
 #include "trace.h"
@@ -187,7 +184,7 @@ void ribi::cmap::QtTestEditConceptMapDialog::DoSomethingRandom()
 
 void ribi::cmap::QtTestEditConceptMapDialog::keyPressEvent(QKeyEvent *event)
 {
-  if (event->key() == Qt::Key_Escape) { close(); return; }
+  if (event->key() == Qt::Key_Escape) { emit remove_me(this); return; }
   if (event->key() == Qt::Key_F3)
   {
     SaveToFile(m_qtconceptmap->GetConceptMap(),"full.dot");
@@ -312,7 +309,6 @@ void ribi::cmap::QtTestEditConceptMapDialog::on_box_mode_currentIndexChanged(int
     case 1: this->m_qtconceptmap->SetMode(Mode::rate); return;
     case 2: this->m_qtconceptmap->SetMode(Mode::uninitialized); return;
     default:
-      assert(!"Should not get here");
       throw std::logic_error("on_box_mode_currentIndexChanged: unimplemented index");
   }
   m_qtconceptmap->update();

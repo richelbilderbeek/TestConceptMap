@@ -37,3 +37,6 @@ qrc_*
 TestConceptMapDesktop
 *.gcda
 *.gcno
+*.tar.gz
+oclint-0.10.3/
+oclint.log
