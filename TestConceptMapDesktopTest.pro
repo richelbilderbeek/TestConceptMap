@@ -9,7 +9,7 @@ include(../RibiLibraries/GeneralDesktop.pri)
 #include(../RibiLibraries/Sfml.pri)
 
 #Specific, console
-include(../RibiClasses/CppConceptMap/CppConceptMap.pri)
+include(../ConceptMap/ConceptMap.pri)
 include(../RibiClasses/CppContainer/CppContainer.pri)
 include(../RibiClasses/CppCounter/CppCounter.pri)
 include(../RibiClasses/CppFuzzy_equal_to/CppFuzzy_equal_to.pri)
@@ -27,7 +27,7 @@ include(../RibiClasses/CppGrabber/CppGrabberTest.pri)
 include(../RibiClasses/CppQtArrowItem/CppQtArrowItem.pri)
 include(../RibiClasses/CppQtArrowItem/CppQtArrowItemTest.pri)
 
-include(../RibiClasses/CppQtConceptMap/CppQtConceptMap.pri)
+include(../QtConceptMap/QtConceptMap.pri)
 include(../RibiClasses/CppQtDisplayPosItem/CppQtDisplayPosItem.pri)
 include(../RibiClasses/CppQtKeyboardFriendlyGraphicsView/CppQtKeyboardFriendlyGraphicsView.pri)
 include(../RibiClasses/CppQtQuadBezierArrowItem/CppQtQuadBezierArrowItem.pri)

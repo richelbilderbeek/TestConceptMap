@@ -11,7 +11,7 @@ include(../RibiLibraries/GeneralConsole.pri)
 include(../RibiLibraries/GeneralDesktop.pri)
 
 #Specific, console
-include(../RibiClasses/CppConceptMap/CppConceptMap.pri)
+include(../ConceptMap/ConceptMap.pri)
 include(../RibiClasses/CppContainer/CppContainer.pri)
 include(../RibiClasses/CppCounter/CppCounter.pri)
 include(../RibiClasses/CppFuzzy_equal_to/CppFuzzy_equal_to.pri)
@@ -26,7 +26,7 @@ include(../RibiClasses/CppXml/CppXml.pri)
 #Specific, desktop
 include(../RibiClasses/CppGrabber/CppGrabber.pri)
 include(../RibiClasses/CppQtArrowItem/CppQtArrowItem.pri)
-include(../RibiClasses/CppQtConceptMap/CppQtConceptMap.pri)
+include(../QtConceptMap/QtConceptMap.pri)
 include(../RibiClasses/CppQtDisplayPosItem/CppQtDisplayPosItem.pri)
 include(../RibiClasses/CppQtKeyboardFriendlyGraphicsView/CppQtKeyboardFriendlyGraphicsView.pri)
 include(../RibiClasses/CppQtQuadBezierArrowItem/CppQtQuadBezierArrowItem.pri)
