@@ -56,6 +56,7 @@ fail=`egrep "Compiler Errors" oclint.log | wc -l`
 if [ $fail -eq 1 ]; 
 then
   echo "OCLint: Compiler error"
+  exit 1
 else
   echo "OCLint: OK"
 fi
@@ -68,7 +69,6 @@ if [ $success -eq 1 ];
 then
   echo "OCLint: OK"
 else
-  echo "OCLint: Can be improved"
-  #echo "OCLint: Fail"
-  #exit 1
+  echo "OCLint: Fail"
+  exit 1
 fi
