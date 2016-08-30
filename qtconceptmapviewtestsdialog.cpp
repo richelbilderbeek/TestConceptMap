@@ -99,5 +99,5 @@ boost::shared_ptr<ribi::cmap::QtConceptMap> ribi::cmap::QtConceptMapViewTestsDia
 
 void ribi::cmap::QtConceptMapViewTestsDialog::keyPressEvent(QKeyEvent* event)
 {
-  if (event->key()  == Qt::Key_Escape) { close(); return; }
+  if (event->key() == Qt::Key_Escape) { emit remove_me(this); return; }
 }

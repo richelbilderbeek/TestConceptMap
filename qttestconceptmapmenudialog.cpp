@@ -4,6 +4,7 @@
 
 #include <cassert>
 
+#include <QKeyEvent>
 #include <QTimer>
 
 #include "conceptmapconceptfactory.h"
@@ -41,6 +42,11 @@ ribi::cmap::QtTestMenuDialog::~QtTestMenuDialog() noexcept
   delete ui;
 }
 
+void ribi::cmap::QtTestMenuDialog::keyPressEvent(QKeyEvent * event)
+{
+  if (event->key()  == Qt::Key_Escape) { emit remove_me(this); return; }
+}
+
 void ribi::cmap::QtTestMenuDialog::on_button_about_clicked()
 {
   QtAboutDialog * const d{
@@ -51,7 +57,7 @@ void ribi::cmap::QtTestMenuDialog::on_button_about_clicked()
 
 void ribi::cmap::QtTestMenuDialog::on_button_quit_clicked()
 {
-  emit remove_me(this);
+  emit remove_me(this); close();
 }
 
 void ribi::cmap::QtTestMenuDialog::on_button_edit_conceptmap_clicked()

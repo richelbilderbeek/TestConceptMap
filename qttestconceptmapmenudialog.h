@@ -26,6 +26,8 @@ public:
   QtTestMenuDialog& operator=(const QtTestMenuDialog&) = delete;
   ~QtTestMenuDialog() noexcept;
 
+  void keyPressEvent(QKeyEvent *);
+
 private slots:
   void on_button_about_clicked();
   void on_button_edit_conceptmap_clicked();
