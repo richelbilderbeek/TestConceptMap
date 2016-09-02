@@ -36,7 +36,7 @@ void ribi::cmap::qttesteditconceptmapdialog_test::create_edge_with_arrow_head()
   QTest::keyClick(&d, Qt::Key_H, Qt::ControlModifier, 100);
 
   const auto qtconceptmap = d.GetQtConceptMap();
-  const auto qtnodes = ribi::cmap::GetQtNodesNotOnEdge(qtconceptmap->GetScene());
+  const auto qtnodes = ribi::cmap::GetQtNodes(qtconceptmap->GetScene());
   const auto excepted_vertices = 2;
   const auto measured_vertices = qtnodes.size();
   QVERIFY(measured_vertices == excepted_vertices);
