@@ -6,7 +6,7 @@
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
 #pragma GCC diagnostic ignored "-Wunused-but-set-parameter"
 #include <memory>
-#include "qttestconceptmapdialog.h"
+#include "qttestconceptmappage.h"
 
 #include "qtconceptmapfwd.h"
 #include "qtconceptmapqtedge.h"
@@ -21,7 +21,7 @@ namespace cmap {
 ///Tests all QtConceptMapConceptItem items when being a member of a cmap::QtEdge,
 ///especially the connection between the pointer and its displayal items:
 ///If something via the pointer is changed, this must be displayed directly
-class QtTestQtEdgeDialog : public QtDialog
+class QtTestQtEdgeDialog : public QtPage
 {
   Q_OBJECT
   

@@ -33,7 +33,7 @@
 
 ribi::cmap::QtTestQtNodeDialog::QtTestQtNodeDialog(
   QWidget *parent)
-  : QtDialog(parent),
+  : QtPage(parent),
     ui(new Ui::QtTestQtNodeDialog),
     m_dialog{new QtQtNodeDialog},
     m_view{new QtKeyboardFriendlyGraphicsView}

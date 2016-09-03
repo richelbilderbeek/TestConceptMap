@@ -6,7 +6,7 @@
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
 #pragma GCC diagnostic ignored "-Wunused-but-set-parameter"
 #include <boost/shared_ptr.hpp>
-#include "qttestconceptmapdialog.h"
+#include "qttestconceptmappage.h"
 
 #include "qtconceptmapfwd.h"
 #pragma GCC diagnostic pop
@@ -19,7 +19,7 @@ namespace cmap {
 ///Tests all QtConceptMapConceptItem items when being a member of a QtNode,
 ///especially the connection between the pointer and its displayal items:
 ///If something via the pointer is changed, this must be displayed directly
-class QtTestQtNodeDialog : public QtDialog
+class QtTestQtNodeDialog : public QtPage
 {
   Q_OBJECT
   

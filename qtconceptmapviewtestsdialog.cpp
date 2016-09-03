@@ -25,7 +25,7 @@
 #pragma GCC diagnostic pop
 
 ribi::cmap::QtConceptMapViewTestsDialog::QtConceptMapViewTestsDialog(QWidget* parent)
-  : QtDialog(parent),
+  : QtPage(parent),
     ui(new Ui::QtConceptMapViewTestsDialog),
     m_concept_maps(cmap::ConceptMapFactory().GetAllTests()),
     m_qtconceptmaps{}

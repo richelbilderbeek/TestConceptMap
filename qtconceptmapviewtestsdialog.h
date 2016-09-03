@@ -6,7 +6,7 @@
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
 #pragma GCC diagnostic ignored "-Wunused-but-set-parameter"
 #include <boost/shared_ptr.hpp>
-#include "qttestconceptmapdialog.h"
+#include "qttestconceptmappage.h"
 
 #include "qtconceptmap.h"
 #pragma GCC diagnostic pop
@@ -18,7 +18,7 @@ namespace Ui {
 namespace ribi {
 namespace cmap {
 
-class QtConceptMapViewTestsDialog : public QtDialog
+class QtConceptMapViewTestsDialog : public QtPage
 {
   Q_OBJECT
   

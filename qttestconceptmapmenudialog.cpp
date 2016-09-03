@@ -14,7 +14,7 @@
 #include "qtconceptmapviewtestsdialog.h"
 #include "qttestconceptmapqtedgedialog.h"
 #include "qttestconceptmapqtnodedialog.h"
-#include "qttesteditconceptmapdialog.h"
+#include "qttestconceptmapdialog.h"
 #include "testconceptmapmenudialog.h"
 #include "testtimer.h"
 #include "trace.h"
@@ -22,7 +22,7 @@
 #pragma GCC diagnostic pop
 
 ribi::cmap::QtTestMenuDialog::QtTestMenuDialog(QWidget *parent) :
-    QtDialog(parent),
+    QtPage(parent),
     ui(new Ui::QtTestMenuDialog)
 {
   ui->setupUi(this);
@@ -60,8 +60,8 @@ void ribi::cmap::QtTestMenuDialog::on_button_quit_clicked()
 
 void ribi::cmap::QtTestMenuDialog::on_button_edit_conceptmap_clicked()
 {
-  QtTestEditConceptMapDialog * const d{
-    new QtTestEditConceptMapDialog
+  QtTestConceptMapDialog * const d{
+    new QtTestConceptMapDialog
   };
   d->setStyleSheet(this->styleSheet());
   //d.setWindowState(Qt::WindowFullScreen);
