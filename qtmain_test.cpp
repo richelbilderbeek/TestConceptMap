@@ -3,7 +3,7 @@
 
 #include "qtconceptmapviewtestsdialog_test.h"
 #include "qttestconceptmapmenudialog_test.h"
-#include "qttesteditconceptmapdialog_test.h"
+#include "qttestconceptmapdialog_test.h"
 #include "qttestconceptmapqtnodedialog_test.h"
 #include "qttestconceptmapqtedgedialog_test.h"
 
@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
   int error = 0;
   { ribi::cmap::qtconceptmapviewtestsdialog_test t; error |= QTest::qExec(&t, argc, argv); }
   { ribi::cmap::qttestconceptmapmenudialog_test t; error |= QTest::qExec(&t, argc, argv); }
-  { ribi::cmap::qttesteditconceptmapdialog_test t; error |= QTest::qExec(&t, argc, argv); }
+  { ribi::cmap::qttestconceptmapdialog_test t; error |= QTest::qExec(&t, argc, argv); }
   { ribi::cmap::qttestconceptmapqtnodedialog_test t; error |= QTest::qExec(&t, argc, argv); }
   { ribi::cmap::qttestconceptmapqtedgedialog_test t; error |= QTest::qExec(&t, argc, argv); }
   if (!error) { std::cout << "Pass\n"; }

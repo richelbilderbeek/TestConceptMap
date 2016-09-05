@@ -1,20 +1,20 @@
-#include "qttesteditconceptmapdialog_test.h"
+#include "qttestconceptmapdialog_test.h"
 
 #include <QtTest>
-#include "qttesteditconceptmapdialog.h"
+#include "qttestconceptmapdialog.h"
 #include "get_my_custom_edge.h"
 #include "qtconceptmaphelper.h"
 #include "conceptmap.h"
 
-void ribi::cmap::qttesteditconceptmapdialog_test::default_construction()
+void ribi::cmap::qttestconceptmapdialog_test::default_construction()
 {
-  ribi::cmap::QtTestEditConceptMapDialog d;
+  ribi::cmap::QtTestConceptMapDialog d;
   d.show();
 }
 
-void ribi::cmap::qttesteditconceptmapdialog_test::create_node()
+void ribi::cmap::qttestconceptmapdialog_test::create_node()
 {
-  ribi::cmap::QtTestEditConceptMapDialog d;
+  ribi::cmap::QtTestConceptMapDialog d;
   d.show();
   //If you want to use 'd.GetQtConceptMap()' go work on the QtConceptMap tests :-)
   QTest::keyClick(&d, Qt::Key_N, Qt::ControlModifier, 100);
@@ -23,11 +23,11 @@ void ribi::cmap::qttesteditconceptmapdialog_test::create_node()
   QVERIFY(measured_vertices == excepted_vertices);
 }
 
-void ribi::cmap::qttesteditconceptmapdialog_test::create_edge_with_arrow_head()
+void ribi::cmap::qttestconceptmapdialog_test::create_edge_with_arrow_head()
 {
   //Added this for https://github.com/richelbilderbeek/Brainweaver/issues/88
   //just to be sure that a QtConceptMap gets saved correctly
-  ribi::cmap::QtTestEditConceptMapDialog d;
+  ribi::cmap::QtTestConceptMapDialog d;
   d.show();
   //If you want to use 'd.GetQtConceptMap()' go work on the QtConceptMap tests :-)
   QTest::keyClick(&d, Qt::Key_N, Qt::ControlModifier, 100);

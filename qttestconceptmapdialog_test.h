@@ -1,12 +1,12 @@
-#ifndef QTTESTEDITCONCEPTMAPDIALOG_TEST_H
-#define QTTESTEDITCONCEPTMAPDIALOG_TEST_H
+#ifndef QTTESTCONCEPTMAPDIALOG_TEST_H
+#define QTTESTCONCEPTMAPDIALOG_TEST_H
 
 #include <QtTest/QtTest>
 
 namespace ribi {
 namespace cmap {
 
-class qttesteditconceptmapdialog_test : public QObject
+class qttestconceptmapdialog_test : public QObject
 {
     Q_OBJECT
 
@@ -19,4 +19,4 @@ private slots:
 } //~namespace cmap
 } //~namespace ribi
 
-#endif // QTTESTEDITCONCEPTMAPDIALOG_TEST_H
+#endif // QTTESTCONCEPTMAPDIALOG_TEST_H

@@ -1,13 +1,13 @@
 SOURCES += \
     $$PWD/qttestconceptmapqtnodedialog_test.cpp \
-    $$PWD/qttesteditconceptmapdialog_test.cpp \
+    $$PWD/qttestconceptmapdialog_test.cpp \
     $$PWD/qttestconceptmapqtedgedialog_test.cpp \
-    qtconceptmapviewtestsdialog_test.cpp \
-    qttestconceptmapmenudialog_test.cpp
+    $$PWD/qtconceptmapviewtestsdialog_test.cpp \
+    $$PWD/qttestconceptmapmenudialog_test.cpp
 
 HEADERS += \
-    qttestconceptmapqtedgedialog_test.h \
-    qttestconceptmapqtnodedialog_test.h \
-    qttesteditconceptmapdialog_test.h \
-    qtconceptmapviewtestsdialog_test.h \
-    qttestconceptmapmenudialog_test.h
+    $$PWD/qttestconceptmapqtedgedialog_test.h \
+    $$PWD/qttestconceptmapqtnodedialog_test.h \
+    $$PWD/qttestconceptmapdialog_test.h \
+    $$PWD/qtconceptmapviewtestsdialog_test.h \
+    $$PWD/qttestconceptmapmenudialog_test.h
