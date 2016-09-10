@@ -1,5 +1,7 @@
 include(../RibiLibraries/DesktopApplicationNoWeffcpp.pri)
 
+CONFIG += debug_and_release
+
 QMAKE_CXXFLAGS_DEBUG += -pg
 QMAKE_LFLAGS_DEBUG += -pg
 

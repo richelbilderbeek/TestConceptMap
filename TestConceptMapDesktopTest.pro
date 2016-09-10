@@ -1,5 +1,7 @@
 include(../RibiLibraries/DesktopApplicationNoWeffcpp.pri)
 
+CONFIG += debug_and_release
+
 #Libs
 include(../RibiLibraries/Apfloat.pri)
 include(../RibiLibraries/BoostAll.pri)

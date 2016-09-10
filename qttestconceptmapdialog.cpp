@@ -211,14 +211,13 @@ void ribi::cmap::QtTestConceptMapDialog::OnCheck()
   ui->label_n_qtnodes_selected->setText(QString("# QtNodes selected: ") + QString::number(CountSelectedQtNodes(m_qtconceptmap->GetScene())));
   ui->label_n_qtedges->setText(QString("# QtEdges: ") + QString::number(CountQtEdges(m_qtconceptmap->GetScene())));
   ui->label_n_qtedges_selected->setText(QString("# QtEdges selected: ") + QString::number(CountSelectedQtEdges(m_qtconceptmap->GetScene())));
-  assert(m_qtconceptmap->GetQtToolItem());
   ui->label_qttool_buddy_text->setText(
     QString("QtTool buddy text: ")
-    + (m_qtconceptmap->GetQtToolItem()->GetBuddyItem()
-    ? QString(m_qtconceptmap->GetQtToolItem()->GetBuddyItem()->GetText()[0].c_str())
+    + (m_qtconceptmap->GetQtToolItem().GetBuddyItem()
+    ? QString(m_qtconceptmap->GetQtToolItem().GetBuddyItem()->GetText()[0].c_str())
     : QString("N/A")
     )
-    + QString::number(m_qtconceptmap->GetQtToolItem()->pos().x())
+    + QString::number(m_qtconceptmap->GetQtToolItem().pos().x())
   );
   /*
   std::stringstream s;
