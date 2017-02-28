@@ -5,12 +5,12 @@ include(../RibiLibraries/GeneralConsole.pri)
 
 #Specific, console
 include(../RibiClasses/CppContainer/CppContainer.pri)
-include(../RibiClasses/CppCoordinat/CppCoordinat.pri)
+#include(../RibiClasses/CppCoordinat/CppCoordinat.pri)
 include(../RibiClasses/CppCounter/CppCounter.pri)
 include(../ConceptMap/ConceptMap.pri)
 include(../RibiClasses/CppGeometry/CppGeometry.pri)
 include(../RibiClasses/CppFuzzy_equal_to/CppFuzzy_equal_to.pri)
-include(../RibiClasses/CppPlane/CppPlane.pri)
+include(../plane/plane.pri)
 include(../RibiClasses/CppRibiRegex/CppRibiRegex.pri)
 include(../RibiClasses/CppXml/CppXml.pri)
 
@@ -28,3 +28,9 @@ LIBS += -lboost_graph
 
 # QResources give this error
 QMAKE_CXXFLAGS += -Wno-unused-variable
+
+# Prevents this error:
+#/usr/include/boost/math/constants/constants.hpp:277: error: unable to find numeric literal operator 'operator""Q'
+#   BOOST_DEFINE_MATH_CONSTANT(half, 5.000000000000000000000000000000000000e-01, "5.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e-01")
+#   ^
+QMAKE_CXXFLAGS += -fext-numeric-literals
