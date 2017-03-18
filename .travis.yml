@@ -23,6 +23,8 @@ install:
   - sudo pip install codecov
   # OCLint
   - ./install_oclint
+  # Download prerequisites
+  - ./download_other_githubs
 
 # Start virtual X server, from https://docs.travis-ci.com/user/gui-and-headless-browsers/
 before_script:
@@ -31,8 +33,6 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script: 
-  - ./download_other_githubs
-  - ./build_other_githubs.sh
   # Console
   - qmake TestConceptMapConsole.pro
   - make debug
