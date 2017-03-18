@@ -1,9 +1,13 @@
 #Libs
-include(../RibiLibraries/Apfloat.pri)
+#include(../RibiLibraries/Apfloat.pri)
 include(../RibiLibraries/BoostAll.pri)
 include(../RibiLibraries/Fparser.pri)
-include(../RibiLibraries/GeneralConsole.pri)
-include(../RibiLibraries/GeneralDesktop.pri)
+include(../RibiClasses/CppAbout/CppAbout.pri)
+include(../RibiClasses/CppFileIo/CppFileIo.pri)
+include(../RibiClasses/CppHelp/CppHelp.pri)
+include(../RibiClasses/CppMenuDialog/CppMenuDialog.pri)
+include(../RibiClasses/CppQtAboutDialog/CppQtAboutDialog.pri)
+include(../RibiClasses/CppQtHideAndShowDialog/CppQtHideAndShowDialog.pri)
 
 #Specific, console
 include(../ConceptMap/ConceptMap.pri)
@@ -31,7 +35,10 @@ include(../RibiClasses/CppQtRoundedRectItem/CppQtRoundedRectItem.pri)
 include(../RibiClasses/CppQtScopedDisable/CppQtScopedDisable.pri)
 include(TestConceptMapDesktop.pri)
 
-include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial.pri)
+INCLUDEPATH += ../BoostGraphTutorial/BoostGraphTutorial
+include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial_helper.pri)
+include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial_no_properties.pri)
+
 
 SOURCES += qtmain.cpp
 
@@ -81,7 +88,7 @@ CONFIG(debug, debug|release) {
 }
 
 # Qt
-QT += core gui
+QT += core gui widgets
 
 # Prevent Qt for failing with this error:
 # qrc_[*].cpp:400:44: error: ‘qInitResources_[*]__init_variable__’ defined but not used
@@ -93,3 +100,6 @@ QMAKE_CXXFLAGS += -Wno-unused-variable
 #   BOOST_DEFINE_MATH_CONSTANT(half, 5.000000000000000000000000000000000000e-01, "5.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e-01")
 #   ^
 QMAKE_CXXFLAGS += -fext-numeric-literals
+
+# Boost.Graph
+LIBS += -lboost_graph

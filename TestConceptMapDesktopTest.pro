@@ -1,14 +1,13 @@
-include(../RibiLibraries/DesktopApplicationNoWeffcpp.pri)
-
-CONFIG += debug_and_release
-
-#Libs
-include(../RibiLibraries/Apfloat.pri)
+#include(../RibiLibraries/Apfloat.pri)
 include(../RibiLibraries/BoostAll.pri)
 include(../RibiLibraries/Fparser.pri)
-include(../RibiLibraries/GeneralConsole.pri)
-include(../RibiLibraries/GeneralDesktop.pri)
-#include(../RibiLibraries/Sfml.pri)
+
+include(../RibiClasses/CppAbout/CppAbout.pri)
+include(../RibiClasses/CppFileIo/CppFileIo.pri)
+include(../RibiClasses/CppHelp/CppHelp.pri)
+include(../RibiClasses/CppMenuDialog/CppMenuDialog.pri)
+include(../RibiClasses/CppQtAboutDialog/CppQtAboutDialog.pri)
+include(../RibiClasses/CppQtHideAndShowDialog/CppQtHideAndShowDialog.pri)
 
 #Specific, console
 include(../ConceptMap/ConceptMap.pri)
@@ -41,32 +40,75 @@ include(../RibiClasses/CppQtScopedDisable/CppQtScopedDisable.pri)
 include(TestConceptMapDesktop.pri)
 include(TestConceptMapDesktopTest.pri)
 
-include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial.pri)
+INCLUDEPATH += ../BoostGraphTutorial/BoostGraphTutorial
+include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial_helper.pri)
+include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial_no_properties.pri)
 
 SOURCES += qtmain_test.cpp
 
-# gcov
-QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
-LIBS += -lgcov
+# C++14
+CONFIG += c++14
+QMAKE_CXXFLAGS += -std=c++14
 
-# gprof
-QMAKE_CXXFLAGS_DEBUG += -pg
-QMAKE_LFLAGS_DEBUG += -pg
+# High warning levels
+# Qt does not go well with -Weffc++
+QMAKE_CXXFLAGS += -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -Werror
 
-# QResources give this error
-QMAKE_CXXFLAGS += -Wno-unused-variable
+# Debug and release mode
+CONFIG += debug_and_release
 
-# Qt:
-# QtConcurrent::filterInternal(Sequence&, KeepFunctor, ReduceFunctor)’:
-# /usr/include/qt4/QtCore/qtconcurrentfilter.h:108:47: error: typedef ‘Iterator’ locally defined but not used [-Werror=unused-local-typedefs]
-# typedef typename Sequence::const_iterator Iterator;
-QMAKE_CXXFLAGS += -Wno-unused-local-typedefs
+# In release mode, define NDEBUG
+CONFIG(release, debug|release) {
+
+  DEFINES += NDEBUG
+
+  # gprof
+  QMAKE_CXXFLAGS += -pg
+  QMAKE_LFLAGS += -pg
+
+  # GSL
+  DEFINES += GSL_UNENFORCED_ON_CONTRACT_VIOLATION
+}
+
+# In debug mode, turn on gcov and UBSAN
+CONFIG(debug, debug|release) {
+
+  # gcov
+  QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
+  LIBS += -lgcov
+
+  # UBSAN
+  QMAKE_CXXFLAGS += -fsanitize=undefined
+  QMAKE_LFLAGS += -fsanitize=undefined
+  LIBS += -lubsan
+
+  # gprof
+  QMAKE_CXXFLAGS += -pg
+  QMAKE_LFLAGS += -pg
+
+  # GSL
+  #DEFINES += GSL_THROW_ON_CONTRACT_VIOLATION
+  DEFINES += GSL_UNENFORCED_ON_CONTRACT_VIOLATION
+}
+
+# Qt
+QT += core gui widgets
 
 # QTest
 QT += testlib
 
-# Prevents this error:
+# Prevent Qt for failing with this error:
+# qrc_[*].cpp:400:44: error: ‘qInitResources_[*]__init_variable__’ defined but not used
+# [*]: the resource filename
+QMAKE_CXXFLAGS += -Wno-unused-variable
+
+# Fixes
 #/usr/include/boost/math/constants/constants.hpp:277: error: unable to find numeric literal operator 'operator""Q'
 #   BOOST_DEFINE_MATH_CONSTANT(half, 5.000000000000000000000000000000000000e-01, "5.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e-01")
 #   ^
 QMAKE_CXXFLAGS += -fext-numeric-literals
+
+# Boost.Graph
+LIBS += -lboost_graph
+
+
