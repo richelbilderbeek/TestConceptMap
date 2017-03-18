@@ -1,8 +1,10 @@
-INCLUDEPATH += \
-    ../TestConceptMap
+INCLUDEPATH += $$PWD
 
 SOURCES += \
-    ../TestConceptMap/testconceptmapmenudialog.cpp
+    $$PWD/testconceptmapmenudialog.cpp
 
 HEADERS += \
-    ../TestConceptMap/testconceptmapmenudialog.h
+    $$PWD/testconceptmapmenudialog.h
+
+RESOURCES += \
+    $$PWD/TestConceptMap.qrc
