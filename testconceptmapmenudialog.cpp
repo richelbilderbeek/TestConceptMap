@@ -50,7 +50,6 @@ ribi::About ribi::TestConceptMapMenuDialog::GetAbout() const noexcept
   a.AddLibrary("FileIo version: " + FileIo().GetVersion());
   a.AddLibrary("Geometry version: " + Geometry().GetVersion());
   a.AddLibrary("ribi::Regex version: " + Regex().GetVersion());
-  a.AddLibrary("Plane version: " + Plane::GetVersion());
 
   return a;
 }

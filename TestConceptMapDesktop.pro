@@ -39,7 +39,6 @@ INCLUDEPATH += ../BoostGraphTutorial/BoostGraphTutorial
 include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial_helper.pri)
 include(../BoostGraphTutorial/BoostGraphTutorial/boost_graph_tutorial_no_properties.pri)
 
-
 SOURCES += qtmain.cpp
 
 # C++14
@@ -48,7 +47,8 @@ QMAKE_CXXFLAGS += -std=c++14
 
 # High warning levels
 # Qt does not go well with -Weffc++
-QMAKE_CXXFLAGS += -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -Werror
+# FParser does not get well with -Wshadow
+QMAKE_CXXFLAGS += -Wall -Wextra  -Wnon-virtual-dtor -pedantic -Werror
 
 # Debug and release mode
 CONFIG += debug_and_release
@@ -103,3 +103,11 @@ QMAKE_CXXFLAGS += -fext-numeric-literals
 
 # Boost.Graph
 LIBS += -lboost_graph
+
+message(Host name: $$QMAKE_HOST.name)
+contains(QMAKE_HOST.name,pc-157-103) {
+  message("Host is university computer in the canteen")
+  QMAKE_CXX = g++-5
+  QMAKE_LINK = g++-5
+  QMAKE_CC = gcc-5
+}

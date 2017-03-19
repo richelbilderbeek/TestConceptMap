@@ -5,6 +5,7 @@
 #include "get_my_custom_edge.h"
 #include "qtconceptmaphelper.h"
 #include "conceptmap.h"
+#include "qtquadbezierarrowitem.h"
 
 void ribi::cmap::qttestconceptmapdialog_test::default_construction()
 {
@@ -36,19 +37,20 @@ void ribi::cmap::qttestconceptmapdialog_test::create_edge_with_arrow_head()
   QTest::keyClick(&d, Qt::Key_H, Qt::ControlModifier, 100);
 
   const auto qtconceptmap = d.GetQtConceptMap();
-  const auto qtnodes = ribi::cmap::GetQtNodes(qtconceptmap->GetScene());
+  const auto qtnodes = ribi::cmap::GetQtNodes(*qtconceptmap->scene());
   const auto excepted_vertices = 2;
   const auto measured_vertices = qtnodes.size();
   QVERIFY(measured_vertices == excepted_vertices);
-  const auto qtedges = ribi::cmap::GetQtEdges(qtconceptmap->GetScene());
+  const auto qtedges = ribi::cmap::GetQtEdges(*qtconceptmap->scene());
   const auto excepted_edges = 1;
   const auto measured_edges = qtedges.size();
   QVERIFY(measured_edges == excepted_edges);
   const QtEdge * const qtedge = qtedges[0];
   assert(qtedge);
-  QVERIFY(qtedge->HasHeadArrow());
+
+  QVERIFY(qtedge->GetArrow()->HasHead());
   QVERIFY(qtedge->GetEdge().HasHeadArrow());
-  QVERIFY(!qtedge->HasTailArrow());
+  QVERIFY(!qtedge->GetArrow()->HasTail());
   QVERIFY(!qtedge->GetEdge().HasTailArrow());
 
   const std::string s = ToDot(d.GetQtConceptMap()->GetConceptMap());

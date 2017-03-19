@@ -28,43 +28,6 @@ QPushButton { font: 20px &quot;Courier New&quot;, courier, monospace }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Elements, graphical</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="button_qtnode">
-     <property name="text">
-      <string>&amp;6. QtNode</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="button_qtedge">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string>&amp;7. QtEdge</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>QtConceptMaps</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="QPushButton" name="button_edit_conceptmap">
      <property name="text">
       <string>&amp;9. EditConceptMap</string>
@@ -106,8 +69,6 @@ QPushButton { font: 20px &quot;Courier New&quot;, courier, monospace }</string>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>button_qtnode</tabstop>
-  <tabstop>button_qtedge</tabstop>
   <tabstop>button_edit_conceptmap</tabstop>
   <tabstop>button_view_conceptmaps</tabstop>
   <tabstop>button_about</tabstop>

@@ -31,8 +31,6 @@ public:
 private slots:
   void on_button_about_clicked();
   void on_button_edit_conceptmap_clicked();
-  void on_button_qtedge_clicked();
-  void on_button_qtnode_clicked();
   void on_button_quit_clicked();
   void on_button_view_conceptmaps_clicked();
 

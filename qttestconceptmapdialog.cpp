@@ -9,6 +9,7 @@
 
 #include <boost/lexical_cast.hpp>
 
+#include <QDebug>
 #include <QKeyEvent>
 #include <QTimer>
 #include <QUndoView>
@@ -29,8 +30,6 @@
 #include "qtconceptmapqtedge.h"
 #include "qtconceptmapqtnode.h"
 #include "qtconceptmaptoolsitem.h"
-#include "testtimer.h"
-#include "trace.h"
 #include "ui_qttestconceptmapdialog.h"
 #pragma GCC diagnostic pop
 
@@ -155,7 +154,7 @@ ribi::cmap::QtTestConceptMapDialog::~QtTestConceptMapDialog() noexcept
 void ribi::cmap::QtTestConceptMapDialog::DoSomethingRandom()
 {
 
-  const QList<QGraphicsItem *> v = m_qtconceptmap->GetScene().items();
+  const QList<QGraphicsItem *> v = m_qtconceptmap->scene()->items();
   std::for_each(v.begin(),v.end(),
     [](QGraphicsItem * const item)
     {
@@ -179,7 +178,7 @@ void ribi::cmap::QtTestConceptMapDialog::DoSomethingRandom()
       }
     }
   );
-  m_qtconceptmap->GetScene().update();
+  m_qtconceptmap->scene()->update();
 }
 
 void ribi::cmap::QtTestConceptMapDialog::keyPressEvent(QKeyEvent *event)
@@ -205,12 +204,12 @@ void ribi::cmap::QtTestConceptMapDialog::OnCheck()
 
   ui->label_n_nodes->setText(QString("# nodes: ") + QString::number(boost::num_vertices(m_qtconceptmap->GetConceptMap())));
   ui->label_n_edges->setText(QString("# edges: ") + QString::number(boost::num_edges(m_qtconceptmap->GetConceptMap())));
-  ui->label_n_items->setText(QString("# QGraphicsItems: ") + QString::number(m_qtconceptmap->GetScene().items().size()));
-  ui->label_n_items_selected->setText(QString("# QGraphicsItems selected: ") + QString::number(m_qtconceptmap->GetScene().selectedItems().size()));
-  ui->label_n_qtnodes->setText(QString("# QtNodes: ") + QString::number(CountQtNodes(m_qtconceptmap->GetScene())));
-  ui->label_n_qtnodes_selected->setText(QString("# QtNodes selected: ") + QString::number(CountSelectedQtNodes(m_qtconceptmap->GetScene())));
-  ui->label_n_qtedges->setText(QString("# QtEdges: ") + QString::number(CountQtEdges(m_qtconceptmap->GetScene())));
-  ui->label_n_qtedges_selected->setText(QString("# QtEdges selected: ") + QString::number(CountSelectedQtEdges(m_qtconceptmap->GetScene())));
+  ui->label_n_items->setText(QString("# QGraphicsItems: ") + QString::number(m_qtconceptmap->scene()->items().size()));
+  ui->label_n_items_selected->setText(QString("# QGraphicsItems selected: ") + QString::number(m_qtconceptmap->scene()->selectedItems().size()));
+  ui->label_n_qtnodes->setText(QString("# QtNodes: ") + QString::number(CountQtNodes(*m_qtconceptmap->scene())));
+  ui->label_n_qtnodes_selected->setText(QString("# QtNodes selected: ") + QString::number(CountSelectedQtNodes(*m_qtconceptmap->scene())));
+  ui->label_n_qtedges->setText(QString("# QtEdges: ") + QString::number(CountQtEdges(*m_qtconceptmap->scene())));
+  ui->label_n_qtedges_selected->setText(QString("# QtEdges selected: ") + QString::number(CountSelectedQtEdges(*m_qtconceptmap->scene())));
   ui->label_qttool_buddy_text->setText(
     QString("QtTool buddy text: ")
     + (m_qtconceptmap->GetQtToolItem().GetBuddyItem()
@@ -223,13 +222,13 @@ void ribi::cmap::QtTestConceptMapDialog::OnCheck()
   std::stringstream s;
   s
     << "m_conceptmap \n"
-    << "  ->GetScene().items().size(): "
+    << "  ->scene()->items().size(): "
     << "  (which includes m_conceptmap->m_examples: " << (m_qtconceptmap->GetQtExamplesItem()->scene() ? "yes" : "no") << ")\n"
     << "  (which includes m_conceptmap->m_tools: " << (m_qtconceptmap->GetQtToolItem()->scene() ? "yes" : "no") << ")\n"
   ;
 
 
-  const auto qtnodes = GetQtNodes(m_qtconceptmap->GetScene());
+  const auto qtnodes = GetQtNodes(*m_qtconceptmap->scene());
   const int n_qtnodes{static_cast<int>(qtnodes.size())};
   s << "# QtNodes: " << n_qtnodes << '\n';
   for (int i=0; i!=n_qtnodes; ++i)
@@ -237,19 +236,19 @@ void ribi::cmap::QtTestConceptMapDialog::OnCheck()
     const auto qtnode = qtnodes[i];
     s << "[" << i << "] " << qtnode->GetNode().GetConcept().GetName() << ": "  << qtnode->isSelected() << '\n';
   }
-  const auto qtedges = GetQtEdges(m_qtconceptmap->GetScene());
+  const auto qtedges = GetQtEdges(*m_qtconceptmap->scene());
   const int n_qtedges{static_cast<int>(qtedges.size())};
-  assert(n_qtedges == CountQtEdges(m_qtconceptmap->GetScene()));
+  assert(n_qtedges == CountQtEdges(*m_qtconceptmap->scene()));
   s << "# QtEdges: " << n_qtedges << '\n';
   for (int i=0; i!=n_qtedges; ++i)
   {
     s << "[" << i << "] " << qtedges[i]->isSelected() << '\n';
   }
   s << "Focus item: ";
-  if (m_qtconceptmap->GetScene().focusItem())
+  if (m_qtconceptmap->scene()->focusItem())
   {
-    if (QtNode* const qtnode = dynamic_cast<QtNode*>(m_qtconceptmap->GetScene().focusItem())) { s << qtnode->GetNode().GetConcept().GetName(); }
-    if (QtEdge* const qtedge = dynamic_cast<QtEdge*>(m_qtconceptmap->GetScene().focusItem())) { s << qtedge->GetQtNode()->GetNode().GetConcept().GetName(); }
+    if (QtNode* const qtnode = dynamic_cast<QtNode*>(m_qtconceptmap->scene()->focusItem())) { s << qtnode->GetNode().GetConcept().GetName(); }
+    if (QtEdge* const qtedge = dynamic_cast<QtEdge*>(m_qtconceptmap->scene()->focusItem())) { s << qtedge->GetQtNode()->GetNode().GetConcept().GetName(); }
   }
   else { s << "(none)";}
   s << '\n';
@@ -275,11 +274,11 @@ void ribi::cmap::QtTestConceptMapDialog::OnVirtualBastard()
 void ribi::cmap::QtTestConceptMapDialog::ToggleVirtualBastard() noexcept
 {
   if (m_timer_virtual_bastard->isActive()) {
-    TRACE("Stop virtual bastard");
+    qDebug() << "Stop virtual bastard";
     m_timer_virtual_bastard->stop();
   }
   else {
-    TRACE("Start virtual bastard");
+    qDebug() << "Start virtual bastard";
     m_timer_virtual_bastard->start();
   }
 }

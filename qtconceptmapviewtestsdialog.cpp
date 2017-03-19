@@ -17,10 +17,7 @@
 #include "conceptmapfactory.h"
 #include "qtconceptmap.h"
 
-
 #include "qtconceptmap.h"
-#include "testtimer.h"
-#include "trace.h"
 #include "ui_qtconceptmapviewtestsdialog.h"
 #pragma GCC diagnostic pop
 

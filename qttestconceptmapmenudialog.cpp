@@ -12,12 +12,8 @@
 #include "qtaboutdialog.h"
 #include "qtconceptmapconcepteditdialog.h"
 #include "qtconceptmapviewtestsdialog.h"
-#include "qttestconceptmapqtedgedialog.h"
-#include "qttestconceptmapqtnodedialog.h"
 #include "qttestconceptmapdialog.h"
 #include "testconceptmapmenudialog.h"
-#include "testtimer.h"
-#include "trace.h"
 #include "ui_qttestconceptmapmenudialog.h"
 #pragma GCC diagnostic pop
 
@@ -64,7 +60,6 @@ void ribi::cmap::QtTestMenuDialog::on_button_edit_conceptmap_clicked()
     new QtTestConceptMapDialog
   };
   d->setStyleSheet(this->styleSheet());
-  //d.setWindowState(Qt::WindowFullScreen);
   emit add_me(d);
 }
 
@@ -72,26 +67,6 @@ void ribi::cmap::QtTestMenuDialog::on_button_view_conceptmaps_clicked()
 {
   QtConceptMapViewTestsDialog * const d{
     new QtConceptMapViewTestsDialog
-  };
-  d->setStyleSheet(this->styleSheet());
-  emit add_me(d);
-}
-
-
-
-void ribi::cmap::QtTestMenuDialog::on_button_qtnode_clicked()
-{
-  QtTestQtNodeDialog * const d{
-    new QtTestQtNodeDialog
-  };
-  d->setStyleSheet(this->styleSheet());
-  emit add_me(d);
-}
-
-void ribi::cmap::QtTestMenuDialog::on_button_qtedge_clicked()
-{
-  QtTestQtEdgeDialog * const d{
-    new QtTestQtEdgeDialog
   };
   d->setStyleSheet(this->styleSheet());
   emit add_me(d);

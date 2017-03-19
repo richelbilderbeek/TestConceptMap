@@ -35,10 +35,6 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 script: 
-  # Console
-  - qmake TestConceptMapConsole.pro
-  - make debug
-  - ./TestConceptMapConsole
   # Desktop test
   - qmake TestConceptMapDesktopTest.pro
   - make debug

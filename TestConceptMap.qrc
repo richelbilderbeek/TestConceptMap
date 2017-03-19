@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/ToolTestConceptMap">
-        <file>ToolTestConceptMapIcon.png</file>
+        <file>TestConceptMapIcon.png</file>
     </qresource>
 </RCC>
