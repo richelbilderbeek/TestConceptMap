@@ -12,8 +12,8 @@
 #include "geometry.h"
 #include "plane.h"
 #include "ribi_regex.h"
-#include "testtimer.h"
-#include "trace.h"
+
+
 
 ribi::TestConceptMapMenuDialog::TestConceptMapMenuDialog()
 {
@@ -51,8 +51,6 @@ ribi::About ribi::TestConceptMapMenuDialog::GetAbout() const noexcept
   a.AddLibrary("Geometry version: " + Geometry().GetVersion());
   a.AddLibrary("ribi::Regex version: " + Regex().GetVersion());
   a.AddLibrary("Plane version: " + Plane::GetVersion());
-  a.AddLibrary("TestTimer version: " + TestTimer::GetVersion());
-  a.AddLibrary("Trace version: " + Trace::GetVersion());
 
   return a;
 }
