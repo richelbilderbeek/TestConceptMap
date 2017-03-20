@@ -46,8 +46,8 @@ script:
   - sleep 10
   - sudo killall TestConceptMapDesktop
   # Codecov
-  - ./get_code_cov
-  - codecov
+  - ./get_code_cov > /dev/null
+  - codecov > /dev/null
   # OCLint
   - ./do_oclint
 
